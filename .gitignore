@@ -1,0 +1,36 @@
+# Environments
+venv/
+.venv/
+env/
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+
+# Raw scraped data — large/messy, regenerable
+data/raw/*
+!data/raw/.gitkeep
+
+# Outputs/logs — keep folder, ignore contents
+outputs/*
+!outputs/.gitkeep
+
+# IMPORTANT: do NOT ignore — needed for cloud deployment
+# models/*.pkl
+# data/processed/*.csv
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
