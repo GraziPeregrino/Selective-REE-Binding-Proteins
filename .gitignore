@@ -34,3 +34,9 @@ Thumbs.db
 
 # Jupyter
 .ipynb_checkpoints/
+
+# Source PDFs/XLSX in agentic_ai/inputs — copyrighted scientific papers, not redistributable
+# Only the Gemini-curated .txt extracts in inputs/processed/ are committed
+agentic_ai/inputs/*.pdf
+agentic_ai/inputs/*.xlsx
+agentic_ai/inputs/*.docx
