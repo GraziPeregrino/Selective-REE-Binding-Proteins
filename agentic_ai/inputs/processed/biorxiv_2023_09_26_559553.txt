@@ -1,0 +1,59 @@
+---
+[SECTION: Abstract]
+Here, we introduce LanTERN, a lanthanide-responsive fluorescent protein rationally engineered from the lanmodulin-binding protein, LanM. LanTERN was designed based on GCaMP, a genetically encoded calcium indicator that couples the ion binding of four EF hand motifs to increased GFP fluorescence. We engineered seven mutations across the parent construct's four EF hand motifs to switch specificity from calcium to lanthanides. The resulting protein, LanTERN, directly converts the binding of 10 measured lanthanides to 14-fold or greater increased fluorescence.
+---
+[SECTION: Results]
+To switch GCaMP's specificity from calcium to lanthanides, we used the EF hands of Methylorubrum extorquens LanM (mex-LanM) to construct a lanthanide responsive super folder GCaMP variant by combining an M13 CBP and a circularly permutated super folder GFP with a chimeric Rattus norvegicus calmodulin in which each of the 4 EF hands was replaced with the corresponding EF hand from mex-LanM (Figure 1a, middle, and Figure 1b, blue).
+---
+[SECTION: Results]
+We expressed this construct, termed LanM-GCaMP, in Escherichia coli (E. coli), purified it using Ni-NTA chromatography (see Supplemental Methods), and measured its dose response in vitro to lanthanum, the lightest lanthanide, ytterbium, the heaviest non d-block lanthanide, and calcium. Installation of the EF hands from LanM increased brightness of the GFP in the presence of lanthanides (approximately 10µM-1mM) but not in the presence of calcium (Figure 1c). This stands in contrast to the $K_{d}$ of mex-LanM, which is reported to be in the picomolar range.3
+---
+[SECTION: Results]
+We measured the dose-response of LanTERN to lanthanides. The concentration of lanthanides that yielded the maximal response ($Ln_{max}$) varied among lanthanides (0.5µM-10µM). Above $Ln_{max}$ we observed non monotonic behavior in the fluorescence (Supplemental Figure 6). Therefore we defined LanTERN's dynamic range as [Ln]<[$Ln_{max}$] and restricted our characterization and analysis to this range.
+
+Within LanTERN's dynamic range, we calculated $EC_{50}s$ for LanTERN to be 976nM for lanthanum and 4.71µM for ytterbium, with no measurable response to calcium (Supplemental Table 1). This is an improvement of greater than two orders of magnitude over the LanM-GCaMP. LanTERN's lanthanide-dependent increase in fluorescence vs baseline also increased over LanM-GCaMP's (e.g. >10-fold change vs. ~3.5-fold change in response to lanthanum) (Figure 1d).
+---
+[SECTION: Figure 1 — EF hand sequences]
+Sequences of EF hands 1, 2, 3, and 4 of GCaMP, LanM-GCaMP, and LanTERN:
+
+GCaMP6s:
+  EF1: DKDGDGTITTKE
+  EF2: DADGDGTIDFPE
+  EF3: DKDGNGYISAAE
+  EF4: DIDGDGQVNYEE
+
+LanM-GCaMP:
+  EF1: DPDGDGTIDTKE
+  EF2: DPDKDGTLDAKE
+  EF3: DPDNDGILDKKE (note: in figure shown with LanM-derived residues; sequence as rendered in Figure 1A appears as "D K D N G G Y I S A A E" with LanM residues highlighted)
+  EF4: NPDNDGTIDARE
+
+LanTERN:
+  EF1: DPDGDGTIDTKE
+  EF2: DPDGDGTIDFPE
+  EF3: DPDGNGYIDAAE
+  EF4: DPDGDGQVDYEE
+
+(Note: amino acid identity coloring in original — amino acids identical to GCaMP shown in green; amino acids identical to LanM-GCaMP shown in blue. The above transcriptions reflect the per-position letters as displayed in Figure 1A.)
+---
+[SECTION: Results / Figure 2 — LanTERN responds to all lanthanides]
+Finally, we characterized LanTERN's response to 10 lanthanides that span the atomic weight of this class. LanTERN responds to all lanthanides tested: we observed a 14-fold or greater lanthanide dependent increase in fluorescence vs. baseline (Figure 2). The sensor exhibited binding preferences similar to mex-LanM, generally responding at lower concentrations of the lighter lanthanides (Table 1). The difference in $EC_{50}$ values for the lightest and heaviest lanthanides tested differed by approximately 4-fold.
+---
+[SECTION: Figure 2B — Table of calculated $EC_{50}s$ of LanTERN in response to lanthanides]
+Table of calculated $EC_{50}s$ of LanTERN in response to lanthanides. Lanthanides are shown in order of atomic number (Z). Values represent the mean of three independent protein purifications of LanTERN, ± represents the standard deviation of this mean.
+
+Ion | Z | EC50
+$La^{3+}$ | 57 | 1.01µM ± 0.14
+$Ce^{3+}$ | 58 | 1.25µM ± 0.31
+$Nd^{3+}$ | 60 | 2.83µM ± 1.07
+$Sm^{3+}$ | 62 | 3.37µM ± 0.78
+$Eu^{3+}$ | 63 | 1.84µM ± 0.44
+$Tb^{3+}$ | 65 | 2.39µM ± 0.98
+$Dy^{3+}$ | 66 | 1.34µM ± 0.24
+$Ho^{3+}$ | 67 | 2.84µM ± 0.67
+$Yb^{3+}$ | 70 | 3.35µM ± 0.45
+$Lu^{3+}$ | 71 | 4.20µM ± 0.44
+---
+[SECTION: Note on Supplemental data]
+Note: The main text of this preprint does not provide a full one-letter amino acid sequence for LanTERN or LanM-GCaMP as continuous strings; full sequences and annotated GenBank files are referenced as being available in the supplemental files (SI1.pdf Supplemental Table ST3 "Constructs used in this study" and S2.zip "annotated genbank files for constructs used in this report"). Only per-EF-hand 12-residue sequences are explicitly given in the main figure (Figure 1A, transcribed above). The parent construct is identified as "pRSET sfGCaMP6s-T78H was a gift from Wolf Frommer (Addgene plasmid #100023)."
+---

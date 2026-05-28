@@ -1,0 +1,43 @@
+[SECTION: Abstract]
+The lanmodulin (LanM) protein has emerged as an effective means for rare earth element (REE) extraction and separation from complex feedstocks without the use of organic solvents. Whereas the binding of LanM to individual REEs has been well characterized, little is known about the thermodynamics of mixed metal binding complexes (i.e., heterogeneous ion complexes), which limits the ability to accurately predict separation performance for a given metal ion mixture.
+
+[SECTION: Introduction]
+The recent discovery of lanmodulin (LanM) from Methylobacterium (Methylorubrum) extorquens and its orthologs in other organisms has provided proteins with high selectivity for REEs as well as useful intra-REE selectivity.⁹⁻¹² Recent work with LanM-functionalized agarose has demonstrated successful separation of mixtures of Nd(III) and Dy(III) present in rare earth magnets as well as Sc(III) and Y(III) from more complex REE mixtures characteristic of ore leachates.¹⁰⁻¹²
+
+[SECTION: Introduction]
+Prior work measuring LanM's affinity for REEs has focused on the free protein, using circular dichroism to measure LanM folding in the presence of chelator-controlled, single REE ion solutions. LanM was shown to have a 3:1 binding stoichiometry at neutral pH. EF-hand 1 is substantially weakened at pH 5 and lower, effectively reducing the complexation stoichiometry to 2:1, with binding occurring to the highest-affinity EF hands (EF2 and EF3).⁹,¹³ These studies revealed that LanM's complexation of the first two binding equivalents is highly cooperative and favors light REEs, especially Nd and Sm, compared to heavy REEs.⁹,¹⁴
+
+[SECTION: Results]
+To facilitate the characterization of LanM complexation with heterogeneous ion pairs, we immobilized LanM onto agarose as previously described.¹¹ […] Agarose-LanM was partitioned into 96-well plates and equilibrium metal binding assays were conducted for 55 binary pairs comprising any pair of 10 trivalent REEs—La, Ce, Pr, Nd, Sm, Gd, Dy, Er, Yb, and Y—in eight concentration ratios ranging from 1:24 to 27:1. Additionally, all adjacent pairs (e.g., Gd−Tb and Tb−Dy) as well as a few pairs in the heavy REE range (i.e., Tm−Lu) were characterized.
+
+[SECTION: Results — SF observations]
+For example, the SF_La/Dy was 3.0 when weaker binding ion Dy was in 30-fold excess of La, but only 1.1 when the tighter-binding ion La was 30-fold excess. […] Samarium was the only ion that had a SF greater than unity with all competing ions, indicating that it is the most preferred ion for immobilized LanM, which is consistent with our prior data.¹²
+
+[SECTION: Results — Equilibrium constants trend (Figure 3 caption + text)]
+Figure 3. Equilibrium constants normalized to La−La for all possible combinations of the 10 studied REEs. […] The homogeneous ion equilibrium constants agree well with the values measured for free LanM.⁹
+
+The trend in equilibrium constants for each ion pair generally agrees with data for LanM in free solution.⁹ The Sm−Sm binding complex is the tightest binding homogeneous pair. Heavier (e.g., Yb−Yb) or lighter ion (e.g., La−La) pairs form less stable complexes. A key feature is that the three tightest binding homocomplexes are Sm, Nd, and Pr in descending order. Light elements La and Ce preferentially bind Sm, followed by Nd, followed by Pr. Heavy elements Er and Yb preferentially bind Pr, followed by Nd, followed by Sm. Gadolinium and Dy present an intermediate behavior in which they preferentially co-bind with Nd.
+
+[SECTION: Results — Figure 4 caption]
+Figure 4. Effect of ionic radii on LanM-REE complex stability. Plot showing the relationship between the sum of ionic radii (coordination number 9)²² and relative equilibrium constants normalized to the equilibrium constant for the La−La complex. Heterogeneous pairs of similar ions are generally tighter-binding than predicted by interpolation between homogeneous binding constants. Y-containing heterogeneous pairs bind more weakly than similar heterogeneous pairs containing two lanthanides. The equilibrium constants for the homogeneous curium (Cm)—Cm pair and the heterogeneous Cm−Eu pair are shown for reference.
+
+[SECTION: Results — Extending the Model to a Lanthanide-Actinide Complex]
+The cooperative binding of lanthanides and actinides to LanM provides a useful test case for this model. Previously reported separation data shows that the SF is enhanced at higher concentrations of the stronger-binding ion (the actinide, curium) relative to the weaker-binding ion (the lanthanide, europium).²⁶ Despite the differences between lanthanide and actinide chemistry, the perfect cooperativity model could be fit to these separation data with less than 5% error (Figure S13). The resulting curve shape, which is opposite to the typical lanthanide−lanthanide separation behavior, is the result of a highly disfavored mixed binding complex (RB = 19 and Rmix = 4; Figure 4). LanM does not express such a wide disparity between RB and Rmix until much higher RB values in lanthanide−lanthanide separations. Interestingly, a variant of LanM containing an aspartate to asparagine substitution at position nine of EF hands 1−3 (3D9N²⁶) disfavors mixed binding between Cm and Eu to an even greater degree (RB = 60 and Rmix = 5.8), consistent with its higher Cm vs Eu SF.
+
+[SECTION: Discussion — example numerical separation factors and constants]
+A particularly pronounced example of this effect is the Dy−La pair that has little to no separation at high La/Dy ratios, compared to a SF > 3 at high Dy/La ratios. The La−Tb pair demonstrates the more unusual behavior that LanM selectivity reverses to favor the ion that is less abundant in the mobile phase. This effect is driven by the relatively high heterogeneous La−Tb equilibrium constant which is over four times greater than either of the two homogeneous binding constants.
+
+[SECTION: Discussion — Scenario C / Nd−Dy and Nd−Gd examples]
+This separation dampening effect can be observed even for moderately distant pairs such as Nd/Gd (RB = 5.3 and Rmix = 5.6), where the SF is 2 at an equimolar concentration of ions despite the 5-fold difference in homogeneous binding constants. […] In contrast to the scenario for closely spaced ions, mixed binding is disfavored in the most distantly spaced ions, with a prime example being the Nd−Dy pair with RB = 31.7 and Rmix = 12.5. As expected, the Nd−Dy pair breaks the SF ceiling of 3, and instead plateaus just over 5 for high Nd−Dy ratios (Figure 6C).
+
+[SECTION: Discussion — LanM variants and orthologs]
+Indeed, we show that a LanM variant (proline to alanine at position two of each EF hand; 4P2A) with 100-fold lower Ln/Ca selectivity exhibits a marked shift in selectivity toward heavier REEs with a pronounced reduction in selectivity for La, consistent with but extending prior data (Figure S17).⁹
+
+[SECTION: Discussion — Hansschlegelia quercus LanM]
+For example, the recently characterized LanM from Hansschlegelia quercus (H. quercus) achieves a selectivity profile shifted even further to the light REEs (peak at Pr¹⁰), raising the possibility that the corresponding XoxF may be more finely tuned for the lightest REEs, perhaps reflecting a different ecological niche.
+
+[SECTION: Discussion — XoxF / Nakagawa loading observation]
+Indeed, a cellular mechanism for selective metalation of XoxF with La over Nd is supported by work by Nakagawa and co-workers showing that XoxF isolated from M. extorquens cells grown on equimolar amounts of Nd and La achieves a La/Nd loading ratio of 9:1.⁴⁵
+
+[SECTION: Methods — 96-Well Filter Plate Binary Equilibration Assay]
+Approximately 30 μL of agarose-LanM was distributed into each well of a 96-well filter plate. The agarose-LanM was first equilibrated with 10 mM MES buffer at pH 6 and then each well was repeatedly incubated with binary mixtures of REEs at concentration ratios ranging from 1:24 to 27:1 with a total concentration of 10 mM. After incubation the immobilized protein was thoroughly washed with water to remove any unbound ions. Finally, the LanM-bound REEs were desorbed by addition of 100 mM HCl. The desorbed REE composition was then analyzed by ICP−MS.

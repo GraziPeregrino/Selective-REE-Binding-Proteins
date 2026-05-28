@@ -1,0 +1,91 @@
+---
+[SECTION: Abstract]
+We generated a new protein, termed RF2, through computational design with nano-molar binding affinity and more than two-fold increase in terbium(III) luminescence. In this scaffold, 6-azatryptophan (6AW) achieved a ten-fold enhancement of the europium(III) luminescence in vivo. The RF2 6AW mutant also sensitizes the luminescence of  dysprosium(III) and samarium(III).
+---
+[SECTION: Results and Discussion — Enhanced luminescent properties with ncAAs]
+To obtain directly comparable results, we chose the previously reported lanthanide binding peptide with the sequence GFIDTNNDGWIEGDELLEG for its strong binding affinity and specificity for $Tb^{3+}$, low intrinsic fluorescence and documented luminescence. The tryptophan at position 10 marks the antenna position, which was modified by ncAAs. The N-terminal glycine is a remnant of the N-terminal TEV cleavage site used to liberate the peptide following production as a fusion with the solubilizing NT* domain derived from spider silk protein.
+---
+[SECTION: Results and Discussion — Enhanced luminescent properties with ncAAs]
+Analyzing the lanthanide dissociation constant $K_{D}$ of the LBTs, we found that the incorporation of the non-canonical antennae at position 10 in the LBT consistently reduced the binding affinity 2–8-fold (Table 1 and Figure 2). Given that the amino acid sequence of LBT was selected from a large peptide library using $Tb^{3+}$ luminescence, it is unsurprising that even minor side chain modifications can reduce the ion affinity. In contrast, acridone and carbostyril sidechains installed in a similar LBT have been reported to perturb binding less (34 nM compared to 19 nM for the wild type). In our experiments, the $K_{D}$ values differed up to 2.5-fold between $Tb^{3+}$ and $Eu^{3+}$, indicating extreme sensitivity of the lanthanide affinity towards optimal coordination geometry.
+---
+[SECTION: Table 1 — Luminescence properties of the LBT-based Eu3+ and Tb3+ complexes]
+Samples contained 500 nM $Ln^{3+}$ ion with an excess of LBT in 20 mM MOPS pH 7.0, 50 mM KCl. Apparent KD values determined by titrating $Ln^{3+}$ (added as LnCl3) into a solution of 500 nM protein in 20 mM MOPS pH 7.0, 50 mM KCl. The $K_{D}$ values and error ranges were determined from a non-linear fit to the Hill equation for three technical replicates.
+
+Antenna | $λ_{ex}$ max (nm) | Extinction coefficient at $λ_{ex}$ max ($M^{-1}$ $cm^{-1}$) | Quantum Yield $Φ_{S}_{1}$ | Intensity $Tb^{b}$ | Intensity $Eu^{a}$ | Apparent $K_{D}$ $(Tb^{3+})^{c} (nM) | Apparent $K_{D}$ $(Eu^{3+})^{c}$ (nM) | Lifetime $(τ_{Tb})^{d}$ | Lifetime $(τ_{Eu})^{d}$
+
+Trp | 280 | 5422 | $0.14^{e}$ | 682 | 5 | 190 ± 40 | N.D. | 2.6 ms | 1.4 ms
+mCNP | 267 | 1187 | – | 630 | 361 | 1300 ± 90 | 490 ± 30 | 2.7 ms | 1.4 ms
+mCNF | 275 | 843 | – | 423 | 50 | 1400 ± 100 | 940 ± 100 | 2.7 ms | 1.4 ms
+4AW | 285 | 6272 | $0.01^{e}$ | 728 | 86 | 1100 ± 50 | 580 ± 30 | 1.6 ms | 1.4 ms
+4CNW | 290 | 6041 | $0.80^{f}$ | 323 | 5 | 1000 ± 40 | N.D. | 1.5 ms | 0.7 ms
+6AW | 260 | 2108 | $0.41^{e}$ | 1072 | 378 | 800 ± 20 | 830 ± 20 | 2.7 ms | 1.4 ms
+---
+[SECTION: Results and Discussion — Computational design of novel lanthanide-luminescent mini-proteins]
+The natural lanthanide-binding protein lanmodulin presents an attractive starting point as it features picomolar binding affinity for $Ln^{3+}$ ions and has been studied in detail. However, its four EF-hands, non-integer lanthanide binding stoichiometry of 3.5:1, and low expression levels in E. coli (<1 mg $L^{-1}$) limits its suitability for a wider range of applications. We therefore used only the EF-hand 2 (EF2) of lanmodulin as the starting point of the protein design process. EF2 features a threonine residue with similar backbone carbonyl coordination to the lanthanide as the antenna Trp in LBT. To enable the coordination of the tryptophan carbonyl to the metal, the preceding residue is glycine. It is known that tryptophan substitutions at this position in lanmodulin enable lanthanide excitation without significantly perturbing the $Tb^{3+}$ binding affinity.
+
+Coordinates of the 12 residues of EF2 (DPDKDGTLDAKE) were extracted from the NMR structure (PDB ID: 6MI5). Following mutating Thr7 to tryptophan, we energy minimized the side chain in Rosetta and used the resulting peptide geometry as seed structure input to RFDiffusion, diffusing a 70 or 50 amino acid protein with both N- and C-terminal extensions to the lanthanide ion binding motif.
+---
+[SECTION: Results and Discussion — Computational design of novel lanthanide-luminescent mini-proteins]
+All three designed proteins (RF1, RF2, RF3) produced a significant luminescence response when incubated with $Tb^{3+}$ (Table S5). Relative to the reference LBT, the luminescence intensities for RF1 and RF2 represented a 1.8-fold and 2.5-fold enhancement, respectively. In contrast, RF3 showed a diminished intensity of about 70 % compared to LBT. The $Tb^{3+}$ affinities followed a similar trend, with RF2 showing the strongest binding affinity at $K_{D}$ = 19 ± 3 nM, followed by RF1 at 320 ± 50 nM, and RF3 at 3300 ± 130 nM. RF1, RF2, and RF3 showed lifetimes of 1.39 ms, 1.45 ms, and 1.30 ms, respectively.
+---
+[SECTION: Figure 3 — AlphaFold3 model of RF2 — Pairwise sequence alignment]
+Pairwise sequence alignment of lanmodulin EF2, RF2, and LBT with their flanking residues.
+
+LanM 56-73: DKLDPDKDGTLDAKELKG
+RF2 33-50:  LVEDPDKDGWLDAKERAW
+LBT 1-18:   GFIDTNNDGWIEDELLEG
+---
+[SECTION: Results and Discussion — Enhanced brightness and more robust binding affinity with an ncAA antenna]
+We next tested if the increase in $Eu^{3+}$ luminescence in LBT afforded by ncAAs is transferable to our designed protein. Replacing Trp42 with our best performing non-canonical amino acid, 6AW, we compared RF2 6AW with its wild-type parent RF2. The same two-plasmid system as used for LBT expression yielded 56 mg RF2 6AW per 1 L of cell culture.
+---
+[SECTION: Results and Discussion — Enhanced brightness and more robust binding affinity with an ncAA antenna]
+Next, we measured the binding affinity of RF2 6AW with $Tb^{3+}$ and $Eu^{3+}$ and found that the ncAA affects the $Ln^{3+}$ binding affinity by less than an order of magnitude (Table 2). 6AW at position 50 decreases the binding affinity only 2-fold, whereas 6AW at position 42 decreases the affinity almost 10-fold. As in the case of the LBT, the binding affinities differed between $Eu^{3+}$ and $Tb^{3+}$ (Table 2). Nonetheless, even the reduced binding affinities are in the nanomolar range, making the RF2 6AW construct suitable for a wide range of sensing applications.
+---
+[SECTION: Results and Discussion — Enhanced brightness and more robust binding affinity with an ncAA antenna]
+Encouraged by the excellent enhancement of $Eu^{3+}$ luminescence of RF2 6AW and its nanomolar binding affinities to $Eu^{3+}$ and $Tb^{3+}$, we recorded emission spectra with other trivalent lanthanide ions, including cerium, praseodymium, neodymium, samarium ($Sm^{3+}$), gadolinium, dysprosium ($Dy^{3+}$), erbium, thulium, and ytterbium. We identified weak, but significant, emission peaks with $Sm^{3+}$ and $Dy^{3+}$, which overlapped with the long-wavelength end of the emission peak from 6AW (Figure S26). While the Sm3+ emission was too weak for affinity titrations, we were able to determine the $K_{D}$ value for $Dy^{3+}$ (Figure S24) as 290 ± 30 nM, which corresponds to an only slightly weaker affinity than for $Eu^{3+}$ or $Tb^{3+}$.
+---
+[SECTION: Results and Discussion — Enhanced brightness and more robust binding affinity with an ncAA antenna]
+All four D2O titrations showed a clear linear response to the percentage of D2O (Figure S31), yielding q-values of 1.07, 1.06, 1.30, and 1.31 for $Tb^{3+}$, $Eu^{3+}$, $Sm^{3+}$, and $Dy^{3+}$, respectively. In view of the inherent uncertainty of this equation of ±0.3 for $Tb^{3+}$ and $Eu^{3+}$, and ±0.5 for $Dy^{3+}$ and $Sm^{3+}$, this indicates that the $Ln^{3+}$ ion in the RF2 complex coordinates a single water molecule.
+---
+[SECTION: Table 2 — Luminescence properties of the RF2 $Eu^{3+}$ and $Tb^{3+}$ complexes]
+Samples contained 500 nM $Ln^{3+}$ ion with an excess of RF2. Variants were excited at their excitation maxima, 280 nm for Trp42/Trp50 and Trp42/6AW50, and 260 nm for 6AW42/Trp50. Apparent $K_{D}$ were measured by titration of $Ln^{3+}$ into a solution of 500 nM of protein in 20 mM MOPS pH 7.0, 50 mM KCl. KD values and error ranges were determined from a non-linear fit to three technical replicates.
+
+Positions | Intensity $Tb^{b}$ | Intensity $Eu^{b}$ | $K_{D}$ $(Tb^{3+})^{c}$ | $K_{D}$ $(Eu^{3+})^{c}$
+
+Trp42/Trp50 | 1784 | <1 | 19 ± 3 nM | $N.D.^{a}$
+Trp42/6AW50 | 1507 | 13 | 37 ± 5 nM | $N.D.^{a}$
+6AW42/Trp50 | 1700 | 506 | 180 ± 12 nM | 150 ± 12 nM
+---
+[SECTION: Results and Discussion — Comparison to other recent work]
+Two recent studies illustrate alternative strategies in lanthanide-luminescent protein design. A 2023 study grafted a Tb3+-binding EF-hand into a de novo immunoglobulin-like scaffold using ProteinMPNN, yielding a $Tb^{3+}$ affinity of 8–12 µM by time-resolved luminescence. This establishes a de novo lanthanide-luminescent protein, but the moderate affinity limits its use under dilute or competitive conditions.
+---
+[SECTION: Results and Discussion — New lanthanide-luminescent mini-protein shows remarkable selectivity and in vivo sensitization]
+To investigate the utility of RF2 as a general intracellular lanthanide sensor, we measured the decrease in observable luminescence in the presence of a competitor, where the binding of various metal ions was evaluated by measuring the change in the sensitized luminescence of a solution containing the RF2/$Tb^{3+}$ complex after the addition of an equimolar amount of competing metal ion. The remaining fraction of initial $Tb^{3+}$ luminescence was used to determine the relative affinity of the competitor, with a fraction of ca. 0.5 indicating a binding affinity comparable to that of $Tb^{3+}$, a fraction <0.5 indicating a stronger affinity, and a fraction >0.5 weaker binding.
+---
+[SECTION: Note on sequence content]
+Note: The main text contains the following explicit sequences:
+- LBT peptide sequence: GFIDTNNDGWIEGDELLEG (18 residues, with Trp at position 10 as antenna; N-terminal Gly is TEV cleavage remnant)
+- Lanmodulin EF2 12-residue motif: DPDKDGTLDAKE (extracted from PDB ID: 6MI5)
+- LanM residues 56-73: DKLDPDKDGTLDAKELKG
+- RF2 residues 33-50:  LVEDPDKDGWLDAKERAW (contains Trp at position 42, the antenna position; full RF2 is 71 amino acids per main text NMR description)
+- LBT residues 1-18:   GFIDTNNDGWIEDELLEG
+
+The full amino acid sequences of RF1, RF2 (71 aa total), and RF3 as continuous one-letter strings are NOT provided in the main text; only the EF-hand region of RF2 (residues 33-50) is given. Full sequences are referenced as being in the Supporting Information (SI PDF) but not included in the provided document.
+
+Lanthanide-relevant binding affinities reported in main text:
+- LBT wild-type (Trp): $K_{D}$($Tb^{3+}$) = 190 ± 40 nM
+- LBT mCNP: $K_{D}$($Tb^{3+}$) = 1300 ± 90 nM; $K_{D}$($Eu^{3+}$) = 490 ± 30 nM
+- LBT mCNF: $K_{D}$($Tb^{3+}$) = 1400 ± 100 nM; $K_{D}$($Eu^{3+}$) = 940 ± 100 nM
+- LBT 4AW: $K_{D}$($Tb^{3+}$) = 1100 ± 50 nM; $K_{D}$($Eu^{3+}$) = 580 ± 30 nM
+- LBT 4CNW: $K_{D}$($Tb^{3+}$) = 1000 ± 40 nM
+- LBT 6AW: $K_{D}$($Tb^{3+}$) = 800 ± 20 nM; $K_{D}$($Eu^{3+}$) = 830 ± 20 nM
+- RF2 (Trp42/Trp50): $K_{D}$($Tb^{3+}$) = 19 ± 3 nM
+- RF2 Trp42/6AW50: $K_{D}$($Tb^{3+}$) = 37 ± 5 nM
+- RF2 6AW42/Trp50: $K_{D}$($Tb^{3+}$) = 180 ± 12 nM; $K_^{D}$($Eu^{3+}$) = 150 ± 12 nM
+- RF2 6AW $Dy^{3+}$: $K_{D}$ = 290 ± 30 nM
+- RF1: $K_{D}$($Tb^{3+}$) = 320 ± 50 nM
+- RF3: $K_{D}$($Tb^{3+}$) = 3300 ± 130 nM
+- Lanmodulin (reference, from cited literature): picomolar affinity for $Ln^{3+}$
+- Reference acridone/carbostyril LBT (from ref 9): 34 nM (modified) vs. 19 nM (wild type)
+- De novo immunoglobulin-like $Tb^{3+}$ scaffold (from ref 41): 8–12 µM $Tb^{3+}$ affinity
+---

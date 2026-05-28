@@ -1,0 +1,60 @@
+[SECTION: Abstract]
+Lanmodulin (LanM), a naturally lanthanide (Ln)-binding protein with a remarkable selectivity for Lns over Ca(II) and affinities in the picomolar range, is an attractive target to address challenges in Ln separation. Why LanM has such a high selectivity is currently not entirely understood; both specific amino acid sequences of the EF-Hand loops and cooperativity effects have been suggested. Here, we removed the effect of cooperativity and synthesised all four 12-amino acid EF-Hand loop peptides, and investigated their affinity for two Lns (Eu(III) and Tb(III)), the actinide Cm(III) and Ca(II). Using isothermal titration calorimetry and time-resolved laser fluorescence spectroscopy (TRLFS) combined with parallel factor analysis, we show that the four short peptides behave very similarly, having affinities in the micromolar range for Eu(III) and Tb(III). Ca(II) was shown not to bind to the peptides, which was verified with circular dichroism spectroscopy.
+
+[SECTION: Introduction]
+Therefore, it is not surprising that the first discovered naturally occurring Ln(III)-binding protein, lanmodulin (LanM), isolated from M. extorquens AM1, belongs to the class of EF-Hand proteins, a protein class usually associated with binding strongly to calcium (see Fig. 1). The EF-Hand motif refers to a structural helix–loop–helix unit in which two alpha-helices are linked by a short 12-amino acid calcium(II)-binding loop.²¹ LanM has four EF-Hands with metal-binding loops of which three have been reported to have a picomolar affinity for Lns and the fourth has lower, micromolar affinity.²²⁻²⁴ The affinity for Lns has been demonstrated to be 100-million-fold higher for Lns than for calcium.²²
+
+[SECTION: Figure 1 — EF-Hand loop peptide sequences]
+Fig. 1. The protein LanM (PDB 6mi5) and the four synthesised EF-Hand loop peptides (named after the four EF-Hands of the full protein LanM) investigated in this study.
+
+EF1: H₂N-DPDKDGTIDLKE-COOH
+EF2: H₂N-DPDKDGTLDAKE-COOH
+EF3: H₂N-DPDNDGTLDKKE-COOH
+EF4: H₂N-NPDNDGTIDARE-COOH
+
+[SECTION: Results — Eu(III)- and Ca(II)-binding to the EF-Hand loop peptides]
+For the 1:1 peptide to Eu(III) complexes the reaction enthalpy (ΔH) is slightly higher than for the 1:2 complexes. In general, for all four peptides very similar values (ΔH₁:₁ = 20–24 kJ mol⁻¹ for EF1–EF4; ΔH₁:₂ = 21–19 kJ mol⁻¹ for EF1–EF3) were obtained. Solely for the 1:2 complex of EF4, a lower reaction enthalpy can be observed (13 kJ mol⁻¹). For the 1:1 complexes the Gibbs energy (ΔG) is around −29 kJ mol⁻¹ and for the 1:2 complexes it is around −20 kJ mol⁻¹.
+
+[SECTION: Table 1 — KD values obtained by Eu(III) to EF titration experiments via ITC and TRLFS]
+Conditions for ITC and TRLFS: 25 °C, pH 6.6 in 10 mM MOPSO buffer with an ionic strength of 100 mM KCl
+
+EF–Eu(III) complex | KD (µM) measured by ITC (1:1) | KD (µM) measured by ITC (1:2) | KD (µM) measured by TRLFS (1:1) | KD (µM) measured by TRLFS (1:2)
+EF1 | 8.55 ± 0.17 | 325 ± 93.0 | 4.39 ± 2.21 | 30.5 ± 12.7
+EF2 | 8.61 ± 0.04 | 309 ± 49.5 | 4.44 ± 0.82 | 36.9 ± 3.17
+EF3 | 8.02 ± 1.23 | 511 ± 169 | 3.05 ± 2.83 | 20.5 ± 10.7
+EF4 | 8.85 ± 0.16 | 456 ± 229 | 2.42 ± 1.94 | 50.5 ± 19.3
+
+[SECTION: Table 2 — KD values and lifetimes (τ) obtained by EF to metal TRLFS titration experiments]
+The number of coordinated water molecules (q) was calculated for Eu(III) and Cm(III) using the equations established by Kimura,⁶⁶ based on work of Horrocks⁶⁷
+
+EF–Eu(III) 1:1 complex:
+EF1 | KD (µM) 5.50 ± 0.57 | τ (µs)/q_water 186.2 ± 3.7/5.1
+EF2 | KD (µM) 6.52 ± 0.48 | τ (µs)/q_water 181.8 ± 8.6/5.3
+EF3 | KD (µM) 7.42 ± 1.04 | τ (µs)/q_water 182.1 ± 2.2/5.3
+EF4 | KD (µM) 7.56 ± 1.49 | τ (µs)/q_water 186.3 ± 4.3/5.1
+
+EF–Tb(III) 1:1 complex:
+EF1 | KD (µM) 8.47 ± 0.325 | τ (µs) 450 ± 18.0
+EF2 | KD (µM) 8.24 ± 1.31 | τ (µs) 469 ± 5.30
+EF3 | KD (µM) 8.46 ± 0.864 | τ (µs) 502 ± 11.0
+EF4 | KD (µM) 7.85 ± 1.23 | τ (µs) 502 ± 4.00
+
+EF–Cm(III) 1:1 complex:
+EF1 | KD (µM) 2.28 ± 0.104 | τ (µs)/q_water 143.1 ± 19/3.7
+EF2 | KD (µM) 2.86 ± 0.084 | τ (µs)/q_water 147.7 ± 18/3.5
+EF3 | KD (µM) 2.77 ± 0.229 | τ (µs)/q_water 137.4 ± 15/3.9
+EF4 | KD (µM) 2.34 ± 0.088 | τ (µs)/q_water 142.7 ± 3.0/3.7
+
+[SECTION: Figure 3 caption]
+Fig. 3 TRLFS titration experiment of Eu (0–122.5 µM) to EF1 (12 µM) at pH 6.6 (10 mM MOPSO, 100 mM KCl), λex (Eu) = 394 nm. (A) Deconvoluted spectra and (B) lifetimes of the three observed species. TRLFS titration experiment of EF1 (0–27.4 µM) to Eu (0.5 µM) at pH 6.6 (10 mM MOPSO, 100 mM KCl), λex (Eu) = 394 nm. (C) Deconvoluted spectra and (D) lifetimes of the two observed species.
+
+[SECTION: Results — Eu(III) binding compared with Tb(III) and Cm(III) binding]
+The experiment with Tb(III) further confirmed the Eu(III) experiments by showing the formation of one 1:1 complex. The obtained KD values are also in the lower micromolar range, suggesting a very similar binding affinity for Tb(III) as well as Eu(III) (see Table 2). Overall, the Tb(III) titrations strongly support the observations already made with Eu(III).
+
+The analogously conducted experiment with Cm(III) again pointed out the similarity of the four different peptides: the binding affinities for Cm(III) are in the same range (Table 2). A comparison of Cm(III) and Eu(III) luminescence lifetimes after interaction with the full protein²⁵ and isolated EF-Hand loop peptides further supports the current conclusions from experiment and simulation. The luminescence lifetimes were significantly shorter for the EF-Hand loop peptides compared with the full protein (180 µs vs. 370 µs²⁵ for Eu(III) and 140 µs vs. 200 µs²⁵ for Cm(III)). This indicates more water and less peptide functionalities in the first coordination sphere of the metal centre. The analysis suggested that the affinity for Cm(III) is slightly higher than for both investigated lanthanides (2–3 µM).
+
+[SECTION: Results — Binding competition: lanthanide versus actinide]
+To confirm the higher affinity for Cm(III) over Tb(III) and Eu(III) found in TRLFS experiments, a "fair" competition experiment was envisioned in which the peptides were added in increasing amounts to a solution containing the same concentrations of Cm(III) and Eu(III). To the best of our knowledge, this is the first time that such an experiment in which both metals are simultaneously probed has been performed. […] The analysis showed the expected formation of the 1:1 peptide/Eu(III) and peptide/Cm(III) complexes as well as the presence of the respective free aquo ions (see Fig. 9). In this direct setting, we were able to confirm the slightly higher affinity for Cm(III) over Eu(III) discussed above.
+
+[SECTION: Conclusions]
+In this study an extremely consistent picture of the Ln- (Eu(III) and Tb(III)) and An-binding (Cm(III)) capabilities of the LanM-based 12-amino acid peptides (EF-Hand loops) could be drawn. We were able to show that the Ln affinity, the preference for actinides and the low affinity for Ca(II) are preserved even in these short peptide sequences. Although the high affinity of LanM, which has been reported²² to be in the picomolar range, is not observed for its EF-Hand loop peptides, their affinity is remarkably high, especially considering that they are not modified or optimised. These short peptides even reach affinities in the micromolar range, similar to the average affinity of the four calmodulin binding sites, which are known to also have a higher affinity for Eu(III) and Cm(III) over Ca(II).⁵⁷

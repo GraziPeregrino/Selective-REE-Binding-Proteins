@@ -1,0 +1,57 @@
+[SECTION: Introduction]
+LanM is of particular interest due to its ability to selectively bind lanthanides in vivo,7 along with its utility in isolating lanthanides from other metals in industrial waste streams.14 LanM is a unique EF-hand-containing protein (Fig. 1A) with picomolar affinity and high selectivity for the lanthanide series, even over more abundant and available ions with similar ionic radii such as Ca2+.7 EF-hands consist of an entering helix, a ~12-residue metal-binding loop, and an exiting helix.15 These metal-binding motifs are typically associated with Ca2+ binding proteins, such as calmodulin (CaM), the ubiquitous Ca2+ sensor protein.16 Most EF-hands demonstrate a marginal preference for lanthanides over Ca2+,17–19 due to their higher charge. This feature has frequently been exploited in the laboratory as a method for the investigation of calcium binding.20–23 In the case of LanM, there is a remarkable 100-million fold selectivity for lanthanide binding over Ca2+ and other divalent metal ions.7
+
+[SECTION: Introduction]
+LanM undergoes a significant conformational change from disordered to ordered upon binding of three Ln3+ ions, to its EF-hands 1, 2, and 3 (the fourth EF-hand has very low lanthanide affinity). In the presence of Ca2+, the protein's conformational change is only partial and does not occur until nearly millimolar Ca2+ concentrations.7 The NMR solution structure of the Y3+-bound LanM8 suggests that LanM's metal sites may bind with a higher coordination number (8 or 9, depending on the site) compared to typical EF-hand/Ca2+ interactions (7 coordinate).15
+
+[SECTION: Introduction]
+This hypothesized function was initially investigated by constructing a variant of LanM with these four prolines mutated to alanine (4P2A, Fig. 1B and C). Whereas 4P2A-LanM shows the same conformational response with similar apparent Kd values as the WT protein for La3+ and Nd3+ ions, this substitution both tightens the apparent Kd for Ca2+ binding and allows Ca2+ to induce the same, full conformational response as to Ln3+ ions.8
+
+[SECTION: Methods — Preparation of LanM for spectroscopic measurements]
+Lanmodulin (LanM), both WT and the 4P2A variant, were expressed and purified according to an established protocol, with Chelex treatment and exchange into 20 mM MOPS, pH 7.0.7 Purified LanM was frozen in liquid N2 and lyophilized. The dried protein was deuterated by reconstituting in pure D2O and incubating at room temperature for two hours before being frozen and lyophilized again. The deuterated LanM/MOPS lyophilisate was then dissolved in D2O and pH-adjusted with DCl (Sigma-Aldrich, 99 atom% D) and NaOD (Sigma-Aldrich, 99 atom% D) to a pH reading of 6.5 uncorrected for deuterium effects. Protein buffer solutions were then combined with solutions of anhydrous metal chlorides (CaCl2, LaCl3, PrCl3, NdCl3, TbCl3, and LuCl3) in 50 mM deuterated MOPS/D2O to give a final solution of 1.5 mM LanM and 5 mM metal ion to ensure saturation of LanM's high-affinity binding sites, even in the case of Ca2+ (Kd,app = 710 μM for WT Ca2+-LanM).7 This final solution was once again adjusted to an uncorrected pH reading of 6.5.
+
+[SECTION: Methods — Computational methods]
+Simulations were carried out starting with the Y3+-bound NMR structure (PDB: 6MI5) which was energy minimized and equilibrated in a box containing ~6000 water molecules. Sodium ions were added to maintain charge neutrality. The structure of the 4P2A-LanM variant was generated using the Pymol mutagenesis function starting from the same initial NMR configuration. Three MD potentials for different metal ion-bound forms were simulated in complex with LanM—a calcium ion using the CHARMM36 parameters for Ca2+, as well as representative early and a late lanthanide ion generated using parameters for La3+ (σLnO = 3.310, εLnO = 0.4308) and Lu3+ (σLnO = 2.997, εLnO = 0.4308) developed by Migliorati et al.31
+
+[SECTION: Results and discussion — MD simulations]
+Proline is not part of the EF-hand sequence in other characterized EF-hand proteins, but it is present in the second position in each of M. extorquens LanM's four EF-hands. The conservation of Pro residues at this position in LanM and its homologs, along with the enhanced conformational response to Ca2+ in 4P2A suggests a significant role of these residues in LanM's unique selectivity, though the details are not well understood.7 The 4P2A variant tests proline's role in LanM's binding by substituting an alanine at proline's position within each of the four EF-hands.
+
+[SECTION: Figure 1 caption]
+Cartoon representations of LanM bound to Y3+. (A) NMR solution structure of LanM (PDB: 6MI5), with each of the four EF-hand binding sites highlighted in blue (EF 1) and black (EF 2–4). The fourth EF-hand remains uncoordinated in this structure. (B) Structure of WT EF1, as modeled in the NMR structure. The coordinated ion is shown in cyan, and coordinating oxygens are connected by dashed yellow lines. Residues with coordinating carboxylate sidechains are labeled in black. Threonine residues that coordinate with a backbone carbonyl are labeled in gray, as they are not included in our analysis. The coordinating residue sequence is the same across all four EF-hands, with the exception of EF4 which has an Asp in the first position. (C) Generated structure of 4P2A EF1 variant used as the starting point for MD simulations. The Pro→Ala mutation was produced in Pymol and is highlighted in red. This Pro→Ala mutation was also applied to the other three EF hands to determine the sequence-dependent geometry.
+
+[SECTION: Table 1 caption and data]
+Center peak frequencies of the monodentate carboxylate population for WT and 4P2A LanM from Gaussian fitting (Fig. S3)
+Ion | WT (cm−1) | 4P2A (cm−1)
+Ca2+ | 1609.8 | 1609.7
+La3+ | 1612.4 | 1609.4
+Pr3+ | 1611.3 | 1609.6
+Nd3+ | 1611.4 | 1609.0
+Tb3+ | 1610.0 | 1609.2
+Lu3+ | 1609.2 | 1610.8
+
+[SECTION: Table 2 caption and data]
+Relative populations of monodentate ligands to total observable peak area (percent total)
+Protein | Ca2+ | La3+ | Pr3+ | Nd3+ | Tb3+ | Lu3+
+WT | 44 | 63 | 74 | 61 | 59 | 60
+4P2A | 51 | 52 | 50 | 61 | 80 | 48
+
+[SECTION: Table 3 caption and data]
+Ligand coordination populations (percent) extracted from MD trajectories. Categorized based on distance histograms shown in Fig. 3A and Fig. S4
+| Bidentate WT | Bidentate 4P2A | Unassigned WT | Unassigned 4P2A | Monodentate WT | Monodentate 4P2A | Unbound WT | Unbound 4P2A
+Ca2+ | 23.8 | 19.7 | 1.94 | 0.90 | 37.6 | 45.1 | 36.6 | 34.3
+La3+ | 46.4 | 58.9 | 0.63 | 0.12 | 21.2 | 17.9 | 31.8 | 23.0
+Lu3+ | 52.1 | 49.4 | 0.11 | 0.66 | 30.0 | 26.5 | 17.8 | 23.5
+
+[SECTION: Table 4 caption and data]
+Populations of water molecules within 0.3 nm of the metal ion within each binding site (cutoff determined by ion-water RDF (Fig. S7))
+| EF1 WT | EF1 4P2A | EF2 WT | EF2 4P2A | EF3 WT | EF3 4P2A
+Ca2+ | 1.00 | 1.00 | 4.94 | 2.00 | 1.99 | 0.00
+La3+ | 2.00 | 1.00 | 3.00 | 3.95 | 0.00 | 0.00
+Lu3+ | 1.00 | 1.00 | 1.00 | 3.00 | 0.03 | 0.00
+
+[SECTION: References — note on source organism]
+6. Nakagawa T, Mitsui R, Tani A, Sasa K, Tashiro S, Iwama T, Hayakawa T and Kawai K, A Catalytic Role of XoxF1 as La3+-Dependent Methanol Dehydrogenase in Methylobacterium extorquens Strain AM1, PLoS One, 2012, 7, e50480.
+
+7. Cotruvo JA, Featherston ER, Mattocks JA, Ho JV and Laremore TN, Lanmodulin: A Highly Selective Lanthanide-Binding Protein from a Lanthanide-Utilizing Bacterium, J. Am. Chem. Soc, 2018, 140, 15056–15061.
+
+8. Cook EC, Featherston ER, Showalter SA and Cotruvo JA, Structural Basis for Rare Earth Element Recognition by Methylobacterium extorquens Lanmodulin, Biochemistry, 2019, 58, 120–125.

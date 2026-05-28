@@ -1,0 +1,119 @@
+---
+[SECTION: Theory]
+To sanity check the connection between experimental data and our models, we calculated the lanthanide binding per cell and per gram of dry weight of S. oneidensis and compared with literature values (Note S1, and Table S2). We calculate the approximate loading capacity of S. oneidensis is s 16.1 fg $cell^{-1}$ / 470 fg dry weight $cell^{-1}$ ≈ 30 mg$ ^{g-}$1 of dry weight.
+---
+[SECTION: Results and Discussion — Fitting Single-site-type Binding Model to Experimental Data]
+We used a minimization algorithm included in the SCIPY package to fit two dissociation constants to the binding data for the wild-type S. oneidensis (note, we estimate that $K_{D}$, Eu ≈ 10-6 M). This program can be found in FIT_KD.PY script in the REE-PURIFICATION repository. We denote Eu, the metal with the highest concentration in the bound phase, as $M_{1}$; Yb, the second highest concentration in bound phase, as $M_{2}$; and La, the lowest concentration, as $M_{3}$. We find, that relative to the dissociation constant for Eu ($M_{1}$),
+
+(1) $K_{D,Yb}$ = 1.256 × $K_{D,Eu}$
+(2) $K_{D,La}$ = 2.282 × $K_{D,Eu}$
+
+Thus, for a single-site system where the separation factors depend only upon the relative values of dissociation constants,
+
+(3) α Yb/Eu = $K_{D,Yb}$ /$K_{D,Eu,}$ = 1.256,
+(4) α La/Eu = $K_{D,La}$ /$K_{D,Eu,}$ = 2.282,
+(5) α La/Yb = $K_{D,La}$ /$K_{D,Yb,}$ = 1.817.
+---
+[SECTION: Results and Discussion — Fitting Three-site-type Binding Model to Experimental Data]
+The first site has a preference for Eu (note that the choice of 8 was somewhat arbitrary, but it does allow us to have similarly sized population-fractions for sites 1, 2, and 3) and is consistent with our single-site model,
+
+(6) $K_{D1,Eu}$ = $K_{D0}$ /8.0,
+    $K_{D1,Yb}$ = $K_{D0,}$
+    $K_{D1,La}$ = $K_{D0 .}$
+
+The number of site 1 molecules, as a fraction of the total,
+
+(7) $f_{R1}$ = 0.4618.
+
+The second site has a preference for Yb,
+
+(8) $K_{D2,Eu}$ = $K_{D0,}$
+    $K_{D2,Yb}$ = $K_{D0}$ /8.0,
+    $K_{D2,La}$ = $K_{D0}$ .
+
+The number of site 2 molecules, as a fraction of the total,
+
+(9) $f_{B2}$ = 0.3703.
+
+Finally, the third site has a preference for La,
+
+(10) $K_{D3,Eu}$ = $K_{D0,}$
+     $K_{D3,Yb}$ = $K_{D0,}$
+     $K_{D3,La}$ = $K_{D0}$ /8.0.
+
+The number of site 3 molecules, as a fraction of the total,
+
+(11) $f_{B3}$ = 0.1679.
+---
+[SECTION: Table 1 — Model parameters used in this article]
+Common Parameters:
+- Initial number of binding sites, $n_{B,T}$ = 3.5 × $10^{-8}$
+- Initial number of M1 (Eu) ions, $n_{M1,T}$ = 2.4 × $10^{-8}$
+- Initial number of M2 (Eu) ions, $n_{M2,T}$ = 2.4 × $10^{-8}$ [note: table labels both M2 and M3 as "(Eu)" but context indicates M2 = Yb and M3 = La]
+- Initial number of M3 (Eu) ions, $n_{M3,T}$ = 2.4 × $10^{-8}$ Mol
+- Loading volume, $V_{load}$ = 4 × $10^{-4}$ L
+
+Single-site Model:
+- Dissociation constant of single site for Eu, $K_{D, Eu}$ = $10^{-6}$ Mol $L^{-1}$
+- Dissociation constant of single site for Yb, $K_{D, Yb}$ = 1.256 × $10^{-6}$ Mol $L^{-1}$
+- Dissociation constant of single site for La, $K_{D, La}$ = 2.282 × $10^{-6}$ Mol $L^{-1}$
+- Number of binding sites: Reduces to half total number of metal ions at each step.
+
+Three-site Model:
+- Initial fraction of binding site 1, $f_{B1}$ = 0.4618
+- Initial fraction of binding site 2, $f_{B2}$ = 0.3703
+- Initial fraction of binding site 3, $f_{B3}$ = 0.1679
+- Dissociation constant of site 1 for Eu, $K_{D1, Eu}$ = $10^{-6}$ / 8 Mol $L^{-1}$
+- Dissociation constant of site 1 for Yb, $K_{D1, Yb}$ = $10^{-6}$ Mol $L^{-1}$
+- Dissociation constant of site 1 for La, $K_{D1, La}$ = $10^{-6}$ Mol $L^{-1}$
+- Dissociation constant of site 2 for Eu, $K_{D2, Eu}$ = $10^{-6}$ Mol $L^{-1}$
+- Dissociation constant of site 2 for Yb, $K_{D2, Yb}$ = $10^{-6}$ / 8 Mol $L^{-1}$
+- Dissociation constant of site 2 for La, $K_{D2, La}$ = $10^{-6}$ Mol $L^{-1}$
+- Dissociation constant of site 3 for Eu, $K_{D3, Eu}$ = $10^{-6}$ Mol $L^{-1}$
+- Dissociation constant of site 3 for Yb, $K_{D3, Yb}$ = $10^{-6}$ Mol $L^{-1}$
+- Dissociation constant of site 3 for La, $K_{D3, La}$ = $10^{-6}$ / 8 Mol $L^{-1}$
+- Number of binding sites: Reduces to half total number of metal ions at each step.
+
+Three-site, Three-microbe Model:
+- Number of binding sites on microbe 1: Reduces to total number of Eu ions at each step.
+- Number of binding sites on microbe 2: Reduces to total number of Yb ions at each step.
+- Number of binding sites on microbe 3: Reduces to total number of La ions at each step.
+---
+[SECTION: Table 2 — Summary of changes to REE-biosorption selectivity (single-site-type binding model)]
+Scenario | Single-site $K_{D Eu, 0}$ / $K_{D Eu, New}$ | Initial Purity of Eu | Increase in Purity of Eu in Bound Phase Over Wild-type | αEuYb | 90% Purity steps | 95% Purity steps | 99% Purity steps
+
+1 | 1.000 | 0.393 | 1.000 | 1.256 | 20 | 26 | 40
+2 | 1.043 | 0.397 | 1.010 | 1.310 | 18 | 23 | 36
+3 | 1.081 | 0.401 | 1.020 | 1.358 | 16 | 21 | 31
+4 | 1.163 | 0.409 | 1.041 | 1.461 | 13 | 17 | 25
+5 | 1.286 | 0.420 | 1.069 | 1.615 | 10 | 13 | 19
+6 | 1.552 | 0.440 | 1.120 | 1.950 | 8 | 9 | 14
+7 | 2.847 | 0.500 | 1.272 | 3.576 | 5 | 6 | 8
+8 | 6.027 | 0.560 | 1.425 | 7.572 | 3 | 4 | 5
+---
+[SECTION: Table 3 — Summary of changes to REE-biosorption selectivity (three-site-type binding model)]
+Scenario | Population-fraction of Eu-site, $f_{b, Eu}$ | Initial Purity of Eu | Increase in Purity of Eu in Bound Phase Over Wild-type | $a_{Eu}^{Yb}$ | 80% Purity steps | 90% Purity steps | 95% Purity steps | 99% Purity steps
+
+1 | 0.463 | 0.393 | 1.000 | 1.263 | — | — | — | —
+2 | 0.473 | 0.397 | 1.010 | 1.314 | — | — | — | —
+3 | 0.482 | 0.401 | 1.020 | 1.369 | — | — | — | —
+4 | 0.502 | 0.409 | 1.041 | 1.484 | — | — | — | —
+5 | 0.700 | 0.478 | 1.217 | 3.152 | 8 | — | — | —
+6 | 0.800 | 0.506 | 1.287 | 4.424 | 4 | 7 | 22 | —
+7 | 0.850 | 0.517 | 1.317 | 5.183 | 3 | 5 | 8 | 28
+8 | 0.900 | 0.528 | 1.344 | 6.030 | 3 | 4 | 6 | 11
+9 | 0.950 | 0.538 | 1.369 | 6.968 | 3 | 4 | 4 | 7
+---
+[SECTION: Table 4 — Summary of changes for three-microbe, three-site-type binding model]
+Scenario | Increase in Population of Primary Binding Site | 80% Purity Eu | 90% Purity Eu | 95% Purity Eu | 99% Purity Eu
+
+1 | 0.05 | 20 | 33 | 55 | -
+2 | 0.10 | 9 | 17 | 30 | -
+3 | 0.20 | 4 | 9 | 17 | 70
+4 | 0.30 | 3 | 6 | 11 | 50
+5 | 0.40 | 2 | 4 | 8 | 35
+6 | 0.50 | 2 | 4 | 6 | 21
+---
+[SECTION: Note on protein/sequence content]
+NO explicit amino acid sequences (uppercase one-letter strings from the set ACDEFGHIKLMNPQRSTVWY) appear in this article. The paper discusses biosorption to whole microbial cells (Shewanella oneidensis, Roseobacter sp. AzwK-3b, Caulobacter crescentus, Methylorubrum extorquens, E. coli) and references lanmodulin and lanthanide binding tags (LBTs) but does not provide their primary sequences. Binding affinities reported are model parameters (Kd ≈ 10-6 M for S. oneidensis single-site, with relative ratios), not experimentally measured Kd values for specific protein variants.
+---

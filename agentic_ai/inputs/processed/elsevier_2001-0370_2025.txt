@@ -1,0 +1,58 @@
+[SECTION: Abstract]
+Understanding rare earth element (REE) binding to proteins enables the engineering of selective protein-based ligands for precise REE recovery. Lanmodulin (LanM), with notable REE selectivity and picomolar binding affinity, is a promising candidate. This study shows that LanM variants employ distinct inter-residue interactions for REE binding. We detail the thermodynamics and structural aspects of binding events in wild-type (WT) Methylorubrum extorquens LanM and five EF-hand residue variants ($4P_{2}A$ and $4D_{9}X,$ X = N, A, H, M), using protein variant structure prediction, molecular dynamics simulations and binding motif exploration.
+
+[SECTION: Introduction]
+Integral to this approach is lanmodulin (LanM), a family of lanthanide (Ln) binding proteins that was first characterized from Methylorubrum (Methylobacterium) extorquens, a bacterium that naturally uptakes lanthanides for use as a cofactor by the XoxF-type methanol dehydrogenase and similar enzymes. This 11.8-kDa protein bears similarities to the calcium-binding protein, calmodulin (CaM), albeit with a vastly larger (>10⁸-fold higher) binding affinity for Ln³⁺ and Y³⁺ ions as opposed to Ca²⁺. By contrast, EF hand proteins typically bind lanthanides only slightly tighter than Ca²⁺ (~100–1000 fold) primarily due to the higher charge on the former. Central to its structure, LanM harbors two pairs of EF-hand motifs, with each motif featuring an initial helix, followed by a loop consisting of ~12 amino acid residues specialized for metal binding, and concluding with another helix (Fig. 1a). Two pairs of coordinating EF-hands (EF1-EF4 and EF2-EF3) along with coordinating water molecules facilitate the binding of up to four lanthanide ions per protein, with two EF hands (suggested to be the EF2-EF3 pair) having highest affinity (low picomolar at pH >5), another EF hand (suggested to be EF1) being slightly weaker, and EF4 being weakest (micromolar) despite all but one metal-binding residue being conserved (Fig. 1b).
+
+[SECTION: Introduction]
+A distinguishing feature of the EF hands in M. extorquens LanM (Mex-LanM) is the presence of a Pro at the second residue position (P2) in all four EF hands, which is absent in CaM and other EF-hand proteins (SI Table 1). When these Pro residues are mutated to Ala in each EF hand (referred to as 4 $P_{2}A$, Table 1), LanM's responsiveness – represented as an apparent $K_{d}$, measured by molar ellipticity changes at 222 nm – increases to La³⁺ and Nd³⁺ ions (5–10 fold) and Ca²⁺ (~300-fold). Notably, only one of the EF hands in the LanM from Hansschlegelia quercus possesses a Pro at the second position (SI Table 1), and responds to 10-fold lower concentrations of Ca²⁺ relative to Mex-LanM. The EF-hands of Mex-LanM and CaM have Asp and Asn as the metal-binding residues, with LanM featuring a conserved Asp residue at the ninth position (D9) of each loop. Mutating the D9 residues in LanM's EF hands (Table 1) affects the affinity (apparent $K_{d}$) towards REEs, leading to a decrease in affinity from 2-fold (Asp→Asn), to 20-fold (Asp→Ala), and up to 100-fold with bulkier side chains (Asp→Met, SeMet, and Hi4].
+
+[SECTION: Table 1 — Sequence of EF hands of WT-LanM, 4 $P_{2}A$ and $4D_{9}X$]
+EF hand | WT-LanM | 4 $P_{2}A$ | $4D_{9}X$ (X = N, A, M, H)
+EF1 | ³⁵DPDKDGTIDLKE⁴⁶ | ³⁵DADKDGTIDLKE⁴⁶ | ³⁵DPDKDGTIXLKE⁴⁶
+EF2 | ⁵⁹DPDKDGTLDAKE⁷⁰ | ⁵⁹DADKDGTLDAKE⁷⁰ | ⁵⁹DPDKDGTLXAKE⁷⁰
+EF3 | ⁸⁴DPDNDGTLDKKE⁹⁵ | ⁸⁴DADNDGTLDKKE⁹⁵ | ⁸⁴DPDNDGTLXKKE⁹⁵
+EF4 | ¹⁰⁸NPDNDGTIDARE¹¹⁹ | ¹⁰⁸NADNDGTIDARE¹¹⁹ | ¹⁰⁸NPDNDGTIXARE¹¹⁹
+
+[SECTION: Figure 1 caption]
+Fig. 1. Structure and metal-binding sites of WT-LanM from M. extorquens. a WT-LanM structure as taken from PDB:8FNS with Nd³⁺ ions bound in each EF hand, which are highlighted as black (EF1), blue (EF2), green (EF3), and red (EF4). EF4 is occupied in the X-ray structure but its metal binding is much weaker than the other EF hands and is only occupied under metal ion saturating solution conditions. b Residues and water molecules involved in metal coordination in each EF hand motif. C, N and O atoms are represented as green, blue and red sticks, respectively, and coordinating solvent molecules are represented as small red spheres. Nd³⁺ is shown as a pale green sphere. Black dotted lines represent coordination between atoms from amino-acid residues and Nd³⁺ (Coordination number nine in EF1, EF2, and EF3, and coordination number ten in EF4, for Nd³⁺).
+
+[SECTION: Methods — Molecular Dynamics Simulations]
+Molecular Dynamics (MD) simulations were conducted utilizing the GROMACS molecular simulation platform to systematically elucidate the interactions between metal ions and LanM. These studies included calcium (Ca²⁺) along with a selection of REE ions: La³⁺, Nd³⁺, Sm³⁺, Gd³⁺, Tb³⁺ (in ascending order of light to heavy lanthanides) and Y³⁺, as these are the ions for which apparent $K_{d}$ values were reported at pH 7.2, 298 K.
+
+[SECTION: Results — Table 2: Comparison of apparent $K_{d}$ values with interaction energy scores for WT-LanM, 4 $P_{2}A$ and $4D_{9}X$ variants]
+Apparent $K_{d}$ values (pH 7.2) for WT and 4 $P_{2}A$ are taken from Cotruvo et al. and for $4D_{9}X$ variants from Mattocks et al. (at pH 5.0, for the $3D_{9}X$ variants).
+
+Variant | Metal ion | $K_{d}$ (M) | Interaction energy scores between metal ion and EF hands (mean of EF1-EF3)
+WT-LanM | La³⁺ | 5.3 × 10⁻¹² | −2475.72
+WT-LanM | Nd³⁺ | 5.3 × 10⁻¹² | −2534.14
+WT-LanM | Sm³⁺ | 6.6 × 10⁻¹² | −2558.14
+WT-LanM | Gd³⁺ | 10 × 10⁻¹² | −2566.34
+WT-LanM | Tb³⁺ | 21 × 10⁻¹² | −2596.47
+WT-LanM | Y³⁺ | 17 × 10⁻¹² | −2614.41
+WT-LanM | Ca²⁺ | 710 × 10⁻⁶ | −1207.27
+4 $P_{2}A$ | La³⁺ | 1.0 × 10⁻¹² | −2420.28
+4 $P_{2}A$ | Nd³⁺ | 0.44 × 10⁻¹² | −3018.52
+4 $P_{2}A$ | Ca²⁺ | 2.6 × 10⁻⁶ | −1443.48
+$4D_{9}N$ | Nd³⁺ | 53.1 × 10⁻¹² | −3102.70
+$4D_{9}A$ | Nd³⁺ | 397 × 10⁻¹² | −2994.14
+$4D_{9}M$ | Nd³⁺ | 1460 × 10⁻¹² | −3007.48
+$4D_{9}H$ | Nd³⁺ | 2150 × 10⁻¹² | −3010.01
+
+[SECTION: Results — In vacuo MD simulations on WT-LanM, 4P2A, and 4D9X variants]
+We initiated our simulations using the LanM structure coordinated with Nd³⁺ (PDB:8FNS) [15,37], and for subsequent holo simulations, this Nd³⁺ ion was replaced with alternative ions.
+
+[SECTION: Results — Reliability of force field in reproducing structural ensembles]
+To assess the reliability of current REE force fields in reproducing experimentally observed ensembles, we compared the secondary structure of equilibrated WT LanM bound to Nd³⁺ and WT LanM bound to Y³⁺ with the experimental XRD and NMR structures of WT LanM bound to Nd³⁺ and Y³⁺, respectively (Fig. 3a). Initial coordinates of WT in both the cases are taken from the XRD structure of WT LanM [15] bound to Nd³⁺, which has a characteristic short helix from residue 76 to residue 84 (D84 being the first residue of EF3). The experimental NMR structure of WT LanM [18] bound to Y³⁺ exhibits a coil in this region, instead of a helix (Fig. 3b, SI Fig. 3).
+
+[SECTION: Results — Reliability of force field in reproducing structural ensembles]
+The structure of Nd³⁺-bound WT LanM from the apo WT LanM simulation is in strong agreement with the initial XRD structure with ions: RMSD< 1 Å (overall), 1.68 Å (EF1), 1.85 Å (EF2), 1.57 Å (EF3) and 1.14 Å (EF4) at 100 ns. Results with apo-LanM-Y³⁺ are not as robust, with high RMSD in the EF hands compared with the starting structure at 100 ns, particularly for EF2 (3.8 Å).
+
+[SECTION: Results — Role of additional residues outside EF hands in metal binding in LanM, 4P2A, and 4D9X mutants]
+We note that calculation of metal interaction with the canonical EF-hand fails to explain the experimental binding affinity of several LanM variants especially the 4D9X variants. We recently demonstrated experimentally that the combined EF2/EF3 region (residues 57–97) replicates more characteristics of the full protein (solvent coordination of metal ions, although not metal ion affinity) compared to individual EF hands. Moreover, experiments report changes in molar ellipticity of LanM at 222 nm (indicative of change in structure at helical region) on REE binding, indicating long-range interactions and structural perturbation [24]. Therefore, we explored the energetic contribution of additional amino acids outside the direct metal sites (EF hands). We defined the interacting motif of LanM as residues 59–95 (EF2, EF3 and the 13-residue domain that lies between EF2 and EF3) (Fig. 4a and b).
+
+[SECTION: Results — Protein-wide side-chain flexibility at the instant of metal binding]
+For example, Asp30 (in EF1), Leu66 (in EF2), Asp92 (in EF3), and Asp116 (in EF4) show a high degree of compaction/ restriction in movement to coordinate Tb binding, but the La binding event shows compaction of Asp67 (EF2) and Asp116 (EF4).
+
+[SECTION: Discussion]
+Although the experimental Kd values were measured in picomolar concentration of metal ions, our computational models were carried out at 0.04 M (holo simulations), as a lower concentration of metal ions requires exponentially higher numbers of water molecules to be modelled, elevating the computational cost.

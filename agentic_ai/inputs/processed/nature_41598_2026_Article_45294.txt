@@ -1,0 +1,81 @@
+[SECTION: Abstract]
+The increasing demand for rare earth elements (REEs) drives the need for sustainable recovery strategies, particularly those based on biological systems. Recent studies have highlighted the role of lanthanide series (LnIIIs) in bacterial processes, focusing on proteins capable of selectively recognizing and binding these metals. Among them, Lanmodulin (LanM) from Methylorubrum extorquens AM1, containing four EF-hand motifs, has been identified as highly selective for LnIII over calcium (Ca). Based on these findings, we studied a homologous EF-hand protein from Mesorhizobium qingshengii J19, a bacterium resistant to high concentrations of yttrium (Y). The corresponding gene was cloned and overexpressed in Escherichia coli BL21 to assess its metal-binding capabilities. Engineered cells co-incubated with neodymium (Nd) and Y exhibited increased accumulation of both metals. The purified recombinant protein matched the predicted molecular weight and was identified via Orbitrap-LC-MS as the EF-hand domain-containing protein. Protein-metal binding assays confirmed its affinity for Nd, while exhibiting higher levels for Y under the tested conditions.
+
+[SECTION: Introduction]
+Starting with the characterization of the LnIII-dependent enzyme, MDH, recent studies have identified the first selective LnIII-binding protein, named lanmodulin (LanM), from strain M. extorquens AM1³. Notably, it was demonstrated that LanM acts as an effective chelator for REE extraction³,¹⁴.
+
+[SECTION: Introduction]
+The primary objective of this study was to identify Y-binding proteins of interest based on comparative genome analysis of strain M. qingshengii J19, reported as a highly Y-resistant strain with a significant Y-accumulation capacity. This involved exploring a bacterial gene, encoding an unidentified protein homologous to LanM, referred to as the EF-hand domain-containing protein. Engineered Escherichia coli BL21 cells, overexpressing the EF-hand gene (CDS J19_31570) from strain M. qingshengii J19, were produced to validate the recombinant's Y-immobilization ability.
+
+[SECTION: Results and discussion — Finding a homologous protein to LanM in the strain M. qingshengii J19 / Figure 1]
+Figure 1. Protein sequence alignment of LanM protein and its homologs identified in M. qingshengii J19. The amino acid sequences of a Hypothetical protein (CDS J19_03300) and an EF-hand domain-containing protein (CDS J19_31570) from strain M. qingshengii J19 were aligned with LanM from M. extorquens AM1 (WP_003601797.1).
+
+Sequences from Figure 1 (reassembled as continuous strings):
+
+LanM protein (M. extorquens AM1, WP_003601797.1):
+---MAFRLSSAVLLAALVAAPAYAAPTTTTKVDIAAFD------PDKDGTID----LKEALAAGSAAFDKLDPDKDGTLDAKELKGRVSEADLK--------KLDPDNDGTLDKKEYLAAVEAQFKAANPDNDGTIDARELASPAGSALVNLI----R------------
+
+CDS J19_03300 (Hypothetical protein, M. qingshengii J19):
+MRKTTKLALAFVALAGAVGTTAYAENNASAKIREGMMMRLNKAMSDSDGTIT----FDQFSDAMDARLKKLVADNGGKLTVAQLADALEKARFERMAKRIIARYDSKGDGTLTTDDITSREKKVFAMLDRNNDGKIEKSELPKGDRFGRHRKS----DDDGNGGDMQ---
+
+CDS J19_31570 (EF-hand domain-containing protein, M. qingshengii J19):
+---MKRSTKLTLSVVAALGLAAVAVPVIAQQMQHGGMMGDGMGMVRGHGGMMGSGMGTMMGDPQSYVMATFDTNKDGTLSPEEMTAGIQ-AELKTYDTDANGKLSLEEFAVMHAAHTRPMTVRAFQMHDADGDAQVTEAEMAAMDEMMQSHMAGRQVGMPGIGKGMMDNN
+
+[SECTION: Table 1: Closest relationship between proteins]
+Relationship between proteins | Identity (%) | Similarity (%)
+LanM – CDS J19_03300 | 24 | 48
+LanM – CDS J19_31570 | 18 | 44
+CDS J19_03300 – CDS J19_31570 | 23 | 54
+
+[SECTION: Results and discussion — Figure 3: Comparison of EF-hand binding motifs]
+Figure 3. Comparison of EF-hand binding motifs and conservation of the selectivity-determining residue at the 2nd position. Alignment of binding motifs from M. qingshengii J19 with LanM protein sequences from the literature: Methylobacterium extorquens AM1 (WP_003601797.1), Methylorubrum salsuginis (WP_091948391.1), Methylorubrum populi (WP_096484843.1), and Methybacterium aquaticum 22 A (WP_060845500.1) (A). Alignment of binding motifs from Mesorhizobium qingshengii J19 with various strains from the NCBI database: Mesorhizobium jarvisii (RJT29181.1), Mesorhizobium tianshanense (WP_145719151.1), Mesorhizobium sp. B2-1-8 (UCI18530.1), Mesorhizobium sp. J8 (WP_201415040.1), and Mesorhizobium sp. B2-1-5 (TPM98576.1) (B).
+
+Panel A — EF-hand1 | EF-hand2 binding motifs:
+M. extorquens AM1: DPDKDGTLDAKEL ----- DPDNDGTLDKKEY
+M. salsuginis: DPDKDGTLDAKEL ----- DPDSDGTLDKKEY
+M. populi: DPDKDGTLDAKEL ----- DPDNDGTLDKKEY
+M. aquaticum 22A: DTDSDGTLDLAEV ----- DPDNDGTLDAKEM
+M. qingshengii J19: DTNKDGTLSPEEM ----- DTDANGKLSLEEF
+
+Panel B — EF-hand1 | EF-hand2 binding motifs:
+M. jarvisii: DANHNGLLDAGEV ----- DRNGDGKISRDEF
+M. tianshanense: DANRNGRLDPDEV ----- DSNGDGKISRDEF
+Mesorhizobium sp. B2-1-8: DTNGDRKLEFSEI ----- DVNHNGVLEPGEV
+Mesorhizobium sp. J8: DRNGDGVIDENEI ----- DKNGDGKVTENEF
+Mesorhizobium sp. B2-1-5: DTNGDRKLEFSEI ----- DNNHNGLLDAGEV
+M. qingshengii J19: DTNKDGTLSPEEM ----- DTDANGKLSLEEF
+
+[SECTION: Results and discussion — Overexpression and purification of EF-hand protein]
+The EF-hand gene from strain M. qingshengii J19 was successfully cloned and overexpressed in E. coli BL21 (Fig. 4A). SDS-PAGE analysis revealed a prominent band at 17.5 kDa, consistent with the predicted size based on its amino acid sequence (Fig. 4B). This molecular weight is higher than that reported for LanM protein from strain M. extorquens AM1 (12 kDa)³,⁵, reflecting differences in sequence length between the two proteins.
+
+[SECTION: Results and discussion — E. coli petEF bioaccumulation of yttrium and other REEs]
+As shown in Fig. 6A, different levels of accumulation are observed for Sc, Nd and Pr at the same concentration tested, with higher amounts of Nd and Pr accumulated. For E. coli BL21 cells, the accumulation was measured at 38.6±5.21 µg Nd/mg protein and 21.8±0.40 µg Pr/mg protein, while for E. coli petEF cells, it was 33.5±6.23 µg Nd/mg protein and 21.7±9.88 µg Pr/mg protein, respectively.
+
+[SECTION: Results and discussion — E. coli petEF bioaccumulation of yttrium and other REEs]
+Figure 6B shows the accumulation of each REE when paired with Y at the same concentration (0.2 mM). Under mixed-metal conditions, differences in accumulation profiles were observed compared to single-metal exposure experiments, suggesting possible competition effects between REEs. Notably, a significant increase in both Y and Nd concentrations within E. coli petEF cells was observed when Nd was introduced alongside Y. The accumulation reached 30.1±1.74 µg Y/mg protein and 68.7±0.58 µg Nd/mg protein for Y and Nd, respectively. Under these mixed conditions, E. coli petEF cells accumulated approximately 3.4-fold more Y and 3-fold more Nd than native cells.
+
+[SECTION: Results and discussion — E. coli petEF bioaccumulation of yttrium and other REEs]
+The observed accumulation patterns may also relate to differences in ionic radii among the tested REEs. Yttrium has an ionic radius similar to Ca¹⁹, while within the LnIIIs, Nd has a slightly smaller ionic radius (1.11 Å) than Pr²⁰(Supplementary Fig. S1). In contrast, E. coli petEF did not show increased accumulation of Sc, even when added in the presence of Y, i.e., under mixed-metal conditions. The considerably smaller ionic radius of Sc (0.87 Å) compared to the other tested REEs (between 1.02 and 1.13 Å) may limit its interaction with the protein binding site.
+
+[SECTION: Results and discussion — Characterization of yttrium-EF binding assays]
+The purified recombinant protein was used in metal-protein binding assays to validate the immobilization of Y. Figure 7 shows the concentration of Y bound to EF-hand protein either in the presence of increasing concentrations of Y (ranging from 6.25 to 100 µM) or in the presence of increasing concentrations of protein (ranging from 12.5 to 200 µg). Maintaining the protein concentration constant at 50 µg, the optimal binding of Y to EF-hand protein occurs at a Y concentration of 25 µM, achieving 101.2±2.72 µg Y/mg protein. Although direct quantitative comparison is limited by differences in experimental conditions and metal substrates, the EF-hand protein (CDS J19_31570) exhibited higher apparent Y binding under the conditions tested (142-fold) than values previously reported for LanM-La interactions¹⁶. At higher Y concentrations, 50 and 100 µM, the Y-protein binding efficiency decreased sharply to 18.9±0.16 and 1.9±0.02 µg Y/mg protein, respectively.
+
+[SECTION: Results and discussion — Characterization of yttrium-EF binding assays]
+Assays with varying protein amounts were performed using 50 µM Y, a concentration that allowed substantial protein binding without the adverse effects observed at higher concentrations. At a constant Y concentration of 50 µM, optimal binding to the EF-hand protein occurred with 100 µg of protein, reaching amounts of 59.7±0.18 µg Y/mg protein. Increasing the protein amount implies maximization of Y interactions, avoiding site saturation and excessive unbound Y. Although differences in assay design make direct and conclusive comparisons difficult, the binding levels observed in our assays were considerably higher (86-fold) than those reported for LanM-La systems in previous studies¹⁶.
+
+[SECTION: Results and discussion — Characterization of yttrium-EF binding assays]
+With the previous findings, a concentration of 25 µM Y and 50 µg of EF-hand protein was selected for further assays for pH and temperature optimization (Fig. 8). It was observed that pH 8 and an incubation temperature of 25 ˚C were optimal for maximizing Y-EF binding. The choice of pH 8 was particularly significant, as it resulted in a notably high metal-protein binding value, binding 538.1±0.76 µg Y/mg protein. This pH may favor the charge state of the amino acid residues involved in metal coordination, potentially enhancing protein-metal interactions. Once again, direct comparison with the reported values for LanM-La systems indicates that the metal-protein binding capacity observed in our assays at pH 8 is substantially higher, approximately 779-fold¹⁶. Similarly, the incubation temperature of 25 ˚C resulted in the highest metal-protein binding value (101.2±2.72 µg Y/mg protein), suggesting that this temperature supports protein structural stability and effective metal interaction under the tested conditions.
+
+[SECTION: Results and discussion — Characterization of yttrium-EF binding assays]
+Given the significant difference in the accumulation of Y and Nd observed in prior assays on REEs accumulation by the E. coli petEF strain when both elements were added to the growth media, a metal-protein binding assay was conducted. This assay was performed in the presence of both Y and Nd to evaluate the preferential binding of both metals to the EF-hand protein. As shown in Fig. 9, the protein was also able to bind Nd, with an amount of 68±1.26 µg Nd/mg protein, although it was 1.5-fold lower compared to the amounts of Y. The binding of Nd to the protein under study was 97-fold greater than that reported for La with the LanM protein¹⁶. When combining both elements, i.e., Y and Nd, the amounts of metals bound to EF-hand protein were 39.2±0.09 µg Y/mg protein and 6.54±0.09 µg Nd/mg protein. Under these conditions, the Y- and Nd-protein bindings were 2.6- and 10.4-fold lower, respectively, compared to individual metal addition. Despite this reduction, the observed binding still represents a 52- and 9-fold increase relative to La, as reported by Fujitani and colleagues¹⁶. Thus, our results suggested that the EF-hand protein may have a higher affinity for Y over Nd, potentially due to the closer ionic radius of Y to Ca, which may allow more favorable coordination within the EF-hand motifs.
+
+[SECTION: Conclusions]
+In conclusion, analysis of the draft genome of strain M. qingshengii J19 revealed a protein with high similarity to the well-characterized LanM protein, which is known for its REE chelation properties. Recombinant cells overexpressing the EF-hand protein (CDS J19_31570) from strain M. qingshengii J19 effectively chelated Y and also demonstrated notable binding affinity for another REE, namely Nd. Unlike previously described LanM proteins, the EF-hand motifs of the M. qingshengii J19 protein contain Thr rather than Pro residues, a feature that may underlie its distinct metal-binding behavior. Consistent with this difference, the recombinant EF-hand protein from this study exhibited a higher binding capacity for Y and Nd compared to La binding observed in LanM.
+
+[SECTION: Methods — Cloning of the EF-hand gene into pET-30a expression vector / Table 2 primers]
+Primers used:
+XhoI_EF'f: CGCCATATGAAACGTTCAACGAAGCTGACCC
+SalI_EF'r: ATCGTCGACGTTGTTGTCCATCATGCCCTTAC
+
+[SECTION: Data availability]
+The strain is available at the University of Coimbra Bacteria Culture Collection (UCCCB) under the identification number UCCCB 155. The draft genome of strain M. qingshengii J19 was deposited in the National Center for Biotechnology Information (NCBI) public database (Bethesda, MD, USA) under accession number JAPFQA000000000.

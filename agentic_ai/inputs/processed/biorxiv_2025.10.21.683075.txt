@@ -1,0 +1,67 @@
+---
+[SECTION: Abstract]
+Here, we present a transformative strategy for REE separation using a multimetal ion-stacking metalloprotein framework (MIF) that functions as an atomic ruler, effectively amplifying subtle differences in REE ionic radii. This approach achieves exceptional selectivity, enabling the separation of all 13 adjacent REE pairs with ultrahigh purity (up to 99.999%). Remarkably, the MIF retains its lanthanide-binding capacity over 410 consecutive absorption-desorption cycles, demonstrating outstanding stability.
+---
+[SECTION: Introduction / Finding an atomic ruler protein for adjacent-REE separation]
+Our research commenced with the identification of a MIF with high stability and superior lanthanide-loading capacity. All 20 reported lanthanide-binding proteins with experimental data (see table S1) were evaluated using two metrics: (i) the melting-temperature index (TI) predicted from the protein sequence, which is positively correlated with the melting temperature ($T_{m}$), and (ii) the REE payload (RP), defined as the number of lanthanide ions bound per kilodalton of protein. On the basis of this investigation, the sequence of lanpepsy from Methylobacillus flagellates (26) met the criteria for an MIF (Fig. 1B). It presented the highest REE payload in the cohort (RP = 0.295 Ln/kDa) and high stability, with a predicted $T_{m}$ > 65°C (TI = 1.59). Our experiments revealed that the His10-tagged MIF could be expressed in Escherichia coli, reaching a yield of 1.16 g/L, suggesting its potential suitability for industrial-scale production (fig. S1).
+---
+[SECTION: Results — Finding an atomic ruler protein for adjacent-REE separation]
+Next, we evaluated the performance of the MIF in separating adjacent lanthanide pairs. The protein was immobilized onto agarose beads, which were then packed into columns, and each pair of adjacent lanthanides (13 nonradioactive pairs in total, namely, $La^{III}$-$Ce^{III}$, $Ce^{III}$-$Pr^{III}$, $Pr^{III}$-$Nd^{III}$, $Nd^{III}$-$Sm^{III}$, $Sm^{III}$-$Eu^{III}$, $Eu^{III}$-$Gd^{III}$, $Gd^{III}$-$Tb^{III}$, $Tb^{III}$-$Dy^{III}$, $Dy^{III}$-$Ho^{III}$, $Ho^{III}$-$Er^{III}$, $Er^{III}$-$Tm^{III}$, $Tm^{III}$-$Yb^{III}$, and $Yb^{III}$-$Lu^{III}$) was tested sequentially at equimolar concentrations.
+---
+[SECTION: Results — Crystal structure analyses reveal a multi-metal ion-stacking metalloprotein framework]
+Next, we determined the X-ray crystal structures of the ion-free (apo) form of the MIF at a resolution of 2.08 Å (fig. S4) and the $La^{III}$-bound form at 1.25 Å (Fig. 2A). Both structures exhibit a compact, channel-like architecture consisting of two PepSY domains arranged into a pseudo-C2 symmetric central electronegative β-barrel (fig. S4). The eight antiparallel β-strands are sequentially designated β1 to β8 from the N-terminus to the C-terminus (fig. S5).
+---
+[SECTION: Results — Crystal structure analyses]
+With respect to the coordination microenvironment of the MIF, 19 residues (15 glutamate (E), 3 aspartate (D), and 1 glutamine (Q)) are utilized to coordinate $La^{III}$ ions (fig. S5). Notably, residues D54, E68, E106, E108, E118, and E132 act as bridging ligands to coordinate neighboring $La^{III}$ ions, stabilizing this unique, densely stacked MIF architecture (Fig. 2C, fig. S8). Additional stabilization is provided by ε-amino groups from K29, K33, and K130, as well as water molecules, which form hydrogen bonds with multiple acidic E and D residues (fig. S5). Thus, the distance between REE sites in the MIF is densely stacked at only 4.3 Å. In stark contrast, another lanthanide-binding protein, lanmodulin (PDB ID: 8DQ2), contains multiple REE-binding sites with distances ranging from 12 to 30 Å and forms dispersed coordination spheres without any bridging interactions (fig. S9).
+---
+[SECTION: Results — Crystal structure analyses]
+We solved more REE-MIF structures, including those bound to $Nd^{III}$ (1.41 Å), $Sm^{III}$ (2.16 Å), $Gd^{III}$ (1.41 Å), $Tb^{III}$ (1.58 Å), HoIII (3.05 Å), and $Yb^{III}$ (1.21 Å) (figs. S10-15).
+---
+[SECTION: Results — Energetic features of MIF's selective binding with different REEs]
+To quantify this selectivity behavior, we performed isothermal titration calorimetry (ITC) and measured the binding-associated heat and dissociation constants (Kd) between the MIF and 14 nonradioactive lanthanide ions (fig. S19). The apparent binding free energy (ΔGapp) is consistent with the binding affinity trend, reaching a minimum for SmIII (ΔGapp = -45.6 ± 0.4 kJ/mol), compared with LaIII (-42.0 ± 0.1 kJ/mol) and TmIII (-38.1 ± 0.2 kJ/mol), which are representative of lighter and heavier lanthanides, respectively (Fig. 3A). The ITC results showed that the binding of each REE to the MIF is endothermic, and the accompanying entropic gain outweighs the enthalpic penalty, resulting in an overall favorable negative Gibbs free energy. Sequential binding model analysis of the Kd values for the first five REE binding sites in the MIF revealed four high-affinity sites (Kd1-4), with Kd values ranging from 23.9 pM to 3.69 µM, and one low-affinity site with a Kd > 10 µM (Fig. 3B). The ratio of maximum to minimum Kd values spans 5-fold (for Kd2) to 15,000-fold (for $K_{d4}), leading to a 110-fold difference between the maximum global apparent $K_{d}$ ($Lu^{III}$-MIF) and the minimum ($Sm^{III}$-MIF), with adjacent lanthanide pairs differing by an average of 1.7-fold (fig. S18).
+---
+[SECTION: Results — Single-stage high-purity REE separation with an MIF atomic ruler]
+$La^{III}$ was selected as a model ion, and a $La^{III}$ solution was used for breakthrough analysis. The results showed that the functionalized beads captured 623 μg/mL REE ions, corresponding to 3.9 REE ions per MIF molecule (fig. S24), closely matching the four high-affinity binding sites identified by ITC measurements (Fig. 3B).
+---
+[SECTION: Results — Single-stage high-purity REE separation]
+To validate the ability of the MIF to produce REEs with ultrahigh purity, we performed single-stage purification of representative light ($Ce^{III}$, $Nd^{III}$), middle ($Gd^{III}$, $Dy^{III}$), and heavy ($Ho^{III}$, $Yb^{III}$) REEs (Fig. 4D and fig. S25). The MIF enabled REE separation with purities up to 99.999%, representing the first protein-based platform to achieve ultrahigh-purity REE production. Long-term durability was also tested: the column retained >95% of its original capacity over 410 consecutive adsorption–desorption cycles (Fig. 4E), demonstrating the excellent stability of the MIF. Separation factors ($SF_{X-Y}$, X, and Y represent paired REEs) were calculated for each paired REE (table S3). The average SF of the MIF between adjacent lanthanides reached 2.8, with a maximum value of 11.4 ($SF_{Sm/Nd}$), and the SF for eleven adjacent lanthanide pairs exceeded 1.5 (Fig. 4F).
+---
+[SECTION: Figure 1 legend]
+Identification of the MIF and its performance in separating adjacent lanthanides. (A) The MIF acts as an atomic ruler to discriminate REEs with very small ionic radius differences. (B) Identification of the MIF sequence using two metrics. Each circle represents a lanthanide-binding protein, plotted on the basis of its melting-temperature index (TI, a sequence-based predictor of thermostability) and REE payload (RP, lanthanide ions bound perkilodalton). Red circle: the MIF's sequence from lanpepsy. Green circles: natural lanthanide-binding sequences. Blue circles: engineered peptides. Yellow circles: denovo-designed REE-binding proteins.
+---
+[SECTION: Figure 2 legend — Structural basis for adjacent REE separation by the MIF]
+(A) Crystal structure of the $La^{III}$-MIF complex, featuring five densely stacked REE-binding sites. Carboxylate and amide O atoms (red) from Glu, Asp, and Gln coordinate with $La^{III}$ ions (cyan spheres). (B) Structural details of the $La^{III}-$, $Sm^{III}-$, and $Yb^{III}$-MIF complexes. The top panel shows the side view of the MIF. Coordination stoichiometries vary with different REEs: light ($La^{III}$) and heavy ($Yb^{III}$) REEs bind five sites, whereas middle REEs ($Sm^{III}$) occupy six sites.
+---
+[SECTION: Figure 4 legend — Full-spectrum REE separation and durability of the immobilized MIF]
+(A) Single-stage, all-aqueous separation of 16 REEs ($Sc^{III}$, $Y^{III}$ and lanthanides) by the MIF. (B-C) Second-stage separation of challenging REE pairs. (B) The Ho/Y pair was resolved via pH gradient elution. (C) Pr/Nd separations achieved > 90% purity and yield via rechromatography, respectively. (D) The MIF column was used for ultrahigh-purity REE preparation. Commercial light REEs (Ce, 99.65% and Nd, 99.84%), middle REEs (Gd, 99.98% and Dy, 99.76%), and heavy REEs (Ho, 99.66% and Yb, 99.93%) samples were investigated (in Black); the corresponding purities of Ce (99.997%), Nd (99.996%), Gd (99.999%), Dy (99.997%), Ho (99.996%), and Yb (99.999%) were determined by a single-stage MIF chromatographic process (in Red).
+---
+[SECTION: Data and materials availability]
+Crystal structures of the apo MIF, MIF-La(III), MIF-Nd(III), MIF-Sm(III), MIF-Gd(III), MIF-Tb(III), MIF-Ho(III), and MIF-Yb(III) complexes have been published in the Protein Data Bank (PDB ID code 9VY3, 9VY7, 9VYA, 9VY8, 9VY9, 9VY5, 9VY6, and 9VY4, respectively). The apo WT LanM structure is available under PDB accession code 8DQ2.
+---
+[SECTION: Note on sequence and binding affinity content]
+Note: The main text does NOT provide a full one-letter amino acid sequence for the MIF (derived from lanpepsy of Methylobacillus flagellatus) as a continuous string. The protein is described by its source organism (Methylobacillus flagellatus, cited reference 26 = Hemmann et al. 2023, J. Biological Chemistry) and by specific coordinating residue positions (D44, E68, E66, E70, E104, E106, E108, E110, E118, E120, E128, E132, E142, E146, E153, Q149, K29, K33, K130, E31, E35, E42, E56, D54, D120). Full sequences are referenced as being in Supplementary Materials but not included in the provided text.
+
+Lanthanide-relevant binding affinity (Kd) and free energy data reported in main text:
+- MIF + $Sm^{III}$: ΔGapp = -45.6 ± 0.4 kJ/mol (highest affinity / minimum Kd among REEs tested)
+- MIF + $La^{III}$: ΔGapp = -42.0 ± 0.1 kJ/mol
+- MIF + $T_{m}^{III}$: ΔGapp = -38.1 ± 0.2 kJ/mol
+- Sequential binding sites: Kd1-Kd4 (four high-affinity sites): range 23.9 pM to 3.69 µM
+- Site 5 (low-affinity): Kd > 10 µM
+- Kd ratio max/min spans 5-fold (Kd2) to 15,000-fold (Kd4)
+- 110-fold difference between maximum global apparent Kd ($Lu^{III}$-MIF) and minimum ($Sm^{III}$-MIF)
+- Adjacent lanthanide pairs differing on average 1.7-fold
+- Maximum separation factor $SF_{Sm/Nd}$ = 11.4
+- Binding capacity: 623 μg/mL REE = 3.9 REE ions per MIF molecule (matching 4 high-affinity binding sites)
+
+Crystal structure resolutions reported (these are not binding affinities but are technical numeric values associated with each REE-MIF complex):
+- apo MIF: 2.08 Å (PDB 9VY3)
+- $La^{III}$-MIF: 1.25 Å (PDB 9VY7)
+- $Nd^{III}$-MIF: 1.41 Å (PDB 9VYA)
+- $Sm^{III}$-MIF: 2.16 Å (PDB 9VY8)
+- $Gd^{III}$-MIF: 1.41 Å (PDB 9VY9)
+- $Tb^{III}$-MIF: 1.58 Å (PDB 9VY5)
+- $Ho^{III}$-MIF: 3.05 Å (PDB 9VY6)
+- $Yb^{III}$-MIF: 1.21 Å (PDB 9VY4)
+
+Individual numerical Kd values for each of the 14 nonradioactive lanthanides at each of the five binding sites (Kd1, Kd2, Kd3, Kd4, Kd5) are plotted in Figure 3B but specific numerical values per ion per site are not given as a table in the main text; they would need to be extracted from Figure 3B or Supplementary fig. S18/S19.
+---

@@ -1,0 +1,40 @@
+[SECTION: Introduction]
+By contrast, biologics-based scaffolds provide a more controlled alternative. For example, lanmodulin18, a recently discovered bacterial protein with picomolar affinity and 10⁸-fold selectivity for lanthanides over Ca²⁺, coordinates lanthanides using EF-hand motifs, short helix–loop–helix structures that typically bind Ca²⁺ in the calmodulin protein. In lanmodulin, four EF hands have been adapted for lanthanide binding, providing a natural, high-affinity scaffold for engineering next-generation GBCAs. Engineered variants such as the single-point mutated LanND-Gd20, achieve longitudinal relaxivity of 13.15 mM⁻¹·s⁻¹ at 3 T, significantly higher than that of the clinically used agent Magnevist (4.62 mM⁻¹·s⁻¹ at 3 T).
+
+[SECTION: Introduction]
+Another prominent biologics-based platform is the Protein Contrast Agent (ProCA) series, ProCA32, a third-generation protein GBCA based on calmodulin with engineered EF-hand motifs, which achieves r₁ values of ~33 mM⁻¹·s⁻¹ at 1.4 T and 37 0C, nearly tenfold higher than Magnevist (3.3 mM⁻¹·s⁻¹ under identical conditions). ProCA32 can also be fused with targeting moieties (e.g., HER2, EGFR, VEGFR) without compromising metal coordination, enabling high-sensitivity molecular imaging of cancers, fibrosis, and metastases in vivo.
+
+[SECTION: Methods — Peptide Synthesis and Preparation]
+Peptides were dissolved in HEPES 50mM and $GdCl_{3}$ 0.2mM pH 5.3 and incubated r1 = r1 (peptide)/ r1 ($GdCl_{3}$)) measurements the samples were diluted to measure their T1 values, along with $GdCl_{3}$ that did not have any peptide.
+
+[SECTION: Methods — Nuclear magnetic resonance (NMR) measurements]
+Solution NMR experiments were carried out on a 600 MHz Bruker Avance NEO NMR spectrometer equipped with a 5 mm Prodigy TCI cryoprobe. 1H NMR experiments were run at 25°C using the vendor supplied water suppression pulse sequence (noesygppr1d) to measure 1H spectra of 1mM peptide of EF3 and CaBM. Both peptides were suspended in HEPES 50mM with 10% D2O for locking, shimming, and chemical shift referencing with or without 5μM $GdCl_{3}$.
+
+[SECTION: Results and Discussion — Peptide evolution]
+In Figure 1 the red dashed line represents the r1 ratio of EF hand 3 motif (EF3) (r1=1.86), a 12-amino-acid from Lanmodulin that showed the highest r1 ratio from the training data. For the $POET_{motif}$ in Epoch 1, only three peptides showed better contrast than the EF3 peptide; however, in Epoch 2, 9 of 10 peptides surpassed the r1 ratio of the EF3 hand peptide. For $POET_{regex}$ 7 out of 10 peptides surpassed the r1 ratio of EF3 in both Epochs 1 and 2. The best motif found had an r1 ratio of 2.3, a 24.3% improvement over the EF3.
+
+[SECTION: Results and Discussion — Validation of the Gd-relaxivity]
+With this rationale, the absolute relaxivities (r1) of Gd-binding peptides were measured after two cycles of dialysis over 48 hours against HEPES buffer to remove excess Gd³⁺, which typically reduced the total Gd concentration from 0.2 mM to ~20 µM. Peptides showing a range of r1 ratios (Table 1) were selected, including EF-hand motifs, a calcium-binding motif (CaBM) peptide, a lanthanide-binding peptide, and peptides predicted by POET. A strong correlation was found between the r₁ ratio and absolute r1 (Figure 2; R² = 0.6137, p = 0.0073). These findings indicate that r1 ratio is a reliable predictor of absolute relaxivity and can be used as an efficient screening metric to minimize time and material use. Moreover, when comparing absolute r1 values, a 42.6% improvement was observed for the best peptide identified in the initial screening (IDCRGTEDDDPN) relative to EF3, versus the 24.3% improvement indicated by its r₁ ratio. The peptide showing the highest absolute r₁ (TQDSDDGMEDED) displayed a 55.2% enhancement over EF3.
+
+[SECTION: Table 1: Comparison of absolute r1 to r1 ratio]
+Source | Peptide sequence | $r_{1}$ ratio | Absolute $r_{1}{[L/(s·mmol)]}$
+$CaBM^{30}$ | DKDGNGYISAAE | 0.93 | 14
+$GdCl_{3}$ 0.2mM | ---- | 1.00 | 35
+POET regex1 | NSAMADQADDDP | 1.12 | 16
+Lanthanide $binding^{31}$ | DKDGDTIDEREI | 1.31 | 28
+EF 1 hand $motif^{32}$ | DPDKDGTIDLKE | 1.51 | 23
+POET Motif1 | DMMHDKTDCNDT | 1.71 | 21
+$EF3^{32}$ | DPDNDGTLDKKE | 1.86 | 19
+POET regex 2 | SDDNHSDLGDDL | 2.14 | 34.6
+POET regex 2 | TQDSDDGMEDED | 2.16 | 35.7
+POET motif 2 | GDDEDDQCHQDG | 2.17 | 26.6
+POET regex 1 | IDCRGTEDDDPN | 2.30 | 32.8
+
+[SECTION: Results and Discussion — Paramagnetic relaxation enhancement (PRE)]
+PRE measurements were performed to validate that Gd binds to the peptides, and to investigate which amino acids are more involved in the binding. A comparison was made between similar EF-hands, $EF3^{32}$, known to bind lanthanides, and $CaBM^{30}$, known to bind Calcium. Since $Gd^{3+}$ is a paramagnetic ion that significantly shortens both the T1 and $T_{2}^{33}$ of any NMR active nuclei within approximately 25 angstroms of the binding site, NMR was used to measure 1H spectra of 1mM peptide of EF3 and CaBM with or without 5μM $GdCl_{3}$. As shown in Figure 4, EF3 displays a more significant increase in the linewidths of all proton peaks with a concomitant reduction in intensity due to paramagnetic relaxation than those of CaBM.
+
+[SECTION: Figure 4 caption]
+Figure 4. 1H NMR spectra of (A) EF3 DPDNDGTLDKKE (1mM peptide) with 5μM $GdCl_{3}$. (B) EF3 (1mM peptide). The vertical lines connect between the peaks to show the line broadening when there's presence of $GdCl_{3}$. The red dot-dashed line connects the peaks that were broadened to a higher extent, while the black dashed line connects the peaks that were less broadened. (C) The Ca binding motif (CaBM) DKDGNGYISAAE (1mM peptide) with 5μM $GdCl_{3}$ and (D) CaBM (1mM peptide).
+
+[SECTION: Conclusion]
+We applied POET to expand and optimize short lanthanide-binding peptide motifs and demonstrate a practical, data-driven route to improve Gd-mediated T1 contrast. Starting from an experimental library of 74 sequences and using iterative POET cycles, we identified novel peptides with substantially enhanced relaxivity, the best POET-predicted motif yielded an r₁-ratio of 2.30 (~24% higher than the best initial EF-hand, EF3), and top peptides measured after dialysis showed up to ~55% higher absolute r₁ than EF3.
