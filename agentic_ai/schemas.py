@@ -23,6 +23,7 @@ _VALID_AMINO_ACIDS = set("ACDEFGHIKLMNPQRSTVWY")
 # CrewAI agent can introduce new types in Block 4 without schema changes.
 # Documented here for the agent's prompt context.
 _KNOWN_MEASUREMENT_TYPES = (
+    "normalized_logD",
     "logD",          # Diep et al. 2026 normalized log distribution coefficient
     "Kd",            # Dissociation constant (M)
     "Kd_app",        # Apparent dissociation constant from titration (M)
