@@ -1,141 +1,285 @@
-"""Tests for the ProteinData and ProteinDataset Pydantic schemas."""
+"""Tests for the Path C two-tier schemas (Week 1 Block 3)."""
 from __future__ import annotations
+
 import pytest
 from pydantic import ValidationError
-from agentic_ai.schemas import ProteinData, ProteinDataset
+
+from agentic_ai.schemas import (
+    BindingMeasurement,
+    CorpusRecords,
+    ProteinVariant,
+)
 
 # A realistic Lanmodulin-style fragment using only valid amino acid letters
 _VALID_SEQUENCE = "MKKLLFAIPLVVPFYSHSAAQNNDGDGKVGV"
 
 
-def _build_valid_payload() -> dict:
+# ---------------------------------------------------------------------------
+# ProteinVariant tests
+# ---------------------------------------------------------------------------
+
+def _build_valid_variant_payload() -> dict:
     """
-    Builds a known-good payload dict that satisfies every schema rule.
-    Used as a baseline so each test can mutate one field at a time.
-    return : A dict suitable for `ProteinData(**payload)`.
+    Builds a known-good payload for ProteinVariant.
+    return : A dict suitable for `ProteinVariant(**payload)`.
     """
     return {
-        "protein_sequence": _VALID_SEQUENCE,
-        "microbial_origin": "Methylobacterium extorquens AM1",
-        "target_REE": "Neodymium",
-        "binding_affinity": 1.2e-12,
+        "variant_id": "Hans-LanM",
+        "source_organism": "Hansschlegelia quercus",
+        "sequence": _VALID_SEQUENCE,
+        "source_paper": "nature_s41586-023-05945-5.txt",
     }
 
 
-def test_protein_data_accepts_valid_record():
+def test_variant_accepts_minimal_valid_payload():
     """
-    Verifies that a fully-conforming payload constructs a ProteinData
-    instance without raising.
+    Verifies that ProteinVariant constructs with just the required fields
+    and sensible defaults for the optional ones.
     """
-    record = ProteinData(**_build_valid_payload())
+    variant = ProteinVariant(**_build_valid_variant_payload())
 
-    assert record.protein_sequence == _VALID_SEQUENCE
-    assert record.target_REE == "Neodymium"
-    assert record.binding_affinity > 0
+    assert variant.variant_id == "Hans-LanM"
+    assert variant.source_organism == "Hansschlegelia quercus"
+    assert variant.sequence == _VALID_SEQUENCE
+    assert variant.parent_variant_id is None
+    assert variant.mutations == []
+    assert variant.selectivity_cluster is None
 
 
-def test_protein_data_normalizes_sequence_case_and_whitespace():
+def test_variant_accepts_mutant_with_parent_reference():
     """
-    Verifies that the sequence validator strips surrounding whitespace
-    and uppercases lowercase inputs.
+    Verifies that mutant variants can declare a parent and mutation list.
     """
-    payload = _build_valid_payload()
-    payload["protein_sequence"] = f"  {_VALID_SEQUENCE.lower()}  "
+    payload = _build_valid_variant_payload()
+    payload["variant_id"] = "Hans-LanM(R100K)"
+    payload["parent_variant_id"] = "Hans-LanM"
+    payload["mutations"] = ["R100K"]
 
-    record = ProteinData(**payload)
+    variant = ProteinVariant(**payload)
 
-    assert record.protein_sequence == _VALID_SEQUENCE
+    assert variant.parent_variant_id == "Hans-LanM"
+    assert variant.mutations == ["R100K"]
 
 
-def test_protein_data_rejects_invalid_amino_acid_characters():
+def test_variant_accepts_none_sequence_for_unreported_papers():
     """
-    Verifies that any non-standard character in the sequence triggers a
-    ValidationError with an informative message.
+    Verifies that ProteinVariant.sequence can be None when the source
+    paper does not report a full continuous sequence (only motifs).
     """
-    payload = _build_valid_payload()
-    payload["protein_sequence"] = "MKKLLFA1PLVVPFYSHSAAQ"
+    payload = _build_valid_variant_payload()
+    payload["sequence"] = None
+
+    variant = ProteinVariant(**payload)
+
+    assert variant.sequence is None
+
+
+def test_variant_normalizes_sequence_case_and_whitespace():
+    """
+    Verifies that sequence input is stripped and uppercased.
+    """
+    payload = _build_valid_variant_payload()
+    payload["sequence"] = f"  {_VALID_SEQUENCE.lower()}  "
+
+    variant = ProteinVariant(**payload)
+
+    assert variant.sequence == _VALID_SEQUENCE
+
+
+def test_variant_rejects_invalid_amino_acids_in_sequence():
+    """
+    Verifies that non-standard characters in the sequence trigger a
+    ValidationError.
+    """
+    payload = _build_valid_variant_payload()
+    payload["sequence"] = "MKKLLFA1PLVVPFYSHSAAQ"
 
     with pytest.raises(ValidationError, match="invalid characters"):
-        ProteinData(**payload)
+        ProteinVariant(**payload)
 
 
-def test_protein_data_rejects_sequence_below_min_length():
+def test_variant_rejects_missing_source_paper():
     """
-    Verifies that sequences shorter than the 10-character minimum are
-    rejected, since real Lanmodulin variants are >100 residues.
+    Verifies that source_paper is required for provenance.
     """
-    payload = _build_valid_payload()
-    payload["protein_sequence"] = "MKK"
+    payload = _build_valid_variant_payload()
+    del payload["source_paper"]
 
     with pytest.raises(ValidationError):
-        ProteinData(**payload)
+        ProteinVariant(**payload)
 
 
-def test_protein_data_rejects_zero_binding_affinity():
+def test_variant_accepts_cluster_assignment():
     """
-    Verifies that a binding affinity of exactly zero is rejected, since
-    Kd must be strictly positive.
+    Verifies that the agglomerative_cluster value from Diep et al. 2026
+    is accepted within the 0-7 expected range.
     """
-    payload = _build_valid_payload()
-    payload["binding_affinity"] = 0.0
+    payload = _build_valid_variant_payload()
+    payload["selectivity_cluster"] = 4
+
+    variant = ProteinVariant(**payload)
+
+    assert variant.selectivity_cluster == 4
+
+
+def test_variant_rejects_out_of_range_cluster():
+    """
+    Verifies that absurd cluster numbers are rejected.
+    """
+    payload = _build_valid_variant_payload()
+    payload["selectivity_cluster"] = 99
 
     with pytest.raises(ValidationError):
-        ProteinData(**payload)
+        ProteinVariant(**payload)
 
 
-def test_protein_data_rejects_negative_binding_affinity():
+# ---------------------------------------------------------------------------
+# BindingMeasurement tests
+# ---------------------------------------------------------------------------
+
+def _build_valid_measurement_payload() -> dict:
     """
-    Verifies that a negative binding affinity is rejected.
+    Builds a known-good payload for BindingMeasurement.
+    return : A dict suitable for `BindingMeasurement(**payload)`.
     """
-    payload = _build_valid_payload()
-    payload["binding_affinity"] = -1.0e-10
+    return {
+        "variant_id": "Hans-LanM",
+        "target_element": "Neodymium",
+        "measurement_type": "Kd_app",
+        "value": 9.1e-11,
+        "units": "M",
+        "value_in_molar": 9.1e-11,
+        "conditions_pH": 5.0,
+        "source_paper": "nature_s41586-023-05945-5.txt",
+    }
+
+
+def test_measurement_accepts_valid_payload():
+    """
+    Verifies that BindingMeasurement constructs with a typical Kd record.
+    """
+    measurement = BindingMeasurement(**_build_valid_measurement_payload())
+
+    assert measurement.variant_id == "Hans-LanM"
+    assert measurement.target_element == "Neodymium"
+    assert measurement.measurement_type == "Kd_app"
+    assert measurement.value_in_molar == 9.1e-11
+
+
+def test_measurement_normalizes_element_capitalization():
+    """
+    Verifies that element name input is case-normalized to canonical form.
+    """
+    payload = _build_valid_measurement_payload()
+    payload["target_element"] = "neodymium"
+
+    measurement = BindingMeasurement(**payload)
+
+    assert measurement.target_element == "Neodymium"
+
+
+def test_measurement_rejects_unknown_element():
+    """
+    Verifies that elements outside the known REE set are rejected.
+    """
+    payload = _build_valid_measurement_payload()
+    payload["target_element"] = "Unobtanium"
+
+    with pytest.raises(ValidationError, match="Unknown target_element"):
+        BindingMeasurement(**payload)
+
+
+def test_measurement_accepts_unitless_logd():
+    """
+    Verifies that logD measurements with no value_in_molar are accepted.
+    """
+    payload = _build_valid_measurement_payload()
+    payload["measurement_type"] = "logD"
+    payload["value"] = 0.45
+    payload["units"] = "unitless"
+    payload["value_in_molar"] = None
+
+    measurement = BindingMeasurement(**payload)
+
+    assert measurement.measurement_type == "logD"
+    assert measurement.value_in_molar is None
+
+
+def test_measurement_rejects_implausible_value_in_molar():
+    """
+    Verifies that a value_in_molar above the biological plausibility
+    ceiling (1e-2 M) is rejected, guarding against scientific-notation
+    extraction failures.
+    """
+    payload = _build_valid_measurement_payload()
+    payload["value_in_molar"] = 2.4  # what happens when LLM drops 'e-12'
 
     with pytest.raises(ValidationError):
-        ProteinData(**payload)
+        BindingMeasurement(**payload)
 
 
-def test_protein_data_rejects_missing_required_field():
+def test_measurement_rejects_unknown_value_source_type():
     """
-    Verifies that omitting any of the four required fields raises a
-    ValidationError. Tests the `target_REE` field as a representative.
+    Verifies that value_source_type uses only the canonical vocabulary.
     """
-    payload = _build_valid_payload()
-    del payload["target_REE"]
+    payload = _build_valid_measurement_payload()
+    payload["value_source_type"] = "made_up"
 
     with pytest.raises(ValidationError):
-        ProteinData(**payload)
+        BindingMeasurement(**payload)
 
 
-def test_protein_dataset_defaults_to_empty():
+def test_measurement_accepts_cited_from_earlier_work():
     """
-    Verifies that ProteinDataset can be instantiated with no records and
-    reports length zero.
+    Verifies that secondary-source records are correctly flagged.
     """
-    dataset = ProteinDataset()
+    payload = _build_valid_measurement_payload()
+    payload["value_source_type"] = "cited_from_earlier_work"
 
-    assert len(dataset) == 0
+    measurement = BindingMeasurement(**payload)
+
+    assert measurement.value_source_type == "cited_from_earlier_work"
 
 
-def test_protein_dataset_holds_multiple_records():
+def test_measurement_rejects_out_of_range_pH():
     """
-    Verifies that ProteinDataset correctly stores and counts multiple
-    ProteinData records.
+    Verifies that pH values outside 0-14 are rejected.
     """
-    record = ProteinData(**_build_valid_payload())
-    dataset = ProteinDataset(records=[record, record, record])
-
-    assert len(dataset) == 3
-    assert dataset.records[0].target_REE == "Neodymium"
-
-def test_protein_data_rejects_biologically_implausible_affinity():
-    """
-    Verifies that the schema rejects Kd values above the biological
-    plausibility ceiling (1e-2 M). This catches the most common LLM
-    extraction failure: dropping the scientific-notation exponent
-    (e.g. reading '2.4e-12' as '2.4').
-    """
-    payload = _build_valid_payload()
-    payload["binding_affinity"] = 2.4  # what happens when LLM drops "e-12"
+    payload = _build_valid_measurement_payload()
+    payload["conditions_pH"] = 20.0
 
     with pytest.raises(ValidationError):
-        ProteinData(**payload)
+        BindingMeasurement(**payload)
+
+
+# ---------------------------------------------------------------------------
+# CorpusRecords tests
+# ---------------------------------------------------------------------------
+
+def test_corpus_defaults_to_empty():
+    """
+    Verifies that CorpusRecords can be instantiated with no records.
+    """
+    corpus = CorpusRecords()
+
+    assert len(corpus) == 0
+    assert corpus.variants == []
+    assert corpus.measurements == []
+
+
+def test_corpus_holds_variants_and_measurements():
+    """
+    Verifies that CorpusRecords correctly stores both record types and
+    reports total length across both tiers.
+    """
+    variant = ProteinVariant(**_build_valid_variant_payload())
+    measurement = BindingMeasurement(**_build_valid_measurement_payload())
+
+    corpus = CorpusRecords(
+        variants=[variant, variant],
+        measurements=[measurement, measurement, measurement],
+    )
+
+    assert len(corpus.variants) == 2
+    assert len(corpus.measurements) == 3
+    assert len(corpus) == 5
