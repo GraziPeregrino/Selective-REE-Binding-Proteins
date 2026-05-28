@@ -51,19 +51,19 @@ git. They are downloadable from the cited publications.
 ## Project Structure
 
 
-agentic_ai/                  # Main package
-├── agents/                  # CrewAI agent definitions
-├── inputs/                  # Source corpus
-│   └── processed/           # Gemini-curated text extracts (committed)
-├── schemas.py               # Pydantic data models
-├── main.py                  # Entry point
-└── utils/                   # Helpers (env, extraction, loaders)
-data/
-├── raw/supplementary/       # Author-published datasets (NOT in git)
-└── processed/               # Cleaned ML-ready CSVs (committed)
-models/                      # Trained .pkl files (committed)
-notebooks/                   # EDA + training experiments
-tests/                       # pytest suite (branch coverage)
+- agentic_ai/                  # Main package
+- ├── agents/                  # CrewAI agent definitions
+- ├── inputs/                  # Source corpus
+- │   └── processed/           # Gemini-curated text extracts  
+- ├── schemas.py               # Pydantic data models
+- ├── main.py                  # Entry point
+- └── utils/                   # Helpers (env, extraction,  loaders)
+- data/
+- ├── raw/supplementary/       # Author-published datasets (NOT in git)
+- └── processed/               # Cleaned ML-ready CSVs (committed)
+- models/                      # Trained .pkl files (committed)
+- notebooks/                   # EDA + training experiments
+- tests/                       # pytest suite (branch coverage)
 
 ## Setup
 
