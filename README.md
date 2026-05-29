@@ -90,7 +90,12 @@ To reproduce the full pipeline you need the supplementary data:
 - [x] Week 1 Block 1 — Environment, API connectivity, project scaffold
 - [x] Week 1 Block 2 — Pydantic schema + LLM extraction proof-of-concept
 - [x] Week 1 Block 3 — XLSX loader (MOESM3) + text reader + Path two-tier schema
-- [ ] Week 1 Block 4 — CrewAI agent for literature annotation enrichment
+- [~] Week 1 Block 4 — CrewAI agent for literature annotation enrichment
+-     ├─ [x] 4.1: Agent + Task + Pydantic output contract
+-     ├─ [x] 4.2: Single-paper extraction validated (14/14 records, Elsevier MD paper)
+-     ├─ [ ] 4.3: Orchestrator for full 15-paper corpus run
+-     ├─ [ ] 4.4: Variant alias matcher (Mex-LanM ↔ o-621 ↔ WT-LanM)
+-    └─ [ ] 4.5: Tests + agent-output audit
 - [ ] Week 1 Block 5 — DataFrame assembly + validation
 - [ ] Week 2 — Sequence feature engineering (Biopython)
 - [ ] Week 3 — ML training (XGBoost, hyperparameter tuning)
