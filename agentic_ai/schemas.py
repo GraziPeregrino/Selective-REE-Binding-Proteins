@@ -34,14 +34,60 @@ _KNOWN_MEASUREMENT_TYPES = (
 )
 
 # 15 rare earth elements measured in the Diep et al. dataset, plus Ca for refs
+# Canonical full element names accepted by the schema.
+# LREs, HREs, plus reference ions (Ca, Sc) and the actinides that occasionally
+# appear in LanM literature for comparison studies.
 _VALID_REES = {
+    # Lanthanides
     "Yttrium", "Lanthanum", "Cerium", "Praseodymium", "Neodymium",
     "Samarium", "Europium", "Gadolinium", "Terbium", "Dysprosium",
     "Holmium", "Erbium", "Thulium", "Ytterbium", "Lutetium",
-    "Calcium",   # baseline reference ion
-    "Scandium",  # occasionally reported in LanM literature
+    # Reference ions
+    "Calcium", "Scandium",
+    # Actinides (Mattocks 2022, Deblonde 2020 use these as comparisons)
+    "Uranium", "Plutonium", "Americium", "Curium", "Thorium",
 }
 
+# Map common scientific notation aliases to canonical element names.
+# Covers: symbols (La, Eu), Roman-numeral oxidation states (LaIII, Eu(III)),
+# Unicode superscripts (La³⁺), ASCII charge notation (Ca2+).
+# Keys are stored lowercased; the validator normalizes input before lookup.
+_ELEMENT_ALIASES = {
+    # Lanthanides — symbol + III variations
+    "y": "Yttrium", "y3+": "Yttrium", "yiii": "Yttrium", "y(iii)": "Yttrium", "y³⁺": "Yttrium",
+    "la": "Lanthanum", "la3+": "Lanthanum", "laiii": "Lanthanum", "la(iii)": "Lanthanum", "la³⁺": "Lanthanum",
+    "ce": "Cerium", "ce3+": "Cerium", "ceiii": "Cerium", "ce(iii)": "Cerium", "ce³⁺": "Cerium",
+    "pr": "Praseodymium", "pr3+": "Praseodymium", "priii": "Praseodymium", "pr(iii)": "Praseodymium", "pr³⁺": "Praseodymium",
+    "nd": "Neodymium", "nd3+": "Neodymium", "ndiii": "Neodymium", "nd(iii)": "Neodymium", "nd³⁺": "Neodymium",
+    "sm": "Samarium", "sm3+": "Samarium", "smiii": "Samarium", "sm(iii)": "Samarium", "sm³⁺": "Samarium",
+    "eu": "Europium", "eu3+": "Europium", "euiii": "Europium", "eu(iii)": "Europium", "eu³⁺": "Europium",
+    "gd": "Gadolinium", "gd3+": "Gadolinium", "gdiii": "Gadolinium", "gd(iii)": "Gadolinium", "gd³⁺": "Gadolinium",
+    "tb": "Terbium", "tb3+": "Terbium", "tbiii": "Terbium", "tb(iii)": "Terbium", "tb³⁺": "Terbium",
+    "dy": "Dysprosium", "dy3+": "Dysprosium", "dyiii": "Dysprosium", "dy(iii)": "Dysprosium", "dy³⁺": "Dysprosium",
+    "ho": "Holmium", "ho3+": "Holmium", "hoiii": "Holmium", "ho(iii)": "Holmium", "ho³⁺": "Holmium",
+    "er": "Erbium", "er3+": "Erbium", "eriii": "Erbium", "er(iii)": "Erbium", "er³⁺": "Erbium",
+    "tm": "Thulium", "tm3+": "Thulium", "tmiii": "Thulium", "tm(iii)": "Thulium", "tm³⁺": "Thulium",
+    "yb": "Ytterbium", "yb3+": "Ytterbium", "ybiii": "Ytterbium", "yb(iii)": "Ytterbium", "yb³⁺": "Ytterbium",
+    "lu": "Lutetium", "lu3+": "Lutetium", "luiii": "Lutetium", "lu(iii)": "Lutetium", "lu³⁺": "Lutetium",
+    # Reference ions
+    "ca": "Calcium", "ca2+": "Calcium", "caii": "Calcium", "ca(ii)": "Calcium", "ca²⁺": "Calcium",
+    "sc": "Scandium", "sc3+": "Scandium", "sciii": "Scandium", "sc(iii)": "Scandium", "sc³⁺": "Scandium",
+    # Actinides (used in some LanM comparison studies)
+    "u": "Uranium", "uvi": "Uranium", "u(vi)": "Uranium", "uo2": "Uranium",
+    "pu": "Plutonium", "puiv": "Plutonium",
+    "am": "Americium", "amiii": "Americium", "am(iii)": "Americium",
+    "cm": "Curium", "cmiii": "Curium", "cm(iii)": "Curium",
+    "th": "Thorium", "thiv": "Thorium",
+}
+
+# Group-level element labels that are NOT valid for per-element measurements.
+# Records with these labels are dropped rather than failed, since the data is
+# real but not at the right granularity for our schema.
+_GROUP_LEVEL_LABELS = {
+    "light rees", "heavy rees", "lres", "hres",
+    "rare earths", "lanthanides", "actinides",
+    "rare earth elements", "rees",
+}
 
 class ProteinVariant(BaseModel):
     """
@@ -144,22 +190,42 @@ class BindingMeasurement(BaseModel):
     @classmethod
     def _element_is_known(cls, value: str) -> str:
         """
-        Validates that the target element is a known REE or reference ion.
-        Normalizes to canonical capitalized form.
-        @param value: The element name as supplied.
+        Normalizes element notation to canonical full name. Accepts:
+          - Full names: 'Neodymium', 'neodymium'
+          - Symbols: 'Nd'
+          - Oxidation-state forms: 'NdIII', 'Nd(III)', 'Nd3+', 'Nd³⁺'
+        Rejects group-level labels ('Light REEs') with a clear message
+        so the caller can drop those records without crashing the run.
+        @param value: The element label as supplied.
         return : The canonicalized element name.
-        raises : ValueError if the element is not in the known set.
+        raises : ValueError when the element is not recognized.
         """
-        cleaned = value.strip().title()
+        raw = value.strip()
+        lookup_key = raw.lower()
 
-        if cleaned not in _VALID_REES:
+        # First, try canonical name match (already in target form)
+        title_cased = raw.title()
+        if title_cased in _VALID_REES:
+            return title_cased
+
+        # Group-level labels: explicit failure with clear cause
+        if lookup_key in _GROUP_LEVEL_LABELS:
             raise ValueError(
-                f"Unknown target_element {cleaned!r}. "
-                f"Expected one of: {sorted(_VALID_REES)}"
+                f"target_element {value!r} is a group-level label, "
+                f"not a specific element. Skip this measurement or "
+                f"split it into per-element records."
             )
 
-        return cleaned
+        # Alias lookup
+        canonical = _ELEMENT_ALIASES.get(lookup_key)
+        if canonical is not None:
+            return canonical
 
+        raise ValueError(
+            f"Unknown target_element {value!r}. "
+            f"Expected an element name (e.g. 'Neodymium'), symbol "
+            f"('Nd'), or oxidation-state notation ('NdIII', 'Nd³⁺')."
+        )
     @field_validator("value_source_type")
     @classmethod
     def _source_type_is_known(cls, value: str) -> str:

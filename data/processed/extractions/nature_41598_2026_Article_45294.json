@@ -1,0 +1,91 @@
+{
+  "variants": [
+    {
+      "variant_id": "Mex-LanM",
+      "source_organism": "Methylorubrum extorquens",
+      "sequence": null,
+      "parent_variant_id": null,
+      "mutations": [],
+      "mutation_notation": null,
+      "taxonomy": null,
+      "ef_hand_count": 4,
+      "selectivity_cluster": null,
+      "source_paper": "nature_41598_2026_Article_45294"
+    },
+    {
+      "variant_id": "CDS J19_31570",
+      "source_organism": "Mesorhizobium qingshengii",
+      "sequence": null,
+      "parent_variant_id": null,
+      "mutations": [],
+      "mutation_notation": null,
+      "taxonomy": null,
+      "ef_hand_count": 4,
+      "selectivity_cluster": null,
+      "source_paper": "nature_41598_2026_Article_45294"
+    }
+  ],
+  "measurements": [
+    {
+      "variant_id": "CDS J19_31570",
+      "target_element": "Yttrium",
+      "measurement_type": "Binding",
+      "value": 101.2,
+      "units": "µg Y/mg protein",
+      "value_in_molar": null,
+      "conditions_pH": 8.0,
+      "conditions_notes": "optimal binding at pH 8 and incubation temperature of 25 ˚C",
+      "value_source_type": "primary",
+      "source_paper": "nature_41598_2026_Article_45294"
+    },
+    {
+      "variant_id": "CDS J19_31570",
+      "target_element": "Yttrium",
+      "measurement_type": "Binding",
+      "value": 59.7,
+      "units": "µg Y/mg protein",
+      "value_in_molar": null,
+      "conditions_pH": null,
+      "conditions_notes": "obtained at constant Y concentration of 50 µM",
+      "value_source_type": "primary",
+      "source_paper": "nature_41598_2026_Article_45294"
+    },
+    {
+      "variant_id": "CDS J19_31570",
+      "target_element": "Neodymium",
+      "measurement_type": "Binding",
+      "value": 68.0,
+      "units": "µg Nd/mg protein",
+      "value_in_molar": null,
+      "conditions_pH": null,
+      "conditions_notes": "observed binding under mixed-metal addition of Y and Nd",
+      "value_source_type": "primary",
+      "source_paper": "nature_41598_2026_Article_45294"
+    },
+    {
+      "variant_id": "CDS J19_31570",
+      "target_element": "Yttrium",
+      "measurement_type": "Binding",
+      "value": 39.2,
+      "units": "µg Y/mg protein",
+      "value_in_molar": null,
+      "conditions_pH": null,
+      "conditions_notes": "measured when combining both elements (Y and Nd)",
+      "value_source_type": "primary",
+      "source_paper": "nature_41598_2026_Article_45294"
+    },
+    {
+      "variant_id": "CDS J19_31570",
+      "target_element": "Neodymium",
+      "measurement_type": "Binding",
+      "value": 6.54,
+      "units": "µg Nd/mg protein",
+      "value_in_molar": null,
+      "conditions_pH": null,
+      "conditions_notes": "measured when combining both elements (Y and Nd)",
+      "value_source_type": "primary",
+      "source_paper": "nature_41598_2026_Article_45294"
+    }
+  ],
+  "notes": ""
+}

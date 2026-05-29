@@ -1,0 +1,153 @@
+{
+  "variants": [
+    {
+      "variant_id": "RF2",
+      "source_organism": "not specified",
+      "sequence": null,
+      "parent_variant_id": null,
+      "mutations": [],
+      "mutation_notation": null,
+      "taxonomy": null,
+      "ef_hand_count": null,
+      "selectivity_cluster": null,
+      "source_paper": "biorxiv_2025_10_19_682977"
+    },
+    {
+      "variant_id": "RF2 6AW",
+      "source_organism": "not specified",
+      "sequence": null,
+      "parent_variant_id": "RF2",
+      "mutations": [
+        "6AW"
+      ],
+      "mutation_notation": null,
+      "taxonomy": null,
+      "ef_hand_count": null,
+      "selectivity_cluster": null,
+      "source_paper": "biorxiv_2025_10_19_682977"
+    },
+    {
+      "variant_id": "RF1",
+      "source_organism": "not specified",
+      "sequence": null,
+      "parent_variant_id": null,
+      "mutations": [],
+      "mutation_notation": null,
+      "taxonomy": null,
+      "ef_hand_count": null,
+      "selectivity_cluster": null,
+      "source_paper": "biorxiv_2025_10_19_682977"
+    },
+    {
+      "variant_id": "RF3",
+      "source_organism": "not specified",
+      "sequence": null,
+      "parent_variant_id": null,
+      "mutations": [],
+      "mutation_notation": null,
+      "taxonomy": null,
+      "ef_hand_count": null,
+      "selectivity_cluster": null,
+      "source_paper": "biorxiv_2025_10_19_682977"
+    }
+  ],
+  "measurements": [
+    {
+      "variant_id": "RF2",
+      "target_element": "Terbium",
+      "measurement_type": "Kd",
+      "value": 19.0,
+      "units": "nM",
+      "value_in_molar": 1.9e-8,
+      "conditions_pH": null,
+      "conditions_notes": null,
+      "value_source_type": "primary",
+      "source_paper": "biorxiv_2025_10_19_682977"
+    },
+    {
+      "variant_id": "RF2 6AW",
+      "target_element": "Terbium",
+      "measurement_type": "Kd",
+      "value": 37.0,
+      "units": "nM",
+      "value_in_molar": 3.7e-8,
+      "conditions_pH": null,
+      "conditions_notes": null,
+      "value_source_type": "primary",
+      "source_paper": "biorxiv_2025_10_19_682977"
+    },
+    {
+      "variant_id": "RF2 6AW",
+      "target_element": "Europium",
+      "measurement_type": "Kd",
+      "value": 150.0,
+      "units": "nM",
+      "value_in_molar": 1.5000000000000002e-7,
+      "conditions_pH": null,
+      "conditions_notes": null,
+      "value_source_type": "primary",
+      "source_paper": "biorxiv_2025_10_19_682977"
+    },
+    {
+      "variant_id": "RF2 6AW",
+      "target_element": "Dysprosium",
+      "measurement_type": "Kd",
+      "value": 290.0,
+      "units": "nM",
+      "value_in_molar": 2.9000000000000003e-7,
+      "conditions_pH": null,
+      "conditions_notes": null,
+      "value_source_type": "primary",
+      "source_paper": "biorxiv_2025_10_19_682977"
+    },
+    {
+      "variant_id": "RF1",
+      "target_element": "Terbium",
+      "measurement_type": "Kd",
+      "value": 320.0,
+      "units": "nM",
+      "value_in_molar": 3.2e-7,
+      "conditions_pH": null,
+      "conditions_notes": null,
+      "value_source_type": "primary",
+      "source_paper": "biorxiv_2025_10_19_682977"
+    },
+    {
+      "variant_id": "RF3",
+      "target_element": "Terbium",
+      "measurement_type": "Kd",
+      "value": 3300.0,
+      "units": "nM",
+      "value_in_molar": 3.3e-6,
+      "conditions_pH": null,
+      "conditions_notes": null,
+      "value_source_type": "primary",
+      "source_paper": "biorxiv_2025_10_19_682977"
+    },
+    {
+      "variant_id": "LBT",
+      "target_element": "Terbium",
+      "measurement_type": "Kd",
+      "value": 190.0,
+      "units": "nM",
+      "value_in_molar": 1.9e-7,
+      "conditions_pH": null,
+      "conditions_notes": null,
+      "value_source_type": "cited_from_earlier_work",
+      "source_paper": "biorxiv_2025_10_19_682977"
+    },
+    {
+      "variant_id": "LBT",
+      "target_element": "Europium",
+      "measurement_type": "Kd",
+      "value": 490.0,
+      "units": "nM",
+      "value_in_molar": 4.900000000000001e-7,
+      "conditions_pH": null,
+      "conditions_notes": null,
+      "value_source_type": "cited_from_earlier_work",
+      "source_paper": "biorxiv_2025_10_19_682977"
+    }
+  ],
+  "notes": "The article contains a mixture of primary measurements and references to previously published data for LBT. The sequences for RF1, RF2, and RF3 are not fully provided."
+}

@@ -178,6 +178,47 @@ def test_measurement_normalizes_element_capitalization():
     assert measurement.target_element == "Neodymium"
 
 
+def test_measurement_accepts_oxidation_state_notation():
+    """
+    Verifies that scientific oxidation-state forms are normalized to
+    canonical element names. Covers Roman numerals, parens, and
+    Unicode superscripts the agent might produce.
+    """
+    forms = ["Nd", "NdIII", "Nd(III)", "Nd3+", "Nd³⁺", "nd(iii)"]
+
+    for form in forms:
+        payload = _build_valid_measurement_payload()
+        payload["target_element"] = form
+        measurement = BindingMeasurement(**payload)
+        assert measurement.target_element == "Neodymium", (
+            f"Form {form!r} did not normalize to 'Neodymium'"
+        )
+
+
+def test_measurement_rejects_group_level_labels():
+    """
+    Verifies that group-level mentions like 'Light REEs' are rejected
+    with a clear error explaining the granularity mismatch.
+    """
+    payload = _build_valid_measurement_payload()
+    payload["target_element"] = "Light REEs"
+
+    with pytest.raises(ValidationError, match="group-level label"):
+        BindingMeasurement(**payload)
+
+
+def test_measurement_accepts_actinide_elements():
+    """
+    Verifies that actinides used in LanM comparison studies (e.g.
+    Curium, Americium) are accepted as target elements.
+    """
+    payload = _build_valid_measurement_payload()
+    payload["target_element"] = "Cm(III)"
+
+    measurement = BindingMeasurement(**payload)
+
+    assert measurement.target_element == "Curium"
+
 def test_measurement_rejects_unknown_element():
     """
     Verifies that elements outside the known REE set are rejected.

@@ -1,0 +1,32 @@
+{
+  "variants": [
+    {
+      "variant_id": "4P2A",
+      "source_organism": "Methylorubrum extorquens",
+      "sequence": null,
+      "parent_variant_id": null,
+      "mutations": [
+        "P2A"
+      ],
+      "mutation_notation": "4P2A",
+      "taxonomy": null,
+      "ef_hand_count": null,
+      "selectivity_cluster": null,
+      "source_paper": "chemical_society_au4c00628"
+    },
+    {
+      "variant_id": "Hans-LanM",
+      "source_organism": "Hansschlegelia quercus",
+      "sequence": null,
+      "parent_variant_id": null,
+      "mutations": [],
+      "mutation_notation": null,
+      "taxonomy": null,
+      "ef_hand_count": null,
+      "selectivity_cluster": null,
+      "source_paper": "chemical_society_au4c00628"
+    }
+  ],
+  "measurements": [],
+  "notes": "No specific binding measurements were reported in this excerpt."
+}

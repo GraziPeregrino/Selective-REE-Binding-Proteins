@@ -1,0 +1,103 @@
+{
+  "variants": [
+    {
+      "variant_id": "LanND-Gd",
+      "source_organism": "bacterial",
+      "sequence": null,
+      "parent_variant_id": null,
+      "mutations": [],
+      "mutation_notation": null,
+      "taxonomy": null,
+      "ef_hand_count": null,
+      "selectivity_cluster": null,
+      "source_paper": "biorxiv_2025.12.14.694215"
+    },
+    {
+      "variant_id": "ProCA32",
+      "source_organism": "calmodulin",
+      "sequence": null,
+      "parent_variant_id": null,
+      "mutations": [],
+      "mutation_notation": null,
+      "taxonomy": null,
+      "ef_hand_count": null,
+      "selectivity_cluster": null,
+      "source_paper": "biorxiv_2025.12.14.694215"
+    },
+    {
+      "variant_id": "EF3",
+      "source_organism": "bacterial",
+      "sequence": "DPDNDGTLDKKE",
+      "parent_variant_id": null,
+      "mutations": [],
+      "mutation_notation": null,
+      "taxonomy": null,
+      "ef_hand_count": null,
+      "selectivity_cluster": null,
+      "source_paper": "biorxiv_2025.12.14.694215"
+    },
+    {
+      "variant_id": "CaBM",
+      "source_organism": "bacterial",
+      "sequence": "DKDGNGYISAAE",
+      "parent_variant_id": null,
+      "mutations": [],
+      "mutation_notation": null,
+      "taxonomy": null,
+      "ef_hand_count": null,
+      "selectivity_cluster": null,
+      "source_paper": "biorxiv_2025.12.14.694215"
+    }
+  ],
+  "measurements": [
+    {
+      "variant_id": "LanND-Gd",
+      "target_element": "Gadolinium",
+      "measurement_type": "relaxivity",
+      "value": 13.15,
+      "units": "mM⁻¹·s⁻¹",
+      "value_in_molar": null,
+      "conditions_pH": null,
+      "conditions_notes": "at 3 T",
+      "value_source_type": "primary",
+      "source_paper": "biorxiv_2025.12.14.694215"
+    },
+    {
+      "variant_id": "ProCA32",
+      "target_element": "Gadolinium",
+      "measurement_type": "r₁",
+      "value": 33.0,
+      "units": "mM⁻¹·s⁻¹",
+      "value_in_molar": null,
+      "conditions_pH": 7.0,
+      "conditions_notes": "at 1.4 T and 37 °C",
+      "value_source_type": "primary",
+      "source_paper": "biorxiv_2025.12.14.694215"
+    },
+    {
+      "variant_id": "EF3",
+      "target_element": "Gadolinium",
+      "measurement_type": "r₁",
+      "value": 19.0,
+      "units": "L/(s·mmol)",
+      "value_in_molar": null,
+      "conditions_pH": null,
+      "conditions_notes": "absolute relaxivity",
+      "value_source_type": "primary",
+      "source_paper": "biorxiv_2025.12.14.694215"
+    },
+    {
+      "variant_id": "CaBM",
+      "target_element": "Gadolinium",
+      "measurement_type": "r₁",
+      "value": 14.0,
+      "units": "L/(s·mmol)",
+      "value_in_molar": null,
+      "conditions_pH": null,
+      "conditions_notes": "absolute relaxivity",
+      "value_source_type": "primary",
+      "source_paper": "biorxiv_2025.12.14.694215"
+    }
+  ],
+  "notes": "Calculated values are based on relaxivity and r₁ measurements from the text."
+}

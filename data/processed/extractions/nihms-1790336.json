@@ -1,0 +1,43 @@
+{
+  "variants": [
+    {
+      "variant_id": "4P2A",
+      "source_organism": "Methylobacterium extorquens",
+      "sequence": null,
+      "parent_variant_id": "LanM",
+      "mutations": [],
+      "mutation_notation": null,
+      "taxonomy": null,
+      "ef_hand_count": 4,
+      "selectivity_cluster": null,
+      "source_paper": "nihms-1790336"
+    },
+    {
+      "variant_id": "WT",
+      "source_organism": "Methylobacterium extorquens",
+      "sequence": null,
+      "parent_variant_id": null,
+      "mutations": [],
+      "mutation_notation": null,
+      "taxonomy": null,
+      "ef_hand_count": 4,
+      "selectivity_cluster": null,
+      "source_paper": "nihms-1790336"
+    }
+  ],
+  "measurements": [
+    {
+      "variant_id": "WT",
+      "target_element": "Calcium",
+      "measurement_type": "Kd_app",
+      "value": 710.0,
+      "units": "μM",
+      "value_in_molar": 0.00071,
+      "conditions_pH": 6.5,
+      "conditions_notes": null,
+      "value_source_type": "primary",
+      "source_paper": "nihms-1790336"
+    }
+  ],
+  "notes": ""
+}

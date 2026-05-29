@@ -1,0 +1,103 @@
+{
+  "variants": [
+    {
+      "variant_id": "mex-LanM",
+      "source_organism": "Methylorubrum extorquens",
+      "sequence": null,
+      "parent_variant_id": null,
+      "mutations": [],
+      "mutation_notation": null,
+      "taxonomy": null,
+      "ef_hand_count": 4,
+      "selectivity_cluster": null,
+      "source_paper": "biorxiv_2023_09_26_559553"
+    },
+    {
+      "variant_id": "LanM-GCaMP",
+      "source_organism": "Escherichia coli",
+      "sequence": null,
+      "parent_variant_id": "mex-LanM",
+      "mutations": [],
+      "mutation_notation": null,
+      "taxonomy": null,
+      "ef_hand_count": 4,
+      "selectivity_cluster": null,
+      "source_paper": "biorxiv_2023_09_26_559553"
+    },
+    {
+      "variant_id": "LanTERN",
+      "source_organism": "Escherichia coli",
+      "sequence": null,
+      "parent_variant_id": "LanM-GCaMP",
+      "mutations": [],
+      "mutation_notation": null,
+      "taxonomy": null,
+      "ef_hand_count": 4,
+      "selectivity_cluster": null,
+      "source_paper": "biorxiv_2023_09_26_559553"
+    }
+  ],
+  "measurements": [
+    {
+      "variant_id": "mex-LanM",
+      "target_element": "Lanthanum",
+      "measurement_type": "Kd",
+      "value": 1e-12,
+      "units": "M",
+      "value_in_molar": 1e-12,
+      "conditions_pH": null,
+      "conditions_notes": null,
+      "value_source_type": "cited_from_earlier_work",
+      "source_paper": "biorxiv_2023_09_26_559553"
+    },
+    {
+      "variant_id": "LanTERN",
+      "target_element": "Lanthanum",
+      "measurement_type": "EC50",
+      "value": 976.0,
+      "units": "nM",
+      "value_in_molar": 9.76e-7,
+      "conditions_pH": null,
+      "conditions_notes": null,
+      "value_source_type": "primary",
+      "source_paper": "biorxiv_2023_09_26_559553"
+    },
+    {
+      "variant_id": "LanTERN",
+      "target_element": "Ytterbium",
+      "measurement_type": "EC50",
+      "value": 4710.0,
+      "units": "µM",
+      "value_in_molar": null,
+      "conditions_pH": null,
+      "conditions_notes": null,
+      "value_source_type": "primary",
+      "source_paper": "biorxiv_2023_09_26_559553"
+    },
+    {
+      "variant_id": "LanTERN",
+      "target_element": "Lanthanum",
+      "measurement_type": "fold_change",
+      "value": 10.0,
+      "units": "fold",
+      "value_in_molar": null,
+      "conditions_pH": null,
+      "conditions_notes": null,
+      "value_source_type": "primary",
+      "source_paper": "biorxiv_2023_09_26_559553"
+    },
+    {
+      "variant_id": "LanM-GCaMP",
+      "target_element": "Lanthanum",
+      "measurement_type": "fold_change",
+      "value": 3.5,
+      "units": "fold",
+      "value_in_molar": null,
+      "conditions_pH": null,
+      "conditions_notes": null,
+      "value_source_type": "primary",
+      "source_paper": "biorxiv_2023_09_26_559553"
+    }
+  ],
+  "notes": ""
+}

@@ -1,0 +1,249 @@
+{
+  "variants": [
+    {
+      "variant_id": "WT-LanM",
+      "source_organism": "Methylorubrum extorquens",
+      "sequence": null,
+      "parent_variant_id": null,
+      "mutations": [],
+      "mutation_notation": null,
+      "taxonomy": null,
+      "ef_hand_count": 4,
+      "selectivity_cluster": null,
+      "source_paper": "elsevier_2001-0370_2025"
+    },
+    {
+      "variant_id": "4P2A",
+      "source_organism": "Methylorubrum extorquens",
+      "sequence": null,
+      "parent_variant_id": "WT-LanM",
+      "mutations": [
+        "P2A"
+      ],
+      "mutation_notation": "4P2A",
+      "taxonomy": null,
+      "ef_hand_count": 4,
+      "selectivity_cluster": null,
+      "source_paper": "elsevier_2001-0370_2025"
+    },
+    {
+      "variant_id": "4D9N",
+      "source_organism": "Methylorubrum extorquens",
+      "sequence": null,
+      "parent_variant_id": null,
+      "mutations": [],
+      "mutation_notation": "4D9X",
+      "taxonomy": null,
+      "ef_hand_count": 4,
+      "selectivity_cluster": null,
+      "source_paper": "elsevier_2001-0370_2025"
+    },
+    {
+      "variant_id": "4D9A",
+      "source_organism": "Methylorubrum extorquens",
+      "sequence": null,
+      "parent_variant_id": null,
+      "mutations": [],
+      "mutation_notation": "4D9X",
+      "taxonomy": null,
+      "ef_hand_count": 4,
+      "selectivity_cluster": null,
+      "source_paper": "elsevier_2001-0370_2025"
+    },
+    {
+      "variant_id": "4D9M",
+      "source_organism": "Methylorubrum extorquens",
+      "sequence": null,
+      "parent_variant_id": null,
+      "mutations": [],
+      "mutation_notation": "4D9X",
+      "taxonomy": null,
+      "ef_hand_count": 4,
+      "selectivity_cluster": null,
+      "source_paper": "elsevier_2001-0370_2025"
+    },
+    {
+      "variant_id": "4D9H",
+      "source_organism": "Methylorubrum extorquens",
+      "sequence": null,
+      "parent_variant_id": null,
+      "mutations": [],
+      "mutation_notation": "4D9X",
+      "taxonomy": null,
+      "ef_hand_count": 4,
+      "selectivity_cluster": null,
+      "source_paper": "elsevier_2001-0370_2025"
+    }
+  ],
+  "measurements": [
+    {
+      "variant_id": "WT-LanM",
+      "target_element": "Lanthanum",
+      "measurement_type": "Kd",
+      "value": 5.3e-12,
+      "units": "M",
+      "value_in_molar": 5.3e-12,
+      "conditions_pH": 7.2,
+      "conditions_notes": null,
+      "value_source_type": "cited_from_earlier_work",
+      "source_paper": "elsevier_2001-0370_2025"
+    },
+    {
+      "variant_id": "WT-LanM",
+      "target_element": "Neodymium",
+      "measurement_type": "Kd",
+      "value": 5.3e-12,
+      "units": "M",
+      "value_in_molar": 5.3e-12,
+      "conditions_pH": 7.2,
+      "conditions_notes": null,
+      "value_source_type": "cited_from_earlier_work",
+      "source_paper": "elsevier_2001-0370_2025"
+    },
+    {
+      "variant_id": "WT-LanM",
+      "target_element": "Samarium",
+      "measurement_type": "Kd",
+      "value": 6.6e-12,
+      "units": "M",
+      "value_in_molar": 6.6e-12,
+      "conditions_pH": 7.2,
+      "conditions_notes": null,
+      "value_source_type": "cited_from_earlier_work",
+      "source_paper": "elsevier_2001-0370_2025"
+    },
+    {
+      "variant_id": "WT-LanM",
+      "target_element": "Gadolinium",
+      "measurement_type": "Kd",
+      "value": 1e-11,
+      "units": "M",
+      "value_in_molar": 1e-11,
+      "conditions_pH": 7.2,
+      "conditions_notes": null,
+      "value_source_type": "cited_from_earlier_work",
+      "source_paper": "elsevier_2001-0370_2025"
+    },
+    {
+      "variant_id": "WT-LanM",
+      "target_element": "Terbium",
+      "measurement_type": "Kd",
+      "value": 2.1e-11,
+      "units": "M",
+      "value_in_molar": 2.1e-11,
+      "conditions_pH": 7.2,
+      "conditions_notes": null,
+      "value_source_type": "cited_from_earlier_work",
+      "source_paper": "elsevier_2001-0370_2025"
+    },
+    {
+      "variant_id": "WT-LanM",
+      "target_element": "Yttrium",
+      "measurement_type": "Kd",
+      "value": 1.7e-11,
+      "units": "M",
+      "value_in_molar": 1.7e-11,
+      "conditions_pH": 7.2,
+      "conditions_notes": null,
+      "value_source_type": "cited_from_earlier_work",
+      "source_paper": "elsevier_2001-0370_2025"
+    },
+    {
+      "variant_id": "WT-LanM",
+      "target_element": "Calcium",
+      "measurement_type": "Kd",
+      "value": 0.00071,
+      "units": "M",
+      "value_in_molar": 0.00071,
+      "conditions_pH": 7.2,
+      "conditions_notes": null,
+      "value_source_type": "cited_from_earlier_work",
+      "source_paper": "elsevier_2001-0370_2025"
+    },
+    {
+      "variant_id": "4P2A",
+      "target_element": "Lanthanum",
+      "measurement_type": "Kd",
+      "value": 1e-12,
+      "units": "M",
+      "value_in_molar": 1e-12,
+      "conditions_pH": 7.2,
+      "conditions_notes": null,
+      "value_source_type": "cited_from_earlier_work",
+      "source_paper": "elsevier_2001-0370_2025"
+    },
+    {
+      "variant_id": "4P2A",
+      "target_element": "Neodymium",
+      "measurement_type": "Kd",
+      "value": 4.4e-13,
+      "units": "M",
+      "value_in_molar": 4.4e-13,
+      "conditions_pH": 7.2,
+      "conditions_notes": null,
+      "value_source_type": "cited_from_earlier_work",
+      "source_paper": "elsevier_2001-0370_2025"
+    },
+    {
+      "variant_id": "4P2A",
+      "target_element": "Calcium",
+      "measurement_type": "Kd",
+      "value": 2.6e-6,
+      "units": "M",
+      "value_in_molar": 2.6e-6,
+      "conditions_pH": 7.2,
+      "conditions_notes": null,
+      "value_source_type": "cited_from_earlier_work",
+      "source_paper": "elsevier_2001-0370_2025"
+    },
+    {
+      "variant_id": "4D9N",
+      "target_element": "Neodymium",
+      "measurement_type": "Kd",
+      "value": 5.31e-11,
+      "units": "M",
+      "value_in_molar": 5.31e-11,
+      "conditions_pH": 5.0,
+      "conditions_notes": null,
+      "value_source_type": "cited_from_earlier_work",
+      "source_paper": "elsevier_2001-0370_2025"
+    },
+    {
+      "variant_id": "4D9A",
+      "target_element": "Neodymium",
+      "measurement_type": "Kd",
+      "value": 3.97e-10,
+      "units": "M",
+      "value_in_molar": 3.97e-10,
+      "conditions_pH": 5.0,
+      "conditions_notes": null,
+      "value_source_type": "cited_from_earlier_work",
+      "source_paper": "elsevier_2001-0370_2025"
+    },
+    {
+      "variant_id": "4D9M",
+      "target_element": "Neodymium",
+      "measurement_type": "Kd",
+      "value": 1.46e-9,
+      "units": "M",
+      "value_in_molar": 1.46e-9,
+      "conditions_pH": 5.0,
+      "conditions_notes": null,
+      "value_source_type": "cited_from_earlier_work",
+      "source_paper": "elsevier_2001-0370_2025"
+    },
+    {
+      "variant_id": "4D9H",
+      "target_element": "Neodymium",
+      "measurement_type": "Kd",
+      "value": 2.15e-9,
+      "units": "M",
+      "value_in_molar": 2.15e-9,
+      "conditions_pH": 5.0,
+      "conditions_notes": null,
+      "value_source_type": "cited_from_earlier_work",
+      "source_paper": "elsevier_2001-0370_2025"
+    }
+  ],
+  "notes": ""
+}

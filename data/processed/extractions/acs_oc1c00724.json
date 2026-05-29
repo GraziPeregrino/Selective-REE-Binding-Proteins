@@ -1,0 +1,43 @@
+{
+  "variants": [
+    {
+      "variant_id": "LanM",
+      "source_organism": "Methylorubrum extorquens",
+      "sequence": null,
+      "parent_variant_id": null,
+      "mutations": [],
+      "mutation_notation": null,
+      "taxonomy": null,
+      "ef_hand_count": null,
+      "selectivity_cluster": null,
+      "source_paper": "acs_oc1c00724"
+    }
+  ],
+  "measurements": [
+    {
+      "variant_id": "LanM",
+      "target_element": "Dysprosium",
+      "measurement_type": "Kd",
+      "value": 5.0,
+      "units": "unitless",
+      "value_in_molar": null,
+      "conditions_pH": null,
+      "conditions_notes": null,
+      "value_source_type": "primary",
+      "source_paper": "acs_oc1c00724"
+    },
+    {
+      "variant_id": "LanM",
+      "target_element": "Neodymium",
+      "measurement_type": "Kd",
+      "value": 1.0,
+      "units": "unitless",
+      "value_in_molar": null,
+      "conditions_pH": null,
+      "conditions_notes": null,
+      "value_source_type": "primary",
+      "source_paper": "acs_oc1c00724"
+    }
+  ],
+  "notes": ""
+}

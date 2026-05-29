@@ -1,0 +1,129 @@
+{
+  "variants": [
+    {
+      "variant_id": "Hans-LanM",
+      "source_organism": "Hansschlegelia quercus",
+      "sequence": null,
+      "parent_variant_id": null,
+      "mutations": [],
+      "mutation_notation": null,
+      "taxonomy": null,
+      "ef_hand_count": 4,
+      "selectivity_cluster": null,
+      "source_paper": "nature_s41586-023-05945-5"
+    },
+    {
+      "variant_id": "Mex-LanM",
+      "source_organism": "Methylorubrum extorquens",
+      "sequence": null,
+      "parent_variant_id": null,
+      "mutations": [],
+      "mutation_notation": null,
+      "taxonomy": null,
+      "ef_hand_count": 4,
+      "selectivity_cluster": null,
+      "source_paper": "nature_s41586-023-05945-5"
+    },
+    {
+      "variant_id": "Hans-LanM(R100K)",
+      "source_organism": "Hansschlegelia quercus",
+      "sequence": null,
+      "parent_variant_id": "Hans-LanM",
+      "mutations": [
+        "R100K"
+      ],
+      "mutation_notation": null,
+      "taxonomy": null,
+      "ef_hand_count": 4,
+      "selectivity_cluster": null,
+      "source_paper": "nature_s41586-023-05945-5"
+    }
+  ],
+  "measurements": [
+    {
+      "variant_id": "Hans-LanM",
+      "target_element": "Lanthanum",
+      "measurement_type": "Kd_app",
+      "value": 68.0,
+      "units": "pM",
+      "value_in_molar": 6.8e-11,
+      "conditions_pH": 5.0,
+      "conditions_notes": null,
+      "value_source_type": "primary",
+      "source_paper": "nature_s41586-023-05945-5"
+    },
+    {
+      "variant_id": "Hans-LanM",
+      "target_element": "Neodymium",
+      "measurement_type": "Kd_app",
+      "value": 91.0,
+      "units": "pM",
+      "value_in_molar": 9.1e-11,
+      "conditions_pH": 5.0,
+      "conditions_notes": null,
+      "value_source_type": "primary",
+      "source_paper": "nature_s41586-023-05945-5"
+    },
+    {
+      "variant_id": "Hans-LanM",
+      "target_element": "Dysprosium",
+      "measurement_type": "Kd_app",
+      "value": 0.3,
+      "units": "µM",
+      "value_in_molar": null,
+      "conditions_pH": null,
+      "conditions_notes": null,
+      "value_source_type": "primary",
+      "source_paper": "nature_s41586-023-05945-5"
+    },
+    {
+      "variant_id": "Hans-LanM",
+      "target_element": "Calcium",
+      "measurement_type": "Kd_app",
+      "value": 60.0,
+      "units": "µM",
+      "value_in_molar": null,
+      "conditions_pH": null,
+      "conditions_notes": null,
+      "value_source_type": "primary",
+      "source_paper": "nature_s41586-023-05945-5"
+    },
+    {
+      "variant_id": "Hans-LanM",
+      "target_element": "Dysprosium",
+      "measurement_type": "Kdimer",
+      "value": 60.0,
+      "units": "µM",
+      "value_in_molar": null,
+      "conditions_pH": null,
+      "conditions_notes": null,
+      "value_source_type": "primary",
+      "source_paper": "nature_s41586-023-05945-5"
+    },
+    {
+      "variant_id": "Hans-LanM",
+      "target_element": "Dysprosium",
+      "measurement_type": "Kdimer",
+      "value": 117.0,
+      "units": "µM",
+      "value_in_molar": null,
+      "conditions_pH": null,
+      "conditions_notes": null,
+      "value_source_type": "primary",
+      "source_paper": "nature_s41586-023-05945-5"
+    },
+    {
+      "variant_id": "Hans-LanM(R100K)",
+      "target_element": "Lanthanum",
+      "measurement_type": "Kd_app",
+      "value": 0.5,
+      "units": "pM",
+      "value_in_molar": 5e-13,
+      "conditions_pH": null,
+      "conditions_notes": null,
+      "value_source_type": "primary",
+      "source_paper": "nature_s41586-023-05945-5"
+    }
+  ],
+  "notes": ""
+}

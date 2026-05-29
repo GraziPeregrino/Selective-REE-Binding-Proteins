@@ -1,0 +1,67 @@
+{
+  "variants": [
+    {
+      "variant_id": "Mex-LanM",
+      "source_organism": "Methylobacterium extorquens",
+      "sequence": null,
+      "parent_variant_id": null,
+      "mutations": [],
+      "mutation_notation": null,
+      "taxonomy": null,
+      "ef_hand_count": 4,
+      "selectivity_cluster": null,
+      "source_paper": "nature_d41586-023-01739"
+    },
+    {
+      "variant_id": "Hans-LanM",
+      "source_organism": "Hansschlegelia quercus",
+      "sequence": null,
+      "parent_variant_id": null,
+      "mutations": [],
+      "mutation_notation": null,
+      "taxonomy": null,
+      "ef_hand_count": 4,
+      "selectivity_cluster": null,
+      "source_paper": "nature_d41586-023-01739"
+    }
+  ],
+  "measurements": [
+    {
+      "variant_id": "Mex-LanM",
+      "target_element": "Neodymium",
+      "measurement_type": "Kd_app",
+      "value": 5e-12,
+      "units": "M",
+      "value_in_molar": 5e-12,
+      "conditions_pH": null,
+      "conditions_notes": null,
+      "value_source_type": "primary",
+      "source_paper": "nature_d41586-023-01739"
+    },
+    {
+      "variant_id": "Hans-LanM",
+      "target_element": "Lanthanum",
+      "measurement_type": "Kd_app",
+      "value": 7e-11,
+      "units": "M",
+      "value_in_molar": 7e-11,
+      "conditions_pH": null,
+      "conditions_notes": null,
+      "value_source_type": "primary",
+      "source_paper": "nature_d41586-023-01739"
+    },
+    {
+      "variant_id": "Hans-LanM",
+      "target_element": "Dysprosium",
+      "measurement_type": "Kd_app",
+      "value": 9e-11,
+      "units": "M",
+      "value_in_molar": 9e-11,
+      "conditions_pH": null,
+      "conditions_notes": null,
+      "value_source_type": "primary",
+      "source_paper": "nature_d41586-023-01739"
+    }
+  ],
+  "notes": ""
+}

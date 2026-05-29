@@ -1,0 +1,91 @@
+{
+  "variants": [
+    {
+      "variant_id": "wild-type S. oneidensis",
+      "source_organism": "Shewanella oneidensis",
+      "sequence": null,
+      "parent_variant_id": null,
+      "mutations": [],
+      "mutation_notation": null,
+      "taxonomy": null,
+      "ef_hand_count": null,
+      "selectivity_cluster": null,
+      "source_paper": "biorxiv_2023_10_18_562985"
+    }
+  ],
+  "measurements": [
+    {
+      "variant_id": "wild-type S. oneidensis",
+      "target_element": "Europium",
+      "measurement_type": "Kd",
+      "value": 1e-6,
+      "units": "Mol L^{-1}",
+      "value_in_molar": null,
+      "conditions_pH": null,
+      "conditions_notes": null,
+      "value_source_type": "primary",
+      "source_paper": "biorxiv_2023_10_18_562985"
+    },
+    {
+      "variant_id": "wild-type S. oneidensis",
+      "target_element": "Ytterbium",
+      "measurement_type": "Kd",
+      "value": 1.256e-6,
+      "units": "Mol L^{-1}",
+      "value_in_molar": null,
+      "conditions_pH": null,
+      "conditions_notes": null,
+      "value_source_type": "primary",
+      "source_paper": "biorxiv_2023_10_18_562985"
+    },
+    {
+      "variant_id": "wild-type S. oneidensis",
+      "target_element": "Lanthanum",
+      "measurement_type": "Kd",
+      "value": 2.282e-6,
+      "units": "Mol L^{-1}",
+      "value_in_molar": null,
+      "conditions_pH": null,
+      "conditions_notes": null,
+      "value_source_type": "primary",
+      "source_paper": "biorxiv_2023_10_18_562985"
+    },
+    {
+      "variant_id": "wild-type S. oneidensis",
+      "target_element": "Europium",
+      "measurement_type": "Kd1",
+      "value": 1.25e-7,
+      "units": "Mol L^{-1}",
+      "value_in_molar": null,
+      "conditions_pH": null,
+      "conditions_notes": null,
+      "value_source_type": "primary",
+      "source_paper": "biorxiv_2023_10_18_562985"
+    },
+    {
+      "variant_id": "wild-type S. oneidensis",
+      "target_element": "Ytterbium",
+      "measurement_type": "Kd1",
+      "value": 1e-6,
+      "units": "Mol L^{-1}",
+      "value_in_molar": null,
+      "conditions_pH": null,
+      "conditions_notes": null,
+      "value_source_type": "primary",
+      "source_paper": "biorxiv_2023_10_18_562985"
+    },
+    {
+      "variant_id": "wild-type S. oneidensis",
+      "target_element": "Lanthanum",
+      "measurement_type": "Kd1",
+      "value": 1.25e-7,
+      "units": "Mol L^{-1}",
+      "value_in_molar": null,
+      "conditions_pH": null,
+      "conditions_notes": null,
+      "value_source_type": "primary",
+      "source_paper": "biorxiv_2023_10_18_562985"
+    }
+  ],
+  "notes": "The paper discusses biosorption to whole microbial cells, specifically to wild-type S. oneidensis, with no specific engineered lanmodulin variants reported. The binding affinities presented are model parameters and not based on directly measured Kd values for distinct protein variants."
+}

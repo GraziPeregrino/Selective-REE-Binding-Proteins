@@ -1,0 +1,91 @@
+{
+  "variants": [
+    {
+      "variant_id": "MIF",
+      "source_organism": "Methylobacillus flagellatus",
+      "sequence": null,
+      "parent_variant_id": null,
+      "mutations": [],
+      "mutation_notation": null,
+      "taxonomy": null,
+      "ef_hand_count": null,
+      "selectivity_cluster": null,
+      "source_paper": "biorxiv_2025.10.21.683075"
+    }
+  ],
+  "measurements": [
+    {
+      "variant_id": "MIF",
+      "target_element": "Samarium",
+      "measurement_type": "Kd",
+      "value": 23.9,
+      "units": "pM",
+      "value_in_molar": 2.39e-11,
+      "conditions_pH": null,
+      "conditions_notes": null,
+      "value_source_type": "primary",
+      "source_paper": "biorxiv_2025.10.21.683075"
+    },
+    {
+      "variant_id": "MIF",
+      "target_element": "Lanthanum",
+      "measurement_type": "Kd",
+      "value": 3.69,
+      "units": "µM",
+      "value_in_molar": null,
+      "conditions_pH": null,
+      "conditions_notes": null,
+      "value_source_type": "primary",
+      "source_paper": "biorxiv_2025.10.21.683075"
+    },
+    {
+      "variant_id": "MIF",
+      "target_element": "Thulium",
+      "measurement_type": "Kd",
+      "value": 38.1,
+      "units": "kJ/mol",
+      "value_in_molar": null,
+      "conditions_pH": null,
+      "conditions_notes": null,
+      "value_source_type": "primary",
+      "source_paper": "biorxiv_2025.10.21.683075"
+    },
+    {
+      "variant_id": "MIF",
+      "target_element": "Samarium",
+      "measurement_type": "ΔGapp",
+      "value": -45.6,
+      "units": "kJ/mol",
+      "value_in_molar": null,
+      "conditions_pH": null,
+      "conditions_notes": null,
+      "value_source_type": "primary",
+      "source_paper": "biorxiv_2025.10.21.683075"
+    },
+    {
+      "variant_id": "MIF",
+      "target_element": "Lanthanum",
+      "measurement_type": "ΔGapp",
+      "value": -42.0,
+      "units": "kJ/mol",
+      "value_in_molar": null,
+      "conditions_pH": null,
+      "conditions_notes": null,
+      "value_source_type": "primary",
+      "source_paper": "biorxiv_2025.10.21.683075"
+    },
+    {
+      "variant_id": "MIF",
+      "target_element": "Thulium",
+      "measurement_type": "ΔGapp",
+      "value": -38.1,
+      "units": "kJ/mol",
+      "value_in_molar": null,
+      "conditions_pH": null,
+      "conditions_notes": null,
+      "value_source_type": "primary",
+      "source_paper": "biorxiv_2025.10.21.683075"
+    }
+  ],
+  "notes": "The paper does not provide distinct binding constants for all lanthanides tested; only details on REE binding behaviors and their associated measurements are available."
+}

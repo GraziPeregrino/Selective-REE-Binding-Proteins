@@ -1,0 +1,189 @@
+{
+  "variants": [
+    {
+      "variant_id": "o-621",
+      "source_organism": "Methylobacterium extorquens",
+      "sequence": null,
+      "parent_variant_id": null,
+      "mutations": [],
+      "mutation_notation": null,
+      "taxonomy": null,
+      "ef_hand_count": null,
+      "selectivity_cluster": null,
+      "source_paper": "nature_2026_02176"
+    },
+    {
+      "variant_id": "Mex-LanM",
+      "source_organism": "Methylobacterium extorquens",
+      "sequence": null,
+      "parent_variant_id": null,
+      "mutations": [],
+      "mutation_notation": null,
+      "taxonomy": null,
+      "ef_hand_count": null,
+      "selectivity_cluster": null,
+      "source_paper": "nature_2026_02176"
+    },
+    {
+      "variant_id": "Hans-LanM",
+      "source_organism": "Hansschlegelia quercus",
+      "sequence": null,
+      "parent_variant_id": null,
+      "mutations": [],
+      "mutation_notation": null,
+      "taxonomy": null,
+      "ef_hand_count": null,
+      "selectivity_cluster": null,
+      "source_paper": "nature_2026_02176"
+    },
+    {
+      "variant_id": "Hans-LanM(R100K)",
+      "source_organism": "Hansschlegelia quercus",
+      "sequence": null,
+      "parent_variant_id": "Hans-LanM",
+      "mutations": [
+        "R100K"
+      ],
+      "mutation_notation": "R100K",
+      "taxonomy": null,
+      "ef_hand_count": null,
+      "selectivity_cluster": null,
+      "source_paper": "nature_2026_02176"
+    },
+    {
+      "variant_id": "o-412",
+      "source_organism": "Methyloligella sp. GL2",
+      "sequence": null,
+      "parent_variant_id": null,
+      "mutations": [],
+      "mutation_notation": null,
+      "taxonomy": null,
+      "ef_hand_count": null,
+      "selectivity_cluster": 1,
+      "source_paper": "nature_2026_02176"
+    },
+    {
+      "variant_id": "o-543",
+      "source_organism": "Ensifer adhaerens",
+      "sequence": null,
+      "parent_variant_id": null,
+      "mutations": [],
+      "mutation_notation": null,
+      "taxonomy": null,
+      "ef_hand_count": null,
+      "selectivity_cluster": null,
+      "source_paper": "nature_2026_02176"
+    },
+    {
+      "variant_id": "o-585",
+      "source_organism": "Rhizobium sp. BK275",
+      "sequence": null,
+      "parent_variant_id": null,
+      "mutations": [],
+      "mutation_notation": null,
+      "taxonomy": null,
+      "ef_hand_count": null,
+      "selectivity_cluster": null,
+      "source_paper": "nature_2026_02176"
+    },
+    {
+      "variant_id": "o-36",
+      "source_organism": "Methylobacterium sp. 13MFTsu3.1M2",
+      "sequence": null,
+      "parent_variant_id": null,
+      "mutations": [],
+      "mutation_notation": "Melba-LanM",
+      "taxonomy": null,
+      "ef_hand_count": null,
+      "selectivity_cluster": 5,
+      "source_paper": "nature_2026_02176"
+    },
+    {
+      "variant_id": "o-127",
+      "source_organism": "Methylosinus sp. sav-2",
+      "sequence": null,
+      "parent_variant_id": null,
+      "mutations": [],
+      "mutation_notation": null,
+      "taxonomy": null,
+      "ef_hand_count": null,
+      "selectivity_cluster": null,
+      "source_paper": "nature_2026_02176"
+    }
+  ],
+  "measurements": [
+    {
+      "variant_id": "Mex-LanM",
+      "target_element": "Neodymium",
+      "measurement_type": "Kd_app",
+      "value": 27.0,
+      "units": "unitless",
+      "value_in_molar": null,
+      "conditions_pH": null,
+      "conditions_notes": "Weaker affinity for $Dy^{III}$ compared to $Nd^{III}$",
+      "value_source_type": "primary",
+      "source_paper": "nature_2026_02176"
+    },
+    {
+      "variant_id": "Hans-LanM(R100K)",
+      "target_element": "Dysprosium",
+      "measurement_type": "Kd_app",
+      "value": 27.0,
+      "units": "unitless",
+      "value_in_molar": null,
+      "conditions_pH": null,
+      "conditions_notes": "A 27-fold weaker affinity for $Dy^{III}$ compared to $Nd^{III}$",
+      "value_source_type": "primary",
+      "source_paper": "nature_2026_02176"
+    },
+    {
+      "variant_id": "o-36",
+      "target_element": "Praseodymium",
+      "measurement_type": "logD",
+      "value": 8.7,
+      "units": "unitless",
+      "value_in_molar": null,
+      "conditions_pH": 5.0,
+      "conditions_notes": "Difference in affinity between $Nd^{III}$ and $La^{III}$",
+      "value_source_type": "primary",
+      "source_paper": "nature_2026_02176"
+    },
+    {
+      "variant_id": "o-127",
+      "target_element": "Praseodymium",
+      "measurement_type": "logD",
+      "value": 3.5,
+      "units": "unitless",
+      "value_in_molar": null,
+      "conditions_pH": 5.0,
+      "conditions_notes": "Difference in affinity between $Nd^{III}$ and $La^{III}$",
+      "value_source_type": "primary",
+      "source_paper": "nature_2026_02176"
+    },
+    {
+      "variant_id": "o-36",
+      "target_element": "Samarium",
+      "measurement_type": "logD",
+      "value": 98.6,
+      "units": "unitless",
+      "value_in_molar": null,
+      "conditions_pH": null,
+      "conditions_notes": "Purity and yield measurement",
+      "value_source_type": "primary",
+      "source_paper": "nature_2026_02176"
+    },
+    {
+      "variant_id": "o-621",
+      "target_element": "Lanthanum",
+      "measurement_type": "logD",
+      "value": 0.8,
+      "units": "unitless",
+      "value_in_molar": null,
+      "conditions_pH": null,
+      "conditions_notes": "Could not achieve separation of $La^{III}$ and $Sm^{III}$",
+      "value_source_type": "primary",
+      "source_paper": "nature_2026_02176"
+    }
+  ],
+  "notes": "Certain measurements and identities were extracted from supplementary materials and context clarified as needed."
+}
