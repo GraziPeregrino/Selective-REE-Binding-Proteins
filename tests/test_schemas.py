@@ -45,7 +45,108 @@ def test_variant_accepts_minimal_valid_payload():
     assert variant.mutations == []
     assert variant.selectivity_cluster is None
 
+def test_variant_construct_type_defaults_to_ortholog():
+    """
+    Verifies that ProteinVariant defaults construct_type to 'ortholog'
+    when not specified, matching the most common case in the corpus.
+    """
+    variant = ProteinVariant(**_build_valid_variant_payload())
 
+    assert variant.construct_type == "ortholog"
+
+
+def test_variant_accepts_known_construct_types():
+    """
+    Verifies that every documented construct_type value is accepted.
+    """
+    valid_types = (
+        "ortholog", "point_mutant", "fusion_sensor",
+        "engineered_chelator", "chimera", "unknown",
+    )
+
+    for construct_type in valid_types:
+        payload = _build_valid_variant_payload()
+        payload["construct_type"] = construct_type
+        variant = ProteinVariant(**payload)
+        assert variant.construct_type == construct_type
+
+
+def test_variant_rejects_unknown_construct_type():
+    """
+    Verifies that construct_type values outside the controlled
+    vocabulary are rejected with a clear error.
+    """
+    payload = _build_valid_variant_payload()
+    payload["construct_type"] = "magical_widget"
+
+    with pytest.raises(ValidationError, match="Unknown construct_type"):
+        ProteinVariant(**payload)
+
+
+def test_variant_parent_scaffold_defaults_to_none():
+    """
+    Verifies that parent_scaffold is None by default rather than
+    silently assuming Lanmodulin lineage. Loaders must set it
+    explicitly when they know the scaffold.
+    """
+    variant = ProteinVariant(**_build_valid_variant_payload())
+
+    assert variant.parent_scaffold is None
+
+
+def test_variant_accepts_known_scaffolds():
+    """
+    Verifies that documented parent_scaffold values are accepted.
+    """
+    for scaffold in ("Lanmodulin", "lanpepsy", "Calmodulin"):
+        payload = _build_valid_variant_payload()
+        payload["parent_scaffold"] = scaffold
+        variant = ProteinVariant(**payload)
+        assert variant.parent_scaffold == scaffold
+
+
+def test_variant_accepts_unknown_scaffold_with_warning(capsys):
+    """
+    Verifies that novel parent_scaffold values are accepted but emit
+    a warning on stderr, so the curator notices the addition without
+    the validation failing.
+    """
+    payload = _build_valid_variant_payload()
+    payload["parent_scaffold"] = "ExoticScaffoldXYZ"
+
+    variant = ProteinVariant(**payload)
+    captured = capsys.readouterr()
+
+    assert variant.parent_scaffold == "ExoticScaffoldXYZ"
+    assert "ExoticScaffoldXYZ" in captured.err
+    assert "not in the known vocabulary" in captured.err
+
+
+def test_variant_rejects_empty_parent_scaffold():
+    """
+    Verifies that an empty parent_scaffold string is rejected (None is
+    the way to encode 'not set').
+    """
+    payload = _build_valid_variant_payload()
+    payload["parent_scaffold"] = "   "
+
+    with pytest.raises(ValidationError, match="cannot be an empty string"):
+        ProteinVariant(**payload)
+
+
+def test_variant_accepts_notes_field():
+    """
+    Verifies that the free-form notes field accepts arbitrary text
+    and defaults to None.
+    """
+    default_variant = ProteinVariant(**_build_valid_variant_payload())
+    assert default_variant.notes is None
+
+    payload = _build_valid_variant_payload()
+    payload["notes"] = "His10-tagged recombinant construct"
+    variant = ProteinVariant(**payload)
+    assert variant.notes == "His10-tagged recombinant construct"
+    
 def test_variant_accepts_mutant_with_parent_reference():
     """
     Verifies that mutant variants can declare a parent and mutation list.

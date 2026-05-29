@@ -162,16 +162,21 @@ def _row_to_variant(row: pd.Series) -> Optional[ProteinVariant]:
     if not sequence or not organism or ortholog_index is None:
         return None
 
+    cluster = _safe_int(row.get("agglomerative_cluster"))
+    ef_hands = _safe_int(row.get("EFhands"))
+    taxonomy = _build_taxonomy_string(row)
+
     return ProteinVariant(
         variant_id=f"o-{ortholog_index}",
         source_organism=organism,
         sequence=sequence,
-        taxonomy=_build_taxonomy_string(row),
-        ef_hand_count=_safe_int(row.get("EFhands")),
-        selectivity_cluster=_safe_int(row.get("agglomerative_cluster")),
+        taxonomy=taxonomy,
+        ef_hand_count=ef_hands,
+        selectivity_cluster=cluster,
+        construct_type="ortholog",
+        parent_scaffold="Lanmodulin",
         source_paper=_SOURCE_PAPER,
     )
-
 
 def _row_to_measurements(
     row: pd.Series,

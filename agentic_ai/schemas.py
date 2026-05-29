@@ -32,7 +32,32 @@ _KNOWN_MEASUREMENT_TYPES = (
     "Ka",            # Association constant (M^-1)
     "separation_factor",  # SF, unitless ratio
 )
+# Controlled vocabulary for ProteinVariant.construct_type.
+# Strict enum: any value outside this set is a validation error.
+# Add new categories here as the literature surfaces them.
+_KNOWN_CONSTRUCT_TYPES = {
+    "ortholog",             # Natural protein, possibly recombinantly expressed
+    "point_mutant",         # Single or few amino acid substitutions of a parent
+    "fusion_sensor",        # Engineered fluorescent or FRET sensor (e.g. LanTERN)
+    "engineered_chelator",  # De novo or scaffold-grafted REE chelator
+    "chimera",              # Domains combined from multiple parent proteins
+    "unknown",              # Construct type cannot be determined from the source
+}
 
+# Reference vocabulary for ProteinVariant.parent_scaffold.
+# Soft validation: novel values are accepted with a stderr warning rather
+# than rejected, because the literature uses many ad hoc scaffold names
+# we cannot enumerate in advance.
+_KNOWN_SCAFFOLDS = {
+    "Lanmodulin",          # EF-hand lanthanide-binding protein (LanM family)
+    "Lanmodulin+GFP",      # LanM EF hands embedded in a GFP scaffold
+    "Calmodulin",          # EF-hand calcium-binding protein
+    "lanpepsy",            # PepSY-domain protein from M. flagellatus (MIF source)
+    "EF_hand_scaffold",    # EF-hand motif reused outside LanM/Calmodulin context
+    "non_LanM_protein",    # A different REE-binding protein altogether
+    "de_novo",             # Computationally designed without natural template
+    "unknown",             # Scaffold not determined
+}
 # 15 rare earth elements measured in the Diep et al. dataset, plus Ca for refs
 # Canonical full element names accepted by the schema.
 # LREs, HREs, plus reference ions (Ca, Sc) and the actinides that occasionally
@@ -125,6 +150,9 @@ class ProteinVariant(BaseModel):
     taxonomy: Optional[str] = None
     ef_hand_count: Optional[int] = Field(default=None, ge=0, le=10)
     selectivity_cluster: Optional[int] = Field(default=None, ge=0, le=10)
+    construct_type: str = "ortholog"
+    parent_scaffold: Optional[str] = None
+    notes: Optional[str] = None
     source_paper: str = Field(..., min_length=1)
 
     @field_validator("sequence")
@@ -149,7 +177,51 @@ class ProteinVariant(BaseModel):
             )
 
         return cleaned
+    @field_validator("construct_type")
+    @classmethod
+    def _construct_type_is_known(cls, value: str) -> str:
+        """
+        Strict validation: construct_type must come from the controlled
+        vocabulary. Returns the value unchanged on success.
+        @param value: The construct_type string as supplied.
+        return : The validated construct_type string.
+        raises : ValueError if the value is not in _KNOWN_CONSTRUCT_TYPES.
+        """
+        if value not in _KNOWN_CONSTRUCT_TYPES:
+            raise ValueError(
+                f"Unknown construct_type {value!r}. "
+                f"Expected one of: {sorted(_KNOWN_CONSTRUCT_TYPES)}"
+            )
 
+        return value
+
+    @field_validator("parent_scaffold")
+    @classmethod
+    def _parent_scaffold_is_recognized(cls, value: Optional[str]) -> Optional[str]:
+        """
+        Soft validation: parent_scaffold must be non-empty if provided,
+        but novel values are accepted with a stderr warning rather than
+        rejected. The literature contains scaffolds we haven't catalogued.
+        @param value: The parent_scaffold string or None.
+        return : The validated parent_scaffold string, or None.
+        raises : ValueError only if the value is the empty string.
+        """
+        if value is None:
+            return None
+
+        cleaned = value.strip()
+        if not cleaned:
+            raise ValueError("parent_scaffold cannot be an empty string")
+
+        if cleaned not in _KNOWN_SCAFFOLDS:
+            import sys
+            print(
+                f"[warn] parent_scaffold {cleaned!r} is not in the known "
+                f"vocabulary. Known: {sorted(_KNOWN_SCAFFOLDS)}",
+                file=sys.stderr,
+            )
+
+        return cleaned
 
 class BindingMeasurement(BaseModel):
     """
