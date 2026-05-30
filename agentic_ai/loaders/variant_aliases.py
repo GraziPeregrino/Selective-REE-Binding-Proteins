@@ -47,6 +47,86 @@ _CANONICAL_ALIASES = {
     "Melba-LanM": "o-36",    # M. sp. 13MFTsu3.1M2 LanM (named in Diep 2026)
 }
 
+# ---------------------------------------------------------------------------
+# TIER 2: Construct classifications for literature variants
+# ---------------------------------------------------------------------------
+# Maps the canonical form of each literature variant to its
+# (construct_type, parent_scaffold) tuple. Drives population of the
+# ProteinVariant.construct_type and ProteinVariant.parent_scaffold
+# fields when persisting agent extractions.
+#
+# Confidence varies. Comments cite the source paper for each
+# classification decision so the rationale is visible at the call site.
+#
+# Notes:
+#   - The 6 MOESM3-native 'o-N' identifiers are NOT in this map; they
+#     are populated by the MOESM3 loader directly.
+#   - The 4 Tier 1 canonical aliases (Mex-LanM, etc.) are also handled
+#     upstream: by the time classification runs, they have already been
+#     resolved to 'o-N' form by resolve_to_canonical_id().
+#   - Construct types come from the controlled vocabulary in
+#     agentic_ai.schemas._KNOWN_CONSTRUCT_TYPES.
+#   - parent_scaffold values come from agentic_ai.schemas._KNOWN_SCAFFOLDS,
+#     with 'unknown' for variants whose scaffold lineage is not confirmed.
+_CONSTRUCT_CLASSIFICATIONS = {
+    # -----------------------------------------------------------------
+    # Point mutants of Mex-LanM (Elsevier MD paper, 2025)
+    # 4D9X = D->X substitution at position 9 of each EF hand (4 hands)
+    # 4P2A = P->A substitution at position 2 of each EF hand
+    # -----------------------------------------------------------------
+    "4D9A":  ("point_mutant",  "Lanmodulin"),
+    "4D9H":  ("point_mutant",  "Lanmodulin"),
+    "4D9M":  ("point_mutant",  "Lanmodulin"),
+    "4D9N":  ("point_mutant",  "Lanmodulin"),
+    "4P2A":  ("point_mutant",  "Lanmodulin"),
+
+    # -----------------------------------------------------------------
+    # Point mutant of Hans-LanM (Mattocks 2023, Nature)
+    # R100K = engineered monomeric variant of the dimeric Hans-LanM
+    # -----------------------------------------------------------------
+    "Hans-LanM(R100K)":  ("point_mutant",  "Lanmodulin"),
+
+    # -----------------------------------------------------------------
+    # Fluorescent fusion sensors (Park 2022 PNAS et al.)
+    # EF hands of LanM grafted into GFP-derivative scaffolds for
+    # ratiometric REE-binding readout in cells
+    # -----------------------------------------------------------------
+    "LanTERN":     ("fusion_sensor",  "Lanmodulin+GFP"),
+    "LanM-GCaMP":  ("fusion_sensor",  "Lanmodulin+GFP"),
+
+    # -----------------------------------------------------------------
+    # Engineered chelators (biorxiv 2025.12.14.694215 and related)
+    # -----------------------------------------------------------------
+    "LanND-Gd":   ("engineered_chelator",  "Lanmodulin"),
+    "ProCA32":    ("engineered_chelator",  "Lanmodulin"),
+    "CaBM":       ("engineered_chelator",  "Calmodulin"),
+
+    # -----------------------------------------------------------------
+    # RF series — designed chelators (biorxiv 2025_10_19_682977)
+    # Lineage not fully confirmed in our curated excerpts; flag for
+    # follow-up while keeping the records in the dataset.
+    # -----------------------------------------------------------------
+    "RF1":       ("engineered_chelator",  "unknown"),
+    "RF2":       ("engineered_chelator",  "unknown"),
+    "RF2 6AW":   ("engineered_chelator",  "unknown"),
+    "RF3":       ("engineered_chelator",  "unknown"),
+
+    # -----------------------------------------------------------------
+    # MIF — Multimetal Ion-stacking metalloprotein Framework
+    # (biorxiv 2025.10.21.683075)
+    # Natural lanpepsy PepSY-domain protein from M. flagellatus.
+    # NOT a Lanmodulin derivative; the engineering is in immobilization
+    # and chromatographic use, not in the protein scaffold itself.
+    # -----------------------------------------------------------------
+    "MIF":       ("ortholog",  "lanpepsy"),
+
+    # -----------------------------------------------------------------
+    # Non-Lanmodulin or unconfirmed orthologs
+    # -----------------------------------------------------------------
+    "wild-type S. oneidensis":  ("ortholog",  "non_LanM_protein"),
+    "CDS J19_31570":            ("ortholog",  "unknown"),
+}
+
 # Bare mutation codes that appear without their parent name in some
 # papers. Map them to the canonical <parent>(<mutation>) form.
 # Currently just R100K (the Mattocks 2023 Hans-LanM monomeric variant);
@@ -195,3 +275,24 @@ def resolve_to_canonical_id(raw: str = None) -> Optional[str]:
         return None
 
     return _CANONICAL_ALIASES.get(normalized, normalized)
+
+def classify_construct(
+    canonical_name: str = None,
+) -> Optional[tuple]:
+    """
+    Returns the (construct_type, parent_scaffold) classification for a
+    canonical variant name. Caller must pass already-normalized input
+    (i.e. the output of normalize_variant_name() or the matching
+    canonical form).
+    @param canonical_name: A normalized variant identifier.
+    return : A (construct_type, parent_scaffold) tuple when the variant
+             is classified, or None when it is unknown. 'o-N' format
+             identifiers (MOESM3-native or aliased) are NOT classified
+             here; they receive 'ortholog' + 'Lanmodulin' from the
+             MOESM3 loader directly. Returning None for them indicates
+             'use the MOESM3 defaults, do not override.'
+    """
+    if canonical_name is None:
+        return None
+
+    return _CONSTRUCT_CLASSIFICATIONS.get(canonical_name)

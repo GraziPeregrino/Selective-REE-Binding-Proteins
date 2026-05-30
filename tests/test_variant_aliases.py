@@ -260,4 +260,119 @@ def test_resolve_handles_bare_mutation_through_alias_chain():
     in MOESM3).
     """
     assert resolve_to_canonical_id("R100K") == "Hans-LanM(R100K)"
-    
+
+    # ---------------------------------------------------------------------------
+# TIER 2: construct classification
+# ---------------------------------------------------------------------------
+
+from agentic_ai.loaders.variant_aliases import classify_construct
+
+
+@pytest.mark.parametrize("variant_id", ["4D9A", "4D9H", "4D9M", "4D9N", "4P2A"])
+def test_classify_mex_lanm_point_mutants_correctly(variant_id):
+    """
+    Verifies that the five Mex-LanM EF-hand point mutants from the
+    Elsevier MD paper are classified as point mutants of Lanmodulin.
+    """
+    construct_type, scaffold = classify_construct(variant_id)
+    assert construct_type == "point_mutant"
+    assert scaffold == "Lanmodulin"
+
+
+def test_classify_hans_lanm_r100k_as_point_mutant():
+    """
+    Verifies that the Hans-LanM(R100K) monomeric variant is classified
+    as a point mutant of Lanmodulin.
+    """
+    assert classify_construct("Hans-LanM(R100K)") == ("point_mutant", "Lanmodulin")
+
+
+@pytest.mark.parametrize("variant_id", ["LanTERN", "LanM-GCaMP"])
+def test_classify_fluorescent_sensors_as_fusion_constructs(variant_id):
+    """
+    Verifies that LanM-derived fluorescent sensors are classified as
+    fusion sensors on the Lanmodulin+GFP scaffold.
+    """
+    construct_type, scaffold = classify_construct(variant_id)
+    assert construct_type == "fusion_sensor"
+    assert scaffold == "Lanmodulin+GFP"
+
+
+def test_classify_lanmodulin_chelators_correctly():
+    """
+    Verifies that engineered chelators derived from Lanmodulin are
+    classified with the right parent scaffold.
+    """
+    assert classify_construct("LanND-Gd") == ("engineered_chelator", "Lanmodulin")
+    assert classify_construct("ProCA32") == ("engineered_chelator", "Lanmodulin")
+
+
+def test_classify_calmodulin_chelator_as_distinct_scaffold():
+    """
+    Verifies that CaBM is annotated as a Calmodulin-derived chelator,
+    not silently lumped with Lanmodulin constructs.
+    """
+    assert classify_construct("CaBM") == ("engineered_chelator", "Calmodulin")
+
+
+@pytest.mark.parametrize("variant_id", ["RF1", "RF2", "RF2 6AW", "RF3"])
+def test_classify_rf_series_with_unknown_scaffold(variant_id):
+    """
+    Verifies that the RF-series engineered chelators are kept in the
+    dataset with explicit 'unknown' scaffold annotation rather than
+    being dropped or silently labeled.
+    """
+    construct_type, scaffold = classify_construct(variant_id)
+    assert construct_type == "engineered_chelator"
+    assert scaffold == "unknown"
+
+
+def test_classify_mif_as_lanpepsy_ortholog():
+    """
+    Verifies that MIF is classified as an ortholog with parent_scaffold
+    'lanpepsy', preserving the architectural distinction between LanM
+    (EF-hand) and lanpepsy (PepSY-domain) lineages. This is the key
+    Block 4.4 finding for the Week 3 ML model.
+    """
+    assert classify_construct("MIF") == ("ortholog", "lanpepsy")
+
+
+def test_classify_non_lanm_protein_preserves_distinction():
+    """
+    Verifies that the S. oneidensis wild-type is classified as an
+    ortholog with explicit non_LanM_protein scaffold marker.
+    """
+    assert classify_construct("wild-type S. oneidensis") == (
+        "ortholog",
+        "non_LanM_protein",
+    )
+
+
+def test_classify_returns_none_for_unknown_variant():
+    """
+    Verifies that variants outside the classification map return None,
+    signaling to the caller 'fall through to defaults or drop'.
+    'o-N' MOESM3-native IDs fall into this bucket since the loader
+    has already set their fields.
+    """
+    assert classify_construct("o-621") is None
+    assert classify_construct("o-36") is None
+    assert classify_construct("CompletelyMadeUpVariant") is None
+
+
+def test_classify_returns_none_for_none_input():
+    """
+    Verifies that None input flows through cleanly rather than raising.
+    """
+    assert classify_construct(None) is None
+
+
+def test_classify_does_not_short_circuit_normalization_responsibility():
+    """
+    Verifies that classify_construct() expects already-normalized input.
+    Surface-variant forms like 'mex-LanM' should return None because
+    they are not in the canonical map; the caller is expected to
+    normalize first via resolve_to_canonical_id().
+    """
+    assert classify_construct("mex-lanm") is None
+    assert classify_construct("Mex-LanM-Cys") is None
