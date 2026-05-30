@@ -16,10 +16,10 @@ Build a sequence-to-selectivity predictor that can:
 ## Tech Stack
 
 - **Data pipeline:** pandas, Pydantic, CrewAI, OpenAI API
-- **Bioinformatics:** Biopython (sequence feature engineering)
-- **ML:** scikit-learn, XGBoost
-- **App / MLOps:** Streamlit, Docker
-- **Dev:** pytest (with branch coverage), flake8, pylint
+- **Bioinformatics:** Biopython (sequence feature engineering — planned for Week 2)
+- **ML:** scikit-learn, XGBoost (planned for Week 3)
+- **App / MLOps:** Streamlit, Docker (planned for Weeks 4–5)
+- **Dev:** pytest (210 tests passing), flake8, pylint
 
 ## Data Sources
 
@@ -29,42 +29,39 @@ Build a sequence-to-selectivity predictor that can:
 rare-earth separations.** *Nature Chemical Biology* 22, 829–839.
 DOI: [10.1038/s41589-026-02176-3](https://doi.org/10.1038/s41589-026-02176-3)
 
-Supplementary Data 1 from this paper provides a high-throughput selectivity
-dataset of 616 LanM orthologs across 15 rare earth elements, including full
-amino acid sequences, source organism taxonomy, raw ICP-MS measurements (3
-replicates), normalized logD values, and 8 agglomerative selectivity clusters.
-This is the project's main ML training set (~9,240 variant × element records).
+Supplementary Data 1 (MOESM3) is a high-throughput selectivity screen of 616
+LanM orthologs across 15 rare earth elements, generated via the SpyCI-LAMBS
+ICP-MS assay. The dataset reports **normalized logD selectivity scores**
+(unitless, 0–1) — the per-element log distribution coefficient divided by the
+maximum per-replicate. This is the project's primary ML training target
+(9,240 variant × element records).
 
 ### Literature annotation corpus
 
-15 peer-reviewed papers on Lanmodulin engineering and characterization, used
-by the CrewAI agent to enrich the primary dataset with published binding
-constants (Kd, Kd_app), engineered mutations, and coordination chemistry
-notes. Papers were pre-processed with Gemini 2.5 Pro to extract verbatim
-relevant passages prior to LLM extraction. See `agentic_ai/inputs/processed/`.
+15 peer-reviewed papers on Lanmodulin engineering and characterization,
+processed by a CrewAI agent into a structured corpus of 89 binding
+measurements across 27 unique protein variants. Papers were pre-processed
+with Gemini 2.5 Pro to extract relevant passages prior to LLM extraction.
+The literature dataset reports **actual binding constants** (Kd, Kd_app,
+EC50, etc.) in mass-action units, which makes 32 of the 89 records directly
+comparable to molar Kd values. See `data/processed/extractions/`.
+
+### Crucial semantic distinction
+
+The two datasets measure different quantities:
+
+| Source | Measures | Units | Use |
+|---|---|---|---|
+| MOESM3 | Normalized log distribution coefficient | unitless (0–1) | Primary training target |
+| Literature | Thermodynamic dissociation constants | M, nM, etc. | Orthogonal validation |
+
+These cannot be merged into a single target column without corrupting the
+science. Each lives in its own CSV with its own column schema.
 
 ### Data not redistributed
 
 Source PDFs and XLSX supplementary files are copyrighted and excluded from
 git. They are downloadable from the cited publications.
-
-## Project Structure
-
-
-- agentic_ai/
-- ├── main.py                       # Unified entry point (Block 3.4)
-- ├── schemas.py                    # Path C two-tier schema (Block 3.1)
-- ├── loaders/
-- │   ├── __init__.py
-- │   ├── xlsx_loader.py           # MOESM3 → 9,240 records (Block 3.2)
-- │   └── text_reader.py           # 15 curated papers (Block 3.3)
-- ├── inputs/
-- │   └── processed/                # 15 .txt files 
-- └── utils/
--     └── env_check.py              # Block 1
-- data/raw/supplementary/
-- └── 41589_2026_2176_MOESM3_ESM.xlsx   # Diep et al. 2026 master dataset
-- tests/                            # 34 passing tests
 
 ## Setup
 
@@ -77,30 +74,75 @@ cp .env.example .env          # add your OpenAI API key
 
 ## Reproducing the project
 
-To reproduce the full pipeline you need the supplementary data:
+1. Download `41589_2026_2176_MOESM3_ESM.xlsx` from Diep et al. 2026
+   (Nature Chemical Biology) → place in `data/raw/supplementary/`
+2. Verify environment: `python -c "from agentic_ai.utils.env_check import load_api_key; print('API key loaded:', load_api_key()[:8] + '...')"`
+3. Run the test suite: `pytest -v` (expect 210 passing)
+4. (Optional, ~$0.02 OpenAI cost) Re-run the literature extraction:
+   `python -m agentic_ai.agents.corpus_runner --save`
+5. Re-assemble the CSV datasets: `python -m agentic_ai.loaders.dataset_assembly`
 
-1. Download `41589_2026_2176_MOESM3_ESM.xlsx` from the Diep et al. 2026
-   paper (Nature Chemical Biology) → place in `data/raw/supplementary/`
-2. Run `python -m agentic_ai.main` to verify environment + API connectivity
-3. Run `pytest` to confirm the test suite passes
-4. (Further steps documented as project progresses through Weeks 2-5)
+## Dataset Summary
+
+After Block 5, the project produces two source-specific datasets:
+
+### `moesm3_selectivity_data.csv` — Primary training data
+- 9,240 rows, 11 columns
+- 616 unique LanM orthologs × 15 REEs
+- Target column: `value` (normalized_logD, 0–1 unitless)
+- Sequences inline for direct ML tokenization
+
+### `literature_binding_data.csv` — Validation cohort
+- 89 rows, 13 columns
+- 27 unique variants across 13 REEs from 15 papers
+- Mixed `value_type`: Kd (45), Kd_app (12), EC50 (10), fold_change (4), logD (4), other
+- 32 records have parseable `value_in_molar` for direct Kd comparison
+- Construct types: ortholog (47), engineered_chelator (28), point_mutant (10), fusion_sensor (4)
+- Parent scaffolds: Lanmodulin, Lanmodulin+GFP, Calmodulin, lanpepsy, de_novo, non_LanM_protein
+
+## Key findings from Week 1
+
+**Catching a misclassification.** During literature classification,
+the agent surfaced "MIF" — a multimetal ion-stacking metalloprotein
+framework from biorxiv 2025.10.21.683075. Initial classification assumed
+Lanmodulin lineage. Investigation of the source paper revealed MIF is
+derived from **lanpepsy** (a PepSY-domain protein from *Methylobacillus
+flagellatus*), making it a structurally distinct β-barrel REE binder with
+~4.3 Å inter-metal spacing — architecturally unlike LanM's EF-hand
+chemistry. The classifier preserves this distinction in `parent_scaffold`.
+
+**Preventing a silent corruption.** Pre-Block-5 design assumed MOESM3's
+measurement column was `log10(Kd)` to be exponentiated to molar.
+Empirical inspection showed values in the 0.028–1.0 range with
+`measurement_type='normalized_logD'`, matching the Diep et al.
+Supplementary Methods description of "logD normalized to the
+per-replicate maximum." The semantic mismatch with literature Kd was
+preserved in the schema, preventing silent corruption of 9,240 records.
+
+**Recovering wrongly-dropped data.** An initial drop list treated "EF1",
+"EF2", "EF3", "EF4" as agent confusion (motif names mistaken for
+protein names). Corpus inspection revealed Gutenthaler 2022 measured
+isolated 12-residue EF-hand peptides as standalone REE-binding
+constructs, with real micromolar Kd values and Gd relaxivity data.
+These were promoted from the drop list to `engineered_chelator` /
+`Lanmodulin` classifications, recovering 17 measurements.
 
 ## Project Status
 
-- [x] Week 1 Block 1 — Environment, API connectivity, project scaffold
-- [x] Week 1 Block 2 — Pydantic schema + LLM extraction proof-of-concept
-- [x] Week 1 Block 3 — XLSX loader (MOESM3) + text reader + Path two-tier schema
-- [~] Week 1 Block 4 — CrewAI agent for literature annotation enrichment
--     ├─ [x] 4.1: Agent + Task + Pydantic output contract
--     ├─ [x] 4.2: Single-paper extraction validated (14/14 records, Elsevier MD paper)
--     ├─ [ ] 4.3: Orchestrator for full 15-paper corpus run
--     ├─ [ ] 4.4: Variant alias matcher (Mex-LanM ↔ o-621 ↔ WT-LanM)
--     └─ [ ] 4.5: Tests + agent-output audit
-- [ ] Week 1 Block 5 — DataFrame assembly + validation
-- [ ] Week 2 — Sequence feature engineering (Biopython)
-- [ ] Week 3 — ML training (XGBoost, hyperparameter tuning)
-- [ ] Week 4 — Streamlit application
-- [ ] Week 5 — Docker + cloud deployment
+- [x] **Week 1** — Data pipeline (Blocks 1–5 complete)
+    - [x] Block 1 — Environment, API connectivity, project scaffold
+    - [x] Block 2 — Pydantic schema + LLM extraction proof-of-concept
+    - [x] Block 3 — XLSX loader (MOESM3) + text reader + unified pipeline
+    - [x] Block 4 — CrewAI corpus runner + classifier + persisted enrichment
+        - [x] 4.1–4.2 — Agent + task + deterministic unit conversion
+        - [x] 4.3 — Corpus orchestrator + JSON persistence (15/15 papers, $0.02)
+        - [x] 4.4 — Three-tier variant classifier (alias map + construct types + drop rules)
+        - [x] 4.5 — Tests for extraction_io, corpus_runner, env_check
+    - [x] Block 5 — Dataset assembly: two source-specific long-form CSVs
+- [ ] **Week 2** — Sequence feature engineering (Biopython)
+- [ ] **Week 3** — ML training (XGBoost, hyperparameter tuning)
+- [ ] **Week 4** — Streamlit application
+- [ ] **Week 5** — Docker + cloud deployment
 
 ## License & Citation
 
