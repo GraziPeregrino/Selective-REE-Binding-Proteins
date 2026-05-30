@@ -85,7 +85,8 @@ def load_moesm3(
     if not xlsx_path.exists():
         raise FileNotFoundError(
             f"MOESM3 not found at {xlsx_path}. "
-            f"Download from https://www.nature.com/articles/s41589-026-02176-3 "
+            f"Download from "
+            f"https://www.nature.com/articles/s41589-026-02176-3 "
             f"and place in data/raw/supplementary/."
         )
 
@@ -138,6 +139,10 @@ def _validate_expected_columns(dataframe: pd.DataFrame) -> None:
         "id_6", "sequence_sp_removed", "source_original",
         "EFhands", "agglomerative_cluster",
     }
+    required.update(
+        f"{prefix}_norm_logd"
+        for prefix in _REE_PREFIX_TO_ELEMENT
+    )
 
     missing = required - set(dataframe.columns)
 
@@ -177,6 +182,7 @@ def _row_to_variant(row: pd.Series) -> Optional[ProteinVariant]:
         parent_scaffold="Lanmodulin",
         source_paper=_SOURCE_PAPER,
     )
+
 
 def _row_to_measurements(
     row: pd.Series,

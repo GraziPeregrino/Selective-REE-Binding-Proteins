@@ -6,7 +6,6 @@ in-memory without disk I/O for most assertions.
 """
 from __future__ import annotations
 
-import pytest
 import pandas as pd
 
 from agentic_ai.agents.extraction_models import PaperExtraction
@@ -83,6 +82,8 @@ def _make_literature_extractions() -> dict:
             value_in_molar=2.4e-12,
             source_paper="paper_a",
             conditions_pH=7.0,
+            conditions_notes="Measured by fluorescence titration",
+            value_source_type="cited_from_earlier_work",
         ),
     ]
     paper_b_variants = [
@@ -102,66 +103,6 @@ def _make_literature_extractions() -> dict:
             value=976.0,
             units="nM",
             value_in_molar=9.76e-07,
-            source_paper="paper_b",
-        ),
-        BindingMeasurement(
-            variant_id="LanTERN",
-            target_element="Cerium",
-            measurement_type="fold_change",
-            value=3.5,
-            units="fold",
-            source_paper="paper_b",
-        ),
-    ]
-    return {
-        "paper_a": PaperExtraction(
-            variants=paper_a_variants, measurements=paper_a_measurements,
-        ),
-        "paper_b": PaperExtraction(
-            variants=paper_b_variants, measurements=paper_b_measurements,
-        ),
-    }
-    """
-    Builds a small dict of PaperExtractions covering several literature
-    edge cases: a Kd in molar units, an EC50 in nM, a fold-change
-    without unit conversion, and an orphan measurement.
-    """
-    paper_a_variants = [
-        ProteinVariant(
-            variant_id="o-621",
-            source_organism="Methylorubrum extorquens",
-            construct_type="ortholog",
-            parent_scaffold="Lanmodulin",
-            source_paper="paper_a",
-        )
-    ]
-    paper_a_measurements = [
-        BindingMeasurement(
-            variant_id="o-621",
-            target_element="Neodymium",
-            measurement_type="Kd",
-            value=2.4e-12,
-            units="M",
-            source_paper="paper_a",
-            conditions_pH=7.0,
-        ),
-    ]
-    paper_b_variants = [
-        ProteinVariant(
-            variant_id="LanTERN",
-            source_organism="Escherichia coli",
-            construct_type="fusion_sensor",
-            parent_scaffold="Lanmodulin+GFP",
-            source_paper="paper_b",
-        )
-    ]
-    paper_b_measurements = [
-        BindingMeasurement(
-            variant_id="LanTERN",
-            target_element="Lanthanum",
-            measurement_type="EC50",
-            value=976.0,
-            units="nM",
             source_paper="paper_b",
         ),
         BindingMeasurement(
@@ -259,7 +200,9 @@ def test_literature_dataframe_has_expected_columns_in_order():
     """
     Verifies the literature DataFrame's column contract.
     """
-    df = assemble_literature_dataframe(literature=_make_literature_extractions())
+    df = assemble_literature_dataframe(
+        literature=_make_literature_extractions()
+    )
     assert list(df.columns) == LITERATURE_COLUMNS
 
 
@@ -285,6 +228,50 @@ def test_literature_dataframe_preserves_heterogeneous_value_types():
         literature=_make_literature_extractions()
     )
     assert set(df["value_type"]) == {"Kd", "EC50", "fold_change"}
+
+
+def test_literature_dataframe_adds_measurement_families():
+    """
+    Verifies that heterogeneous literature rows can be filtered into
+    scientifically compatible validation subsets.
+    """
+    df = assemble_literature_dataframe(
+        literature=_make_literature_extractions()
+    )
+    families = dict(zip(df["value_type"], df["measurement_family"]))
+
+    assert families["Kd"] == "binding_affinity"
+    assert families["EC50"] == "response_threshold"
+    assert families["fold_change"] == "process_metric"
+
+
+def test_literature_dataframe_preserves_measurement_provenance():
+    """
+    Verifies that source classification and experimental notes survive
+    the JSON-to-CSV assembly step.
+    """
+    df = assemble_literature_dataframe(
+        literature=_make_literature_extractions()
+    )
+    kd_row = df[df["value_type"] == "Kd"].iloc[0]
+
+    assert kd_row["conditions_notes"] == "Measured by fluorescence titration"
+    assert kd_row["value_source_type"] == "cited_from_earlier_work"
+
+
+def test_literature_dataframe_marks_direct_affinity_candidates():
+    """
+    Verifies that only molar binding-affinity rows are marked for direct
+    validation against affinity targets.
+    """
+    df = assemble_literature_dataframe(
+        literature=_make_literature_extractions()
+    )
+    flags = dict(zip(df["value_type"], df["is_molar_affinity_candidate"]))
+
+    assert bool(flags["Kd"])
+    assert not bool(flags["EC50"])
+    assert not bool(flags["fold_change"])
 
 
 def test_literature_dataframe_value_in_molar_only_for_mass_action_units():

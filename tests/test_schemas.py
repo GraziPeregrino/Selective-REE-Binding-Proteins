@@ -45,6 +45,7 @@ def test_variant_accepts_minimal_valid_payload():
     assert variant.mutations == []
     assert variant.selectivity_cluster is None
 
+
 def test_variant_construct_type_defaults_to_ortholog():
     """
     Verifies that ProteinVariant defaults construct_type to 'ortholog'
@@ -146,7 +147,8 @@ def test_variant_accepts_notes_field():
     payload["notes"] = "His10-tagged recombinant construct"
     variant = ProteinVariant(**payload)
     assert variant.notes == "His10-tagged recombinant construct"
-    
+
+
 def test_variant_accepts_mutant_with_parent_reference():
     """
     Verifies that mutant variants can declare a parent and mutation list.
@@ -319,6 +321,7 @@ def test_measurement_accepts_actinide_elements():
     measurement = BindingMeasurement(**payload)
 
     assert measurement.target_element == "Curium"
+
 
 def test_measurement_rejects_unknown_element():
     """

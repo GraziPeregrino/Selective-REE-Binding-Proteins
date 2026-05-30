@@ -77,7 +77,7 @@
       "measurement_type": "EC50",
       "value": 4710.0,
       "units": "µM",
-      "value_in_molar": null,
+      "value_in_molar": 0.00471,
       "conditions_pH": null,
       "conditions_notes": null,
       "value_source_type": "primary",

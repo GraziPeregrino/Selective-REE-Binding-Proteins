@@ -12,8 +12,6 @@ project log. These tests pin the orchestration logic only.
 """
 from __future__ import annotations
 
-import pytest
-
 from agentic_ai.agents.corpus_runner import (
     CorpusRunResult,
     _print_summary,

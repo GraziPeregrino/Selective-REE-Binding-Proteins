@@ -63,7 +63,7 @@ def _print_dataset_summary(corpus: CorpusRecords) -> None:
     print(f"  cluster:  {sample.selectivity_cluster}")
     print(f"  sequence: {sample.sequence[:40]}... "
           f"({len(sample.sequence)} residues)")
-    print(f"  sample measurements:")
+    print("  sample measurements:")
 
     interesting_elements = {"Lanthanum", "Praseodymium", "Neodymium", "Lutetium"}
     sample_measurements = [

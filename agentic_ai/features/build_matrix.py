@@ -30,11 +30,14 @@ CLI smoke test:
 """
 from __future__ import annotations
 
+import json
+import pickle
 from pathlib import Path
 from typing import Dict, List, Optional
 
 import pandas as pd
 from sklearn.model_selection import StratifiedShuffleSplit
+from sklearn.preprocessing import OneHotEncoder
 
 from agentic_ai.features.ef_hand_motifs import compute_ef_hand_features
 from agentic_ai.features.encoding import (
@@ -77,6 +80,21 @@ def build_feature_matrix(
              split, there are 128 model features and 6 metadata
              columns.
     """
+    final_df, _ = _build_feature_matrix_with_encoder(
+        test_size=test_size,
+        random_state=random_state,
+    )
+    return final_df
+
+
+def _build_feature_matrix_with_encoder(
+    test_size: float = 0.2,
+    random_state: int = 42,
+) -> tuple[pd.DataFrame, OneHotEncoder]:
+    """
+    Assembles the ML-ready feature matrix and returns its train-fitted
+    categorical encoder for persistence alongside the matrix.
+    """
     # Load source data
     corpus = load_moesm3()
     moesm3_df = assemble_moesm3_dataframe(moesm3=corpus)
@@ -85,7 +103,9 @@ def build_feature_matrix(
     # long-form CSV, but needed for stratification and metadata).
     cluster_lookup = {v.variant_id: v.selectivity_cluster
                       for v in corpus.variants}
-    moesm3_df["selectivity_cluster"] = moesm3_df["variant_id"].map(cluster_lookup)
+    moesm3_df["selectivity_cluster"] = moesm3_df["variant_id"].map(
+        cluster_lookup
+    )
 
     # Cache per-sequence features (computed once per unique variant)
     sequence_features_by_id = _compute_sequence_features_cached(corpus)
@@ -139,16 +159,19 @@ def build_feature_matrix(
 
     final_df = pd.concat([metadata_df, encoded_features_df], axis=1)
 
-    return final_df
+    return final_df, encoder
 
 
 def save_feature_matrix(
     df: pd.DataFrame = None,
     output_path: Optional[Path] = None,
+    fitted_encoder: Optional[OneHotEncoder] = None,
 ) -> Path:
     """
-    Writes the feature matrix to Parquet. Creates parent directory
-    if needed.
+    Writes the feature matrix to Parquet and its ordered model-feature
+    schema to JSON. When supplied, writes the fitted categorical encoder
+    to a sibling pickle file for training and inference reuse. Creates
+    the parent directory if needed.
     @param df: The assembled feature matrix.
     @param output_path: Destination path. Defaults to
                         data/processed/ml_ready_features.parquet.
@@ -162,6 +185,22 @@ def save_feature_matrix(
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     df.to_parquet(output_path, index=False)
+
+    schema_path = output_path.with_name(
+        f"{output_path.stem}_schema.json"
+    )
+    schema_path.write_text(
+        json.dumps(get_feature_columns(df), indent=2) + "\n",
+        encoding="utf-8",
+    )
+
+    if fitted_encoder is not None:
+        encoder_path = output_path.with_name(
+            f"{output_path.stem}_encoder.pkl"
+        )
+        encoder_path.write_bytes(
+            pickle.dumps(fitted_encoder)
+        )
 
     return output_path
 
@@ -204,7 +243,9 @@ def _compute_sequence_features_cached(corpus) -> Dict[str, dict]:
     return sequence_features_by_id
 
 
-def _compute_element_features_cached(moesm3_df: pd.DataFrame) -> Dict[str, dict]:
+def _compute_element_features_cached(
+    moesm3_df: pd.DataFrame,
+) -> Dict[str, dict]:
     """
     Computes REE features once per unique element appearing in the
     dataset, keyed by element name for later joining.
@@ -320,7 +361,7 @@ def main() -> int:
     """
     CLI smoke test: build, validate, and save the feature matrix.
     """
-    df = build_feature_matrix()
+    df, encoder = _build_feature_matrix_with_encoder()
 
     feature_cols = get_feature_columns(df)
     train_df = df[df["split"] == "train"]
@@ -328,18 +369,18 @@ def main() -> int:
     train_variants = set(train_df["variant_id"])
     test_variants = set(test_df["variant_id"])
 
-    print(f"=== Feature matrix assembled ===")
+    print("=== Feature matrix assembled ===")
     print(f"Shape: {df.shape[0]:,} rows x {df.shape[1]} columns")
     print(f"Feature columns: {len(feature_cols)}")
     print(f"Metadata columns: {df.shape[1] - len(feature_cols)}")
     print()
-    print(f"=== Train/test split ===")
+    print("=== Train/test split ===")
     print(f"Train rows: {len(train_df):,} ({len(train_variants)} variants)")
     print(f"Test rows:  {len(test_df):,} ({len(test_variants)} variants)")
     print(f"Variant overlap: {len(train_variants & test_variants)} "
           f"(must be 0)")
     print()
-    print(f"=== Leakage checks ===")
+    print("=== Leakage checks ===")
     print(f"  selectivity_cluster in features: "
           f"{'selectivity_cluster' in feature_cols} (must be False)")
     print(f"  value (target) in features:      "
@@ -347,7 +388,7 @@ def main() -> int:
     print(f"  variant_id in features:          "
           f"{'variant_id' in feature_cols} (must be False)")
     print()
-    print(f"=== Cluster distribution in train/test ===")
+    print("=== Cluster distribution in train/test ===")
     print("Train clusters:")
     print(train_df["selectivity_cluster"].value_counts().sort_index()
           .to_string())
@@ -355,10 +396,12 @@ def main() -> int:
     print(test_df["selectivity_cluster"].value_counts().sort_index()
           .to_string())
 
-    output_path = save_feature_matrix(df=df)
+    output_path = save_feature_matrix(df=df, fitted_encoder=encoder)
     print()
-    print(f"=== Written ===")
+    print("=== Written ===")
     print(f"  {output_path}")
+    print(f"  {output_path.with_name(f'{output_path.stem}_schema.json')}")
+    print(f"  {output_path.with_name(f'{output_path.stem}_encoder.pkl')}")
 
     return 0
 

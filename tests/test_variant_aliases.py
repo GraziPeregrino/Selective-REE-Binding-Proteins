@@ -3,7 +3,13 @@ from __future__ import annotations
 
 import pytest
 
-from agentic_ai.loaders.variant_aliases import normalize_variant_name
+from agentic_ai.loaders.variant_aliases import (
+    classify_construct,
+    enrich_variant,
+    normalize_variant_name,
+    resolve_to_canonical_id,
+    should_drop,
+)
 
 
 # ---------------------------------------------------------------------------
@@ -182,12 +188,10 @@ def test_normalize_combines_tag_strip_with_capitalization():
     """
     assert normalize_variant_name("mex-LanM-Cys") == "Mex-LanM"
 
+
 # ---------------------------------------------------------------------------
 # TIER 1: alias resolution
 # ---------------------------------------------------------------------------
-
-from agentic_ai.loaders.variant_aliases import resolve_to_canonical_id
-
 
 @pytest.mark.parametrize("raw,expected", [
     ("Mex-LanM",   "o-621"),
@@ -261,11 +265,9 @@ def test_resolve_handles_bare_mutation_through_alias_chain():
     """
     assert resolve_to_canonical_id("R100K") == "Hans-LanM(R100K)"
 
-    # ---------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
 # TIER 2: construct classification
 # ---------------------------------------------------------------------------
-
-from agentic_ai.loaders.variant_aliases import classify_construct
 
 
 @pytest.mark.parametrize("variant_id", ["4D9A", "4D9H", "4D9M", "4D9N", "4P2A"])
@@ -314,6 +316,7 @@ def test_classify_calmodulin_chelator_as_distinct_scaffold():
     """
     assert classify_construct("CaBM") == ("engineered_chelator", "Calmodulin")
 
+
 def test_classify_lbt_as_de_novo_engineered_chelator():
     """
     Verifies that Lanthanide Binding Tag (LBT) is classified as an
@@ -323,6 +326,7 @@ def test_classify_lbt_as_de_novo_engineered_chelator():
     would be a misclassification.
     """
     assert classify_construct("LBT") == ("engineered_chelator", "de_novo")
+
 
 @pytest.mark.parametrize("variant_id", ["RF1", "RF2", "RF2 6AW", "RF3"])
 def test_classify_rf_series_with_unknown_scaffold(variant_id):
@@ -386,12 +390,10 @@ def test_classify_does_not_short_circuit_normalization_responsibility():
     assert classify_construct("mex-lanm") is None
     assert classify_construct("Mex-LanM-Cys") is None
 
+
 # ---------------------------------------------------------------------------
 # TIER 3: drop rules
 # ---------------------------------------------------------------------------
-
-from agentic_ai.loaders.variant_aliases import enrich_variant, should_drop
-
 
 @pytest.mark.parametrize("name", ["LanM"])
 def test_should_drop_returns_true_for_dropped_names(name):
@@ -547,9 +549,12 @@ def test_enrich_bare_r100k_chains_to_full_lanm_mutant():
     assert result["canonical_id"] == "Hans-LanM(R100K)"
     assert result["construct_type"] == "point_mutant"
     assert result["parent_scaffold"] == "Lanmodulin"
+
+
 # ---------------------------------------------------------------------------
 # Names promoted out of the drop list after corpus inspection
 # ---------------------------------------------------------------------------
+
 
 @pytest.mark.parametrize("ef_motif", ["EF1", "EF2", "EF3", "EF4"])
 def test_classify_ef_hand_peptides_as_lanmodulin_chelators(ef_motif):
@@ -602,4 +607,3 @@ def test_should_drop_returns_false_for_promoted_names(name):
     after corpus inspection — are no longer flagged for drop.
     """
     assert should_drop(name) is False
-    

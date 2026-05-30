@@ -3,7 +3,8 @@ MOESM3 and literature extractions (Week 1 Block 5).
 
 The two sources measure fundamentally different quantities:
   - MOESM3: normalized_logD selectivity scores (unitless, 0-1 range)
-  - Literature: actual binding constants (Kd, EC50, etc. in molar)
+  - Literature: heterogeneous published measurements (Kd, EC50,
+    relaxivity, process metrics, etc.)
 
 They cannot be merged into a single target column without corrupting
 the science. This module produces two separate DataFrames and CSVs.
@@ -23,7 +24,6 @@ import pandas as pd
 from agentic_ai.agents.extraction_models import PaperExtraction
 from agentic_ai.loaders.extraction_io import load_extractions
 from agentic_ai.loaders.xlsx_loader import CorpusRecords, load_moesm3
-from agentic_ai.schemas import BindingMeasurement, ProteinVariant
 
 
 # Column order for the MOESM3 selectivity DataFrame. Every column has
@@ -43,9 +43,10 @@ MOESM3_COLUMNS = [
 ]
 
 
-# Column order for the literature binding DataFrame. value can be Kd,
-# Kd_app, EC50, etc., reported in arbitrary units. value_in_molar holds
-# the normalized form when units are mass-action (M, nM, mM, etc.).
+# Column order for the literature binding DataFrame. measurement_family
+# makes the heterogeneous corpus filterable for scientifically compatible
+# comparisons. value_in_molar holds the normalized form when units are
+# mass-action (M, nM, mM, etc.).
 LITERATURE_COLUMNS = [
     "measurement_id",
     "variant_id",
@@ -57,8 +58,12 @@ LITERATURE_COLUMNS = [
     "value",
     "value_units",
     "value_type",
+    "measurement_family",
+    "is_molar_affinity_candidate",
     "value_in_molar",
     "conditions_pH",
+    "conditions_notes",
+    "value_source_type",
     "source_paper",
 ]
 
@@ -205,21 +210,76 @@ def _build_literature_rows(
             rows.append({
                 "measurement_id":   f"lit_{counter:04d}",
                 "variant_id":       measurement.variant_id,
-                "construct_type":   variant.construct_type if variant else None,
-                "parent_scaffold":  variant.parent_scaffold if variant else None,
-                "source_organism":  variant.source_organism if variant else None,
+                "construct_type": (
+                    variant.construct_type if variant else None
+                ),
+                "parent_scaffold": (
+                    variant.parent_scaffold if variant else None
+                ),
+                "source_organism": (
+                    variant.source_organism if variant else None
+                ),
                 "sequence":         variant.sequence if variant else None,
                 "target_element":   measurement.target_element,
                 "value":            measurement.value,
                 "value_units":      measurement.units,
                 "value_type":       measurement.measurement_type,
+                "measurement_family": _measurement_family(
+                    measurement.measurement_type
+                ),
+                "is_molar_affinity_candidate": (
+                    _is_molar_affinity_candidate(measurement)
+                ),
                 "value_in_molar":   measurement.value_in_molar,
                 "conditions_pH":    measurement.conditions_pH,
+                "conditions_notes": measurement.conditions_notes,
+                "value_source_type": measurement.value_source_type,
                 "source_paper":     measurement.source_paper,
             })
             counter += 1
 
     return rows
+
+
+def _measurement_family(measurement_type: str) -> str:
+    """
+    Groups free-form literature measurement types into broad semantic
+    families so downstream validation can select compatible targets.
+    """
+    normalized = measurement_type.strip().lower()
+
+    if normalized in {"kd", "kd_app", "kd1"}:
+        return "binding_affinity"
+    if normalized in {"kdimer", "kd_dimer"}:
+        return "dimerization_affinity"
+    if normalized == "ec50":
+        return "response_threshold"
+    if normalized in {"logd", "normalized_logd"}:
+        return "distribution"
+    if normalized in {"δgapp", "Δgapp".lower()}:
+        return "thermodynamics"
+    if normalized in {"r₁", "r1", "relaxivity"}:
+        return "relaxivity"
+    if normalized == "binding":
+        return "binding_capacity"
+    if normalized in {
+        "fold difference", "fold_change", "purity", "yield", "separation",
+    }:
+        return "process_metric"
+
+    return "other"
+
+
+def _is_molar_affinity_candidate(measurement) -> bool:
+    """
+    Marks rows suitable for direct molar binding-affinity validation.
+    Other valid rows remain available for separate analyses.
+    """
+    return (
+        _measurement_family(measurement.measurement_type)
+        == "binding_affinity"
+        and measurement.value_in_molar is not None
+    )
 
 
 def main() -> int:
@@ -231,7 +291,7 @@ def main() -> int:
     moesm3_df = assemble_moesm3_dataframe()
     literature_df = assemble_literature_dataframe()
 
-    print(f"=== MOESM3 selectivity DataFrame ===")
+    print("=== MOESM3 selectivity DataFrame ===")
     print(f"Shape: {moesm3_df.shape[0]:,} rows x {moesm3_df.shape[1]} columns")
     print(f"Unique variants:  {moesm3_df['variant_id'].nunique():,}")
     print(f"Unique elements:  {moesm3_df['target_element'].nunique()}")
@@ -240,12 +300,12 @@ def main() -> int:
           f"{moesm3_df['value'].max():.3f}]")
 
     print()
-    print(f"=== Literature binding DataFrame ===")
+    print("=== Literature binding DataFrame ===")
     print(f"Shape: {literature_df.shape[0]:,} rows x "
           f"{literature_df.shape[1]} columns")
     print(f"Unique variants:  {literature_df['variant_id'].nunique()}")
     print(f"Unique elements:  {literature_df['target_element'].nunique()}")
-    print(f"value_type top 5:")
+    print("value_type top 5:")
     print(literature_df["value_type"].value_counts().head(5).to_string())
     print()
     print(f"value_in_molar coverage: "
@@ -254,16 +314,20 @@ def main() -> int:
           f"({literature_df['value_in_molar'].notna().mean()*100:.1f}%)")
 
     print()
-    print(f"=== construct_type distribution (literature) ===")
-    print(literature_df["construct_type"].value_counts(dropna=False).to_string())
+    print("=== construct_type distribution (literature) ===")
+    print(
+        literature_df["construct_type"].value_counts(dropna=False).to_string()
+    )
 
     print()
-    print(f"=== parent_scaffold distribution (literature) ===")
-    print(literature_df["parent_scaffold"].value_counts(dropna=False).to_string())
+    print("=== parent_scaffold distribution (literature) ===")
+    print(
+        literature_df["parent_scaffold"].value_counts(dropna=False).to_string()
+    )
 
     paths = save_datasets(moesm3_df=moesm3_df, literature_df=literature_df)
     print()
-    print(f"=== Written CSVs ===")
+    print("=== Written CSVs ===")
     for source, path in paths.items():
         print(f"  {source:<12} {path}")
 

@@ -1,8 +1,6 @@
 """Tests for REE-specific physicochemical features (Week 2 Block 2.3)."""
 from __future__ import annotations
 
-import pytest
-
 from agentic_ai.features.ree_features import (
     get_ree_features,
     get_ree_features_batch,

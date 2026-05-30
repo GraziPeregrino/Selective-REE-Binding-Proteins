@@ -6,6 +6,7 @@ import pytest
 from agentic_ai.features.ef_hand_motifs import (
     EF_HAND_MOTIF_LENGTH,
     EFHandMotif,
+    compute_ef_hand_features,
     find_ef_hand_motifs,
 )
 
@@ -203,12 +204,11 @@ def test_motif_at_end_of_sequence_is_detected():
     motifs = find_ef_hand_motifs(sequence)
     assert len(motifs) == 1
     assert motifs[0].start_index == 6
+
+
 # ---------------------------------------------------------------------------
 # Block 2.2b: compute_ef_hand_features
 # ---------------------------------------------------------------------------
-
-from agentic_ai.features.ef_hand_motifs import compute_ef_hand_features
-
 
 # ---------------------------------------------------------------------------
 # Output shape and contract
@@ -496,4 +496,3 @@ def test_features_raises_on_non_standard_amino_acids():
     contaminated = MEX_LANM_SEQUENCE[:50] + "X" + MEX_LANM_SEQUENCE[51:]
     with pytest.raises(ValueError, match="non-standard"):
         compute_ef_hand_features(contaminated)
-        

@@ -114,6 +114,7 @@ _GROUP_LEVEL_LABELS = {
     "rare earth elements", "rees",
 }
 
+
 class ProteinVariant(BaseModel):
     """
     Represents a single protein construct: wild-type ortholog or engineered
@@ -177,6 +178,7 @@ class ProteinVariant(BaseModel):
             )
 
         return cleaned
+
     @field_validator("construct_type")
     @classmethod
     def _construct_type_is_known(cls, value: str) -> str:
@@ -222,6 +224,7 @@ class ProteinVariant(BaseModel):
             )
 
         return cleaned
+
 
 class BindingMeasurement(BaseModel):
     """
@@ -298,6 +301,7 @@ class BindingMeasurement(BaseModel):
             f"Expected an element name (e.g. 'Neodymium'), symbol "
             f"('Nd'), or oxidation-state notation ('NdIII', 'Nd³⁺')."
         )
+
     @field_validator("value_source_type")
     @classmethod
     def _source_type_is_known(cls, value: str) -> str:

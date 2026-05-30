@@ -1,8 +1,12 @@
 """Tests for final ML feature-matrix assembly (Week 2 Block 2.5)."""
 from __future__ import annotations
 
+import json
+import pickle
+
 import pandas as pd
 import pytest
+from sklearn.preprocessing import OneHotEncoder
 
 from agentic_ai.features.build_matrix import (
     _assign_train_test_split,
@@ -10,6 +14,7 @@ from agentic_ai.features.build_matrix import (
     _join_features_to_rows,
     build_feature_matrix,
     get_feature_columns,
+    save_feature_matrix,
 )
 
 
@@ -73,3 +78,33 @@ def test_split_raises_for_missing_cluster():
 
     with pytest.raises(ValueError, match="o-2"):
         _assign_train_test_split(df, test_size=0.2, random_state=42)
+
+
+def test_save_feature_matrix_writes_schema_and_encoder(tmp_path):
+    """
+    Verifies persistence of the preprocessing artifacts required by
+    Week 3 training and Week 4 inference.
+    """
+    df = pd.DataFrame({
+        "measurement_id": ["m-1"],
+        "variant_id": ["o-1"],
+        "target_element": ["Neodymium"],
+        "selectivity_cluster": [0],
+        "split": ["train"],
+        "value": [0.5],
+        "feature_a": [1.0],
+    })
+    encoder = OneHotEncoder(handle_unknown="ignore", sparse_output=False)
+    encoder.fit(pd.DataFrame({"residue": ["D"]}))
+    output_path = tmp_path / "matrix.parquet"
+
+    save_feature_matrix(
+        df=df,
+        output_path=output_path,
+        fitted_encoder=encoder,
+    )
+
+    schema_path = tmp_path / "matrix_schema.json"
+    encoder_path = tmp_path / "matrix_encoder.pkl"
+    assert json.loads(schema_path.read_text()) == ["feature_a"]
+    assert isinstance(pickle.loads(encoder_path.read_bytes()), OneHotEncoder)

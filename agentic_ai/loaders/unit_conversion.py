@@ -14,12 +14,14 @@ from __future__ import annotations
 from typing import Optional
 
 # Multiplicative factor to convert a value in <key> into molar units.
-# 'M' is 1.0 (no conversion). Micro and 'u' accepted as a common ASCII
-# stand-in for the Greek mu. Capitalization is normalized before lookup.
+# 'M' is 1.0 (no conversion). Both Unicode micro spellings and 'u' are
+# accepted. Capitalization and common scientific notation are normalized
+# before lookup.
 _TO_MOLAR = {
     "m":   1e-3,
     "um":  1e-6,
     "μm":  1e-6,
+    "µm":  1e-6,
     "nm":  1e-9,
     "pm":  1e-12,
     "fm":  1e-15,
@@ -51,6 +53,9 @@ def to_molar(value: float = None, units: str = None) -> Optional[float]:
         return None
 
     normalized = units.strip().lower()
+    normalized = normalized.replace(" ", "")
+    normalized = normalized.replace("mol", "m")
+    normalized = normalized.replace("l^{-1}", "")
 
     if normalized in _UNITLESS_UNITS:
         return None

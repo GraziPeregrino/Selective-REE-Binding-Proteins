@@ -11,7 +11,6 @@ re-running the agent and re-paying for the API.
 """
 from __future__ import annotations
 
-import json
 from pathlib import Path
 from typing import Dict
 
@@ -80,6 +79,48 @@ def load_extractions(
         extractions[path.stem] = PaperExtraction.model_validate_json(text)
 
     return extractions
+
+
+def refresh_persisted_molar_values(
+    input_dir: Path = None,
+    output_dir: Path = None,
+) -> int:
+    """
+    Recomputes value_in_molar for every persisted measurement using the
+    deterministic unit converter and writes the refreshed extractions.
+    Useful after adding support for a newly observed unit spelling.
+    @return : Number of measurements whose normalized value changed.
+    """
+    from agentic_ai.loaders.unit_conversion import to_molar
+
+    if input_dir is None:
+        input_dir = _DEFAULT_EXTRACTIONS_DIR
+    if output_dir is None:
+        output_dir = input_dir
+
+    extractions = load_extractions(input_dir=input_dir)
+    changed = 0
+
+    for extraction in extractions.values():
+        refreshed = []
+        for measurement in extraction.measurements:
+            value_in_molar = to_molar(
+                measurement.value,
+                measurement.units,
+            )
+            if value_in_molar != measurement.value_in_molar:
+                changed += 1
+            refreshed.append(
+                measurement.model_copy(
+                    update={"value_in_molar": value_in_molar}
+                )
+            )
+        extraction.measurements = refreshed
+
+    save_extractions(extractions, output_dir=output_dir)
+    return changed
+
+
 def enrich_persisted_extractions(
     input_dir: Path = None,
     output_dir: Path = None,
@@ -235,6 +276,8 @@ def enrich_persisted_extractions(
         save_extractions(enriched_by_paper, output_dir=output_dir)
 
     return summary
+
+
 def _dedupe_variants_by_id(
     variants: list,
 ) -> tuple:
@@ -297,14 +340,24 @@ def _merge_variants(a, b):
         return x if x is not None else y
 
     return a.model_copy(update={
-        "source_organism":     longer_string(a.source_organism, b.source_organism),
+        "source_organism": longer_string(
+            a.source_organism, b.source_organism
+        ),
         "sequence":            longer_string(a.sequence, b.sequence),
-        "parent_variant_id":   first_non_none(a.parent_variant_id, b.parent_variant_id),
+        "parent_variant_id": first_non_none(
+            a.parent_variant_id, b.parent_variant_id
+        ),
         "mutations":           union_mutations(a.mutations, b.mutations),
-        "mutation_notation":   first_non_none(a.mutation_notation, b.mutation_notation),
+        "mutation_notation": first_non_none(
+            a.mutation_notation, b.mutation_notation
+        ),
         "taxonomy":            longer_string(a.taxonomy, b.taxonomy),
-        "ef_hand_count":       first_non_none(a.ef_hand_count, b.ef_hand_count),
-        "selectivity_cluster": first_non_none(a.selectivity_cluster, b.selectivity_cluster),
+        "ef_hand_count": first_non_none(
+            a.ef_hand_count, b.ef_hand_count
+        ),
+        "selectivity_cluster": first_non_none(
+            a.selectivity_cluster, b.selectivity_cluster
+        ),
         "notes":               longer_string(a.notes, b.notes),
         # construct_type, parent_scaffold, variant_id, source_paper are
         # all canonical at this point — keep `a`'s (they should match).

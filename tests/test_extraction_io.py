@@ -8,9 +8,6 @@ Covers:
 """
 from __future__ import annotations
 
-import pytest
-from pathlib import Path
-
 from agentic_ai.agents.extraction_models import PaperExtraction
 from agentic_ai.loaders.extraction_io import (
     enrich_persisted_extractions,
@@ -186,7 +183,7 @@ def test_enrich_canonicalizes_mex_lanm_to_moesm3_id(tmp_path):
     """
     save_extractions(
         extractions={"p": _make_extraction(
-    
+
             variants=[_make_variant(variant_id="Mex-LanM", source_paper="p")],
         )},
         output_dir=tmp_path,
@@ -259,7 +256,7 @@ def test_enrich_dry_run_does_not_write_to_disk(tmp_path):
     original_variant = _make_variant(variant_id="Mex-LanM", source_paper="p")
     save_extractions(
         extractions={"p": _make_extraction(
-        variants=[original_variant],
+            variants=[original_variant],
         )},
         output_dir=tmp_path,
     )
@@ -285,7 +282,7 @@ def test_enrich_propagates_canonical_ids_to_measurements(tmp_path):
     """
     save_extractions(
         extractions={"p": _make_extraction(
-          
+
             variants=[_make_variant(variant_id="Mex-LanM", source_paper="p")],
             measurements=[
                 _make_measurement(variant_id="Mex-LanM", source_paper="p"),
@@ -315,7 +312,7 @@ def test_enrich_drops_measurements_for_dropped_variants(tmp_path):
     """
     save_extractions(
         extractions={"p": _make_extraction(
-         
+
             variants=[_make_variant(variant_id="LanM", source_paper="p")],
             measurements=[
                 _make_measurement(variant_id="LanM", source_paper="p"),
@@ -341,7 +338,7 @@ def test_enrich_auto_creates_variant_for_orphan_measurement(tmp_path):
     """
     save_extractions(
         extractions={"p": _make_extraction(
-           
+
             variants=[],  # No variants at all
             measurements=[
                 _make_measurement(variant_id="LBT", source_paper="p"),
@@ -370,7 +367,7 @@ def test_enrich_handles_measurement_variant_id_mismatch_within_paper(tmp_path):
     """
     save_extractions(
         extractions={"p": _make_extraction(
-         
+
             variants=[_make_variant(variant_id="R100K", source_paper="p")],
             measurements=[_make_measurement(
                 variant_id="Hans-LanM(R100K)", source_paper="p",
@@ -402,7 +399,7 @@ def test_enrich_merges_duplicate_variants_after_canonicalization(tmp_path):
     """
     save_extractions(
         extractions={"p": _make_extraction(
-           
+
             variants=[
                 _make_variant(variant_id="Mex-LanM", source_paper="p"),
                 _make_variant(variant_id="o-621", source_paper="p"),
@@ -428,7 +425,7 @@ def test_enrich_merges_combine_non_overlapping_fields(tmp_path):
     """
     save_extractions(
         extractions={"p": _make_extraction(
-        
+
             variants=[
                 _make_variant(
                     variant_id="Mex-LanM",

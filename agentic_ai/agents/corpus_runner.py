@@ -17,7 +17,6 @@ from __future__ import annotations
 import argparse
 import sys
 import time
-import traceback
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional
 from agentic_ai.agents.extraction_models import PaperExtraction
@@ -159,7 +158,7 @@ def _print_summary(result: CorpusRunResult) -> None:
 
     print()
     print("=" * 60)
-    print(f"Corpus run summary")
+    print("Corpus run summary")
     print("=" * 60)
     print(f"Papers processed:    {total}")
     print(f"  Successful:        {len(result.successful)}")

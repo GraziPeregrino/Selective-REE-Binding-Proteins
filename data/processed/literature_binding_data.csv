@@ -1,90 +1,89 @@
-measurement_id,variant_id,construct_type,parent_scaffold,source_organism,sequence,target_element,value,value_units,value_type,value_in_molar,conditions_pH,source_paper
-lit_0005,LanM-GCaMP,fusion_sensor,Lanmodulin+GFP,Escherichia coli,,Lanthanum,3.5,fold,fold_change,,,biorxiv_2023_09_26_559553
-lit_0002,LanTERN,fusion_sensor,Lanmodulin+GFP,Escherichia coli,,Lanthanum,976.0,nM,EC50,9.76e-07,,biorxiv_2023_09_26_559553
-lit_0004,LanTERN,fusion_sensor,Lanmodulin+GFP,Escherichia coli,,Lanthanum,10.0,fold,fold_change,,,biorxiv_2023_09_26_559553
-lit_0003,LanTERN,fusion_sensor,Lanmodulin+GFP,Escherichia coli,,Ytterbium,4710.0,µM,EC50,,,biorxiv_2023_09_26_559553
-lit_0001,o-621,ortholog,Lanmodulin,Methylorubrum extorquens,,Lanthanum,1e-12,M,Kd,1e-12,,biorxiv_2023_09_26_559553
-lit_0006,wild-type S. oneidensis,ortholog,non_LanM_protein,Shewanella oneidensis,,Europium,1e-06,Mol L^{-1},Kd,,,biorxiv_2023_10_18_562985
-lit_0009,wild-type S. oneidensis,ortholog,non_LanM_protein,Shewanella oneidensis,,Europium,1.25e-07,Mol L^{-1},Kd1,,,biorxiv_2023_10_18_562985
-lit_0008,wild-type S. oneidensis,ortholog,non_LanM_protein,Shewanella oneidensis,,Lanthanum,2.282e-06,Mol L^{-1},Kd,,,biorxiv_2023_10_18_562985
-lit_0011,wild-type S. oneidensis,ortholog,non_LanM_protein,Shewanella oneidensis,,Lanthanum,1.25e-07,Mol L^{-1},Kd1,,,biorxiv_2023_10_18_562985
-lit_0007,wild-type S. oneidensis,ortholog,non_LanM_protein,Shewanella oneidensis,,Ytterbium,1.256e-06,Mol L^{-1},Kd,,,biorxiv_2023_10_18_562985
-lit_0010,wild-type S. oneidensis,ortholog,non_LanM_protein,Shewanella oneidensis,,Ytterbium,1e-06,Mol L^{-1},Kd1,,,biorxiv_2023_10_18_562985
-lit_0013,MIF,ortholog,lanpepsy,Methylobacillus flagellatus,,Lanthanum,3.69,µM,Kd,,,biorxiv_2025.10.21.683075
-lit_0016,MIF,ortholog,lanpepsy,Methylobacillus flagellatus,,Lanthanum,-42.0,kJ/mol,ΔGapp,,,biorxiv_2025.10.21.683075
-lit_0012,MIF,ortholog,lanpepsy,Methylobacillus flagellatus,,Samarium,23.9,pM,Kd,2.39e-11,,biorxiv_2025.10.21.683075
-lit_0015,MIF,ortholog,lanpepsy,Methylobacillus flagellatus,,Samarium,-45.6,kJ/mol,ΔGapp,,,biorxiv_2025.10.21.683075
-lit_0014,MIF,ortholog,lanpepsy,Methylobacillus flagellatus,,Thulium,38.1,kJ/mol,Kd,,,biorxiv_2025.10.21.683075
-lit_0017,MIF,ortholog,lanpepsy,Methylobacillus flagellatus,,Thulium,-38.1,kJ/mol,ΔGapp,,,biorxiv_2025.10.21.683075
-lit_0021,CaBM,engineered_chelator,Calmodulin,bacterial,DKDGNGYISAAE,Gadolinium,14.0,L/(s·mmol),r₁,,,biorxiv_2025.12.14.694215
-lit_0020,EF3,engineered_chelator,Lanmodulin,bacterial,DPDNDGTLDKKE,Gadolinium,19.0,L/(s·mmol),r₁,,,biorxiv_2025.12.14.694215
-lit_0018,LanND-Gd,engineered_chelator,Lanmodulin,bacterial,,Gadolinium,13.15,mM⁻¹·s⁻¹,relaxivity,,,biorxiv_2025.12.14.694215
-lit_0019,ProCA32,engineered_chelator,Lanmodulin,calmodulin,,Gadolinium,33.0,mM⁻¹·s⁻¹,r₁,,7.0,biorxiv_2025.12.14.694215
-lit_0029,LBT,engineered_chelator,de_novo,(auto-created from measurement),,Europium,490.0,nM,Kd,4.900000000000001e-07,,biorxiv_2025_10_19_682977
-lit_0028,LBT,engineered_chelator,de_novo,(auto-created from measurement),,Terbium,190.0,nM,Kd,1.9e-07,,biorxiv_2025_10_19_682977
-lit_0026,RF1,engineered_chelator,unknown,not specified,,Terbium,320.0,nM,Kd,3.2e-07,,biorxiv_2025_10_19_682977
-lit_0022,RF2,engineered_chelator,unknown,not specified,,Terbium,19.0,nM,Kd,1.9e-08,,biorxiv_2025_10_19_682977
-lit_0025,RF2 6AW,engineered_chelator,unknown,not specified,,Dysprosium,290.0,nM,Kd,2.9000000000000003e-07,,biorxiv_2025_10_19_682977
-lit_0024,RF2 6AW,engineered_chelator,unknown,not specified,,Europium,150.0,nM,Kd,1.5000000000000002e-07,,biorxiv_2025_10_19_682977
-lit_0023,RF2 6AW,engineered_chelator,unknown,not specified,,Terbium,37.0,nM,Kd,3.7e-08,,biorxiv_2025_10_19_682977
-lit_0027,RF3,engineered_chelator,unknown,not specified,,Terbium,3300.0,nM,Kd,3.3e-06,,biorxiv_2025_10_19_682977
-lit_0033,EF1,engineered_chelator,Lanmodulin,Methylorubrum extorquens,,Curium,2.28,µM,Kd,,,chemistry_d2qi00933a
-lit_0030,EF1,engineered_chelator,Lanmodulin,Methylorubrum extorquens,,Europium,8.55,µM,Kd,,6.6,chemistry_d2qi00933a
-lit_0031,EF1,engineered_chelator,Lanmodulin,Methylorubrum extorquens,,Europium,5.5,µM,Kd,,6.6,chemistry_d2qi00933a
-lit_0032,EF1,engineered_chelator,Lanmodulin,Methylorubrum extorquens,,Terbium,8.47,µM,Kd,,6.6,chemistry_d2qi00933a
-lit_0037,EF2,engineered_chelator,Lanmodulin,Methylorubrum extorquens,,Curium,2.86,µM,Kd,,,chemistry_d2qi00933a
-lit_0034,EF2,engineered_chelator,Lanmodulin,Methylorubrum extorquens,,Europium,8.61,µM,Kd,,6.6,chemistry_d2qi00933a
-lit_0035,EF2,engineered_chelator,Lanmodulin,Methylorubrum extorquens,,Europium,6.52,µM,Kd,,6.6,chemistry_d2qi00933a
-lit_0036,EF2,engineered_chelator,Lanmodulin,Methylorubrum extorquens,,Terbium,8.24,µM,Kd,,6.6,chemistry_d2qi00933a
-lit_0041,EF3,engineered_chelator,Lanmodulin,Methylorubrum extorquens,,Curium,2.77,µM,Kd,,,chemistry_d2qi00933a
-lit_0038,EF3,engineered_chelator,Lanmodulin,Methylorubrum extorquens,,Europium,8.02,µM,Kd,,6.6,chemistry_d2qi00933a
-lit_0039,EF3,engineered_chelator,Lanmodulin,Methylorubrum extorquens,,Europium,7.42,µM,Kd,,6.6,chemistry_d2qi00933a
-lit_0040,EF3,engineered_chelator,Lanmodulin,Methylorubrum extorquens,,Terbium,8.46,µM,Kd,,6.6,chemistry_d2qi00933a
-lit_0045,EF4,engineered_chelator,Lanmodulin,Methylorubrum extorquens,,Curium,2.34,µM,Kd,,,chemistry_d2qi00933a
-lit_0042,EF4,engineered_chelator,Lanmodulin,Methylorubrum extorquens,,Europium,8.85,µM,Kd,,6.6,chemistry_d2qi00933a
-lit_0043,EF4,engineered_chelator,Lanmodulin,Methylorubrum extorquens,,Europium,7.56,µM,Kd,,6.6,chemistry_d2qi00933a
-lit_0044,EF4,engineered_chelator,Lanmodulin,Methylorubrum extorquens,,Terbium,7.85,µM,Kd,,6.6,chemistry_d2qi00933a
-lit_0057,4D9A,point_mutant,Lanmodulin,Methylorubrum extorquens,,Neodymium,3.97e-10,M,Kd,3.97e-10,5.0,elsevier_2001-0370_2025
-lit_0059,4D9H,point_mutant,Lanmodulin,Methylorubrum extorquens,,Neodymium,2.15e-09,M,Kd,2.15e-09,5.0,elsevier_2001-0370_2025
-lit_0058,4D9M,point_mutant,Lanmodulin,Methylorubrum extorquens,,Neodymium,1.46e-09,M,Kd,1.46e-09,5.0,elsevier_2001-0370_2025
-lit_0056,4D9N,point_mutant,Lanmodulin,Methylorubrum extorquens,,Neodymium,5.31e-11,M,Kd,5.31e-11,5.0,elsevier_2001-0370_2025
-lit_0055,4P2A,point_mutant,Lanmodulin,Methylorubrum extorquens,,Calcium,2.6e-06,M,Kd,2.6e-06,7.2,elsevier_2001-0370_2025
-lit_0053,4P2A,point_mutant,Lanmodulin,Methylorubrum extorquens,,Lanthanum,1e-12,M,Kd,1e-12,7.2,elsevier_2001-0370_2025
-lit_0054,4P2A,point_mutant,Lanmodulin,Methylorubrum extorquens,,Neodymium,4.4e-13,M,Kd,4.4e-13,7.2,elsevier_2001-0370_2025
-lit_0052,o-621,ortholog,Lanmodulin,Methylorubrum extorquens,,Calcium,0.00071,M,Kd,0.00071,7.2,elsevier_2001-0370_2025
-lit_0049,o-621,ortholog,Lanmodulin,Methylorubrum extorquens,,Gadolinium,1e-11,M,Kd,1e-11,7.2,elsevier_2001-0370_2025
-lit_0046,o-621,ortholog,Lanmodulin,Methylorubrum extorquens,,Lanthanum,5.3e-12,M,Kd,5.3e-12,7.2,elsevier_2001-0370_2025
-lit_0047,o-621,ortholog,Lanmodulin,Methylorubrum extorquens,,Neodymium,5.3e-12,M,Kd,5.3e-12,7.2,elsevier_2001-0370_2025
-lit_0048,o-621,ortholog,Lanmodulin,Methylorubrum extorquens,,Samarium,6.6e-12,M,Kd,6.6e-12,7.2,elsevier_2001-0370_2025
-lit_0050,o-621,ortholog,Lanmodulin,Methylorubrum extorquens,,Terbium,2.1e-11,M,Kd,2.1e-11,7.2,elsevier_2001-0370_2025
-lit_0051,o-621,ortholog,Lanmodulin,Methylorubrum extorquens,,Yttrium,1.7e-11,M,Kd,1.7e-11,7.2,elsevier_2001-0370_2025
-lit_0061,Hans-LanM(R100K),point_mutant,Lanmodulin,Hansschlegelia quercus,,Dysprosium,27.0,unitless,Kd_app,,,nature_2026_02176
-lit_0063,o-127,ortholog,Lanmodulin,Methylosinus sp. sav-2,,Praseodymium,3.5,unitless,logD,,5.0,nature_2026_02176
-lit_0062,o-36,ortholog,Lanmodulin,Methylobacterium sp. 13MFTsu3.1M2,,Praseodymium,8.7,unitless,logD,,5.0,nature_2026_02176
-lit_0064,o-36,ortholog,Lanmodulin,Methylobacterium sp. 13MFTsu3.1M2,,Samarium,98.6,unitless,logD,,,nature_2026_02176
-lit_0065,o-621,ortholog,Lanmodulin,Methylobacterium extorquens,,Lanthanum,0.8,unitless,logD,,,nature_2026_02176
-lit_0060,o-621,ortholog,Lanmodulin,Methylobacterium extorquens,,Neodymium,27.0,unitless,Kd_app,,,nature_2026_02176
-lit_0068,CDS J19_31570,ortholog,unknown,Mesorhizobium qingshengii,,Neodymium,68.0,µg Nd/mg protein,Binding,,,nature_41598_2026_Article_45294
-lit_0070,CDS J19_31570,ortholog,unknown,Mesorhizobium qingshengii,,Neodymium,6.54,µg Nd/mg protein,Binding,,,nature_41598_2026_Article_45294
-lit_0066,CDS J19_31570,ortholog,unknown,Mesorhizobium qingshengii,,Yttrium,101.2,µg Y/mg protein,Binding,,8.0,nature_41598_2026_Article_45294
-lit_0067,CDS J19_31570,ortholog,unknown,Mesorhizobium qingshengii,,Yttrium,59.7,µg Y/mg protein,Binding,,,nature_41598_2026_Article_45294
-lit_0069,CDS J19_31570,ortholog,unknown,Mesorhizobium qingshengii,,Yttrium,39.2,µg Y/mg protein,Binding,,,nature_41598_2026_Article_45294
-lit_0073,o-180,ortholog,Lanmodulin,Hansschlegelia quercus,,Dysprosium,9e-11,M,Kd_app,9e-11,,nature_d41586-023-01739
-lit_0072,o-180,ortholog,Lanmodulin,Hansschlegelia quercus,,Lanthanum,7e-11,M,Kd_app,7e-11,,nature_d41586-023-01739
-lit_0071,o-621,ortholog,Lanmodulin,Methylobacterium extorquens,,Neodymium,5e-12,M,Kd_app,5e-12,,nature_d41586-023-01739
-lit_0080,Hans-LanM(R100K),point_mutant,Lanmodulin,Hansschlegelia quercus,,Lanthanum,0.5,pM,Kd_app,5e-13,,nature_s41586-023-05945-5
-lit_0077,o-180,ortholog,Lanmodulin,Hansschlegelia quercus,,Calcium,60.0,µM,Kd_app,,,nature_s41586-023-05945-5
-lit_0076,o-180,ortholog,Lanmodulin,Hansschlegelia quercus,,Dysprosium,0.3,µM,Kd_app,,,nature_s41586-023-05945-5
-lit_0078,o-180,ortholog,Lanmodulin,Hansschlegelia quercus,,Dysprosium,60.0,µM,Kdimer,,,nature_s41586-023-05945-5
-lit_0079,o-180,ortholog,Lanmodulin,Hansschlegelia quercus,,Dysprosium,117.0,µM,Kdimer,,,nature_s41586-023-05945-5
-lit_0074,o-180,ortholog,Lanmodulin,Hansschlegelia quercus,,Lanthanum,68.0,pM,Kd_app,6.8e-11,5.0,nature_s41586-023-05945-5
-lit_0075,o-180,ortholog,Lanmodulin,Hansschlegelia quercus,,Neodymium,91.0,pM,Kd_app,9.1e-11,5.0,nature_s41586-023-05945-5
-lit_0088,Hans-LanM(R100K),point_mutant,Lanmodulin,Hansschlegelia quercus,,Lanthanum,13.7,unitless,Kd_app,,,nature_s41589-026-02176-3
-lit_0086,o-127,ortholog,Lanmodulin,Methylosinus sp. sav-2,,Neodymium,3.5,unitless,fold difference,,,nature_s41589-026-02176-3
-lit_0082,o-36,ortholog,Lanmodulin,Methylobacterium sp.13MFTsu3.1M2,,Lanthanum,94.7,mol%,purity,,,nature_s41589-026-02176-3
-lit_0085,o-36,ortholog,Lanmodulin,Methylobacterium sp.13MFTsu3.1M2,,Neodymium,8.7,unitless,fold difference,,,nature_s41589-026-02176-3
-lit_0081,o-36,ortholog,Lanmodulin,Methylobacterium sp.13MFTsu3.1M2,,Praseodymium,83.2,%,yield,,1.5,nature_s41589-026-02176-3
-lit_0083,o-621,ortholog,Lanmodulin,Methylobacterium extorquens,,Lanthanum,0.0,mol%,separation,,,nature_s41589-026-02176-3
-lit_0087,o-621,ortholog,Lanmodulin,Methylobacterium extorquens,,Lanthanum,1.7,unitless,fold difference,,,nature_s41589-026-02176-3
-lit_0084,o-621,ortholog,Lanmodulin,Methylobacterium extorquens,,Neodymium,4.7,unitless,fold difference,,,nature_s41589-026-02176-3
-lit_0089,o-621,ortholog,Lanmodulin,Methylobacterium extorquens,,Calcium,710.0,μM,Kd_app,0.00071,6.5,nihms-1790336
+measurement_id,variant_id,construct_type,parent_scaffold,source_organism,sequence,target_element,value,value_units,value_type,measurement_family,is_molar_affinity_candidate,value_in_molar,conditions_pH,conditions_notes,value_source_type,source_paper
+lit_0005,LanM-GCaMP,fusion_sensor,Lanmodulin+GFP,Escherichia coli,,Lanthanum,3.5,fold,fold_change,process_metric,False,,,,primary,biorxiv_2023_09_26_559553
+lit_0002,LanTERN,fusion_sensor,Lanmodulin+GFP,Escherichia coli,,Lanthanum,976.0,nM,EC50,response_threshold,False,9.76e-07,,,primary,biorxiv_2023_09_26_559553
+lit_0004,LanTERN,fusion_sensor,Lanmodulin+GFP,Escherichia coli,,Lanthanum,10.0,fold,fold_change,process_metric,False,,,,primary,biorxiv_2023_09_26_559553
+lit_0003,LanTERN,fusion_sensor,Lanmodulin+GFP,Escherichia coli,,Ytterbium,4710.0,µM,EC50,response_threshold,False,0.00471,,,primary,biorxiv_2023_09_26_559553
+lit_0001,o-621,ortholog,Lanmodulin,Methylorubrum extorquens,,Lanthanum,1e-12,M,Kd,binding_affinity,True,1e-12,,,cited_from_earlier_work,biorxiv_2023_09_26_559553
+lit_0006,wild-type S. oneidensis,ortholog,non_LanM_protein,Shewanella oneidensis,,Europium,1e-06,Mol L^{-1},Kd,binding_affinity,True,1e-06,,,primary,biorxiv_2023_10_18_562985
+lit_0009,wild-type S. oneidensis,ortholog,non_LanM_protein,Shewanella oneidensis,,Europium,1.25e-07,Mol L^{-1},Kd1,binding_affinity,True,1.25e-07,,,primary,biorxiv_2023_10_18_562985
+lit_0008,wild-type S. oneidensis,ortholog,non_LanM_protein,Shewanella oneidensis,,Lanthanum,2.282e-06,Mol L^{-1},Kd,binding_affinity,True,2.282e-06,,,primary,biorxiv_2023_10_18_562985
+lit_0011,wild-type S. oneidensis,ortholog,non_LanM_protein,Shewanella oneidensis,,Lanthanum,1.25e-07,Mol L^{-1},Kd1,binding_affinity,True,1.25e-07,,,primary,biorxiv_2023_10_18_562985
+lit_0007,wild-type S. oneidensis,ortholog,non_LanM_protein,Shewanella oneidensis,,Ytterbium,1.256e-06,Mol L^{-1},Kd,binding_affinity,True,1.256e-06,,,primary,biorxiv_2023_10_18_562985
+lit_0010,wild-type S. oneidensis,ortholog,non_LanM_protein,Shewanella oneidensis,,Ytterbium,1e-06,Mol L^{-1},Kd1,binding_affinity,True,1e-06,,,primary,biorxiv_2023_10_18_562985
+lit_0013,MIF,ortholog,lanpepsy,Methylobacillus flagellatus,,Lanthanum,3.69,µM,Kd,binding_affinity,True,3.69e-06,,,primary,biorxiv_2025.10.21.683075
+lit_0015,MIF,ortholog,lanpepsy,Methylobacillus flagellatus,,Lanthanum,-42.0,kJ/mol,ΔGapp,thermodynamics,False,,,,primary,biorxiv_2025.10.21.683075
+lit_0012,MIF,ortholog,lanpepsy,Methylobacillus flagellatus,,Samarium,23.9,pM,Kd,binding_affinity,True,2.39e-11,,,primary,biorxiv_2025.10.21.683075
+lit_0014,MIF,ortholog,lanpepsy,Methylobacillus flagellatus,,Samarium,-45.6,kJ/mol,ΔGapp,thermodynamics,False,,,,primary,biorxiv_2025.10.21.683075
+lit_0016,MIF,ortholog,lanpepsy,Methylobacillus flagellatus,,Thulium,-38.1,kJ/mol,ΔGapp,thermodynamics,False,,,,primary,biorxiv_2025.10.21.683075
+lit_0020,CaBM,engineered_chelator,Calmodulin,bacterial,DKDGNGYISAAE,Gadolinium,14.0,L/(s·mmol),r₁,relaxivity,False,,,absolute relaxivity,primary,biorxiv_2025.12.14.694215
+lit_0019,EF3,engineered_chelator,Lanmodulin,bacterial,DPDNDGTLDKKE,Gadolinium,19.0,L/(s·mmol),r₁,relaxivity,False,,,absolute relaxivity,primary,biorxiv_2025.12.14.694215
+lit_0017,LanND-Gd,engineered_chelator,Lanmodulin,bacterial,,Gadolinium,13.15,mM⁻¹·s⁻¹,relaxivity,relaxivity,False,,,at 3 T,primary,biorxiv_2025.12.14.694215
+lit_0018,ProCA32,engineered_chelator,Lanmodulin,calmodulin,,Gadolinium,33.0,mM⁻¹·s⁻¹,r₁,relaxivity,False,,7.0,at 1.4 T and 37 °C,primary,biorxiv_2025.12.14.694215
+lit_0028,LBT,engineered_chelator,de_novo,(auto-created from measurement),,Europium,490.0,nM,Kd,binding_affinity,True,4.900000000000001e-07,,,cited_from_earlier_work,biorxiv_2025_10_19_682977
+lit_0027,LBT,engineered_chelator,de_novo,(auto-created from measurement),,Terbium,190.0,nM,Kd,binding_affinity,True,1.9e-07,,,cited_from_earlier_work,biorxiv_2025_10_19_682977
+lit_0025,RF1,engineered_chelator,unknown,not specified,,Terbium,320.0,nM,Kd,binding_affinity,True,3.2e-07,,,primary,biorxiv_2025_10_19_682977
+lit_0021,RF2,engineered_chelator,unknown,not specified,,Terbium,19.0,nM,Kd,binding_affinity,True,1.9e-08,,,primary,biorxiv_2025_10_19_682977
+lit_0024,RF2 6AW,engineered_chelator,unknown,not specified,,Dysprosium,290.0,nM,Kd,binding_affinity,True,2.9000000000000003e-07,,,primary,biorxiv_2025_10_19_682977
+lit_0023,RF2 6AW,engineered_chelator,unknown,not specified,,Europium,150.0,nM,Kd,binding_affinity,True,1.5000000000000002e-07,,,primary,biorxiv_2025_10_19_682977
+lit_0022,RF2 6AW,engineered_chelator,unknown,not specified,,Terbium,37.0,nM,Kd,binding_affinity,True,3.7e-08,,,primary,biorxiv_2025_10_19_682977
+lit_0026,RF3,engineered_chelator,unknown,not specified,,Terbium,3300.0,nM,Kd,binding_affinity,True,3.3e-06,,,primary,biorxiv_2025_10_19_682977
+lit_0032,EF1,engineered_chelator,Lanmodulin,Methylorubrum extorquens,,Curium,2.28,µM,Kd,binding_affinity,True,2.2799999999999998e-06,,,primary,chemistry_d2qi00933a
+lit_0029,EF1,engineered_chelator,Lanmodulin,Methylorubrum extorquens,,Europium,8.55,µM,Kd,binding_affinity,True,8.550000000000001e-06,6.6,"Conditions for ITC and TRLFS: 25 °C, pH 6.6 in 10 mM MOPSO buffer with an ionic strength of 100 mM KCl",primary,chemistry_d2qi00933a
+lit_0030,EF1,engineered_chelator,Lanmodulin,Methylorubrum extorquens,,Europium,5.5,µM,Kd,binding_affinity,True,5.5e-06,6.6,,primary,chemistry_d2qi00933a
+lit_0031,EF1,engineered_chelator,Lanmodulin,Methylorubrum extorquens,,Terbium,8.47,µM,Kd,binding_affinity,True,8.47e-06,6.6,,primary,chemistry_d2qi00933a
+lit_0036,EF2,engineered_chelator,Lanmodulin,Methylorubrum extorquens,,Curium,2.86,µM,Kd,binding_affinity,True,2.8599999999999997e-06,,,primary,chemistry_d2qi00933a
+lit_0033,EF2,engineered_chelator,Lanmodulin,Methylorubrum extorquens,,Europium,8.61,µM,Kd,binding_affinity,True,8.609999999999999e-06,6.6,,primary,chemistry_d2qi00933a
+lit_0034,EF2,engineered_chelator,Lanmodulin,Methylorubrum extorquens,,Europium,6.52,µM,Kd,binding_affinity,True,6.519999999999999e-06,6.6,,primary,chemistry_d2qi00933a
+lit_0035,EF2,engineered_chelator,Lanmodulin,Methylorubrum extorquens,,Terbium,8.24,µM,Kd,binding_affinity,True,8.239999999999999e-06,6.6,,primary,chemistry_d2qi00933a
+lit_0040,EF3,engineered_chelator,Lanmodulin,Methylorubrum extorquens,,Curium,2.77,µM,Kd,binding_affinity,True,2.7699999999999997e-06,,,primary,chemistry_d2qi00933a
+lit_0037,EF3,engineered_chelator,Lanmodulin,Methylorubrum extorquens,,Europium,8.02,µM,Kd,binding_affinity,True,8.02e-06,6.6,,primary,chemistry_d2qi00933a
+lit_0038,EF3,engineered_chelator,Lanmodulin,Methylorubrum extorquens,,Europium,7.42,µM,Kd,binding_affinity,True,7.419999999999999e-06,6.6,,primary,chemistry_d2qi00933a
+lit_0039,EF3,engineered_chelator,Lanmodulin,Methylorubrum extorquens,,Terbium,8.46,µM,Kd,binding_affinity,True,8.46e-06,6.6,,primary,chemistry_d2qi00933a
+lit_0044,EF4,engineered_chelator,Lanmodulin,Methylorubrum extorquens,,Curium,2.34,µM,Kd,binding_affinity,True,2.3399999999999996e-06,,,primary,chemistry_d2qi00933a
+lit_0041,EF4,engineered_chelator,Lanmodulin,Methylorubrum extorquens,,Europium,8.85,µM,Kd,binding_affinity,True,8.85e-06,6.6,,primary,chemistry_d2qi00933a
+lit_0042,EF4,engineered_chelator,Lanmodulin,Methylorubrum extorquens,,Europium,7.56,µM,Kd,binding_affinity,True,7.56e-06,6.6,,primary,chemistry_d2qi00933a
+lit_0043,EF4,engineered_chelator,Lanmodulin,Methylorubrum extorquens,,Terbium,7.85,µM,Kd,binding_affinity,True,7.85e-06,6.6,,primary,chemistry_d2qi00933a
+lit_0056,4D9A,point_mutant,Lanmodulin,Methylorubrum extorquens,,Neodymium,3.97e-10,M,Kd,binding_affinity,True,3.97e-10,5.0,,cited_from_earlier_work,elsevier_2001-0370_2025
+lit_0058,4D9H,point_mutant,Lanmodulin,Methylorubrum extorquens,,Neodymium,2.15e-09,M,Kd,binding_affinity,True,2.15e-09,5.0,,cited_from_earlier_work,elsevier_2001-0370_2025
+lit_0057,4D9M,point_mutant,Lanmodulin,Methylorubrum extorquens,,Neodymium,1.46e-09,M,Kd,binding_affinity,True,1.46e-09,5.0,,cited_from_earlier_work,elsevier_2001-0370_2025
+lit_0055,4D9N,point_mutant,Lanmodulin,Methylorubrum extorquens,,Neodymium,5.31e-11,M,Kd,binding_affinity,True,5.31e-11,5.0,,cited_from_earlier_work,elsevier_2001-0370_2025
+lit_0054,4P2A,point_mutant,Lanmodulin,Methylorubrum extorquens,,Calcium,2.6e-06,M,Kd,binding_affinity,True,2.6e-06,7.2,,cited_from_earlier_work,elsevier_2001-0370_2025
+lit_0052,4P2A,point_mutant,Lanmodulin,Methylorubrum extorquens,,Lanthanum,1e-12,M,Kd,binding_affinity,True,1e-12,7.2,,cited_from_earlier_work,elsevier_2001-0370_2025
+lit_0053,4P2A,point_mutant,Lanmodulin,Methylorubrum extorquens,,Neodymium,4.4e-13,M,Kd,binding_affinity,True,4.4e-13,7.2,,cited_from_earlier_work,elsevier_2001-0370_2025
+lit_0051,o-621,ortholog,Lanmodulin,Methylorubrum extorquens,,Calcium,0.00071,M,Kd,binding_affinity,True,0.00071,7.2,,cited_from_earlier_work,elsevier_2001-0370_2025
+lit_0048,o-621,ortholog,Lanmodulin,Methylorubrum extorquens,,Gadolinium,1e-11,M,Kd,binding_affinity,True,1e-11,7.2,,cited_from_earlier_work,elsevier_2001-0370_2025
+lit_0045,o-621,ortholog,Lanmodulin,Methylorubrum extorquens,,Lanthanum,5.3e-12,M,Kd,binding_affinity,True,5.3e-12,7.2,,cited_from_earlier_work,elsevier_2001-0370_2025
+lit_0046,o-621,ortholog,Lanmodulin,Methylorubrum extorquens,,Neodymium,5.3e-12,M,Kd,binding_affinity,True,5.3e-12,7.2,,cited_from_earlier_work,elsevier_2001-0370_2025
+lit_0047,o-621,ortholog,Lanmodulin,Methylorubrum extorquens,,Samarium,6.6e-12,M,Kd,binding_affinity,True,6.6e-12,7.2,,cited_from_earlier_work,elsevier_2001-0370_2025
+lit_0049,o-621,ortholog,Lanmodulin,Methylorubrum extorquens,,Terbium,2.1e-11,M,Kd,binding_affinity,True,2.1e-11,7.2,,cited_from_earlier_work,elsevier_2001-0370_2025
+lit_0050,o-621,ortholog,Lanmodulin,Methylorubrum extorquens,,Yttrium,1.7e-11,M,Kd,binding_affinity,True,1.7e-11,7.2,,cited_from_earlier_work,elsevier_2001-0370_2025
+lit_0060,Hans-LanM(R100K),point_mutant,Lanmodulin,Hansschlegelia quercus,,Dysprosium,27.0,unitless,Kd_app,binding_affinity,False,,,A 27-fold weaker affinity for $Dy^{III}$ compared to $Nd^{III}$,primary,nature_2026_02176
+lit_0062,o-127,ortholog,Lanmodulin,Methylosinus sp. sav-2,,Praseodymium,3.5,unitless,logD,distribution,False,,5.0,Difference in affinity between $Nd^{III}$ and $La^{III}$,primary,nature_2026_02176
+lit_0061,o-36,ortholog,Lanmodulin,Methylobacterium sp. 13MFTsu3.1M2,,Praseodymium,8.7,unitless,logD,distribution,False,,5.0,Difference in affinity between $Nd^{III}$ and $La^{III}$,primary,nature_2026_02176
+lit_0063,o-36,ortholog,Lanmodulin,Methylobacterium sp. 13MFTsu3.1M2,,Samarium,98.6,unitless,logD,distribution,False,,,Purity and yield measurement,primary,nature_2026_02176
+lit_0064,o-621,ortholog,Lanmodulin,Methylobacterium extorquens,,Lanthanum,0.8,unitless,logD,distribution,False,,,Could not achieve separation of $La^{III}$ and $Sm^{III}$,primary,nature_2026_02176
+lit_0059,o-621,ortholog,Lanmodulin,Methylobacterium extorquens,,Neodymium,27.0,unitless,Kd_app,binding_affinity,False,,,Weaker affinity for $Dy^{III}$ compared to $Nd^{III}$,primary,nature_2026_02176
+lit_0067,CDS J19_31570,ortholog,unknown,Mesorhizobium qingshengii,,Neodymium,68.0,µg Nd/mg protein,Binding,binding_capacity,False,,,observed binding under mixed-metal addition of Y and Nd,primary,nature_41598_2026_Article_45294
+lit_0069,CDS J19_31570,ortholog,unknown,Mesorhizobium qingshengii,,Neodymium,6.54,µg Nd/mg protein,Binding,binding_capacity,False,,,measured when combining both elements (Y and Nd),primary,nature_41598_2026_Article_45294
+lit_0065,CDS J19_31570,ortholog,unknown,Mesorhizobium qingshengii,,Yttrium,101.2,µg Y/mg protein,Binding,binding_capacity,False,,8.0,optimal binding at pH 8 and incubation temperature of 25 ˚C,primary,nature_41598_2026_Article_45294
+lit_0066,CDS J19_31570,ortholog,unknown,Mesorhizobium qingshengii,,Yttrium,59.7,µg Y/mg protein,Binding,binding_capacity,False,,,obtained at constant Y concentration of 50 µM,primary,nature_41598_2026_Article_45294
+lit_0068,CDS J19_31570,ortholog,unknown,Mesorhizobium qingshengii,,Yttrium,39.2,µg Y/mg protein,Binding,binding_capacity,False,,,measured when combining both elements (Y and Nd),primary,nature_41598_2026_Article_45294
+lit_0072,o-180,ortholog,Lanmodulin,Hansschlegelia quercus,,Dysprosium,9e-11,M,Kd_app,binding_affinity,True,9e-11,,,primary,nature_d41586-023-01739
+lit_0071,o-180,ortholog,Lanmodulin,Hansschlegelia quercus,,Lanthanum,7e-11,M,Kd_app,binding_affinity,True,7e-11,,,primary,nature_d41586-023-01739
+lit_0070,o-621,ortholog,Lanmodulin,Methylobacterium extorquens,,Neodymium,5e-12,M,Kd_app,binding_affinity,True,5e-12,,,primary,nature_d41586-023-01739
+lit_0079,Hans-LanM(R100K),point_mutant,Lanmodulin,Hansschlegelia quercus,,Lanthanum,0.5,pM,Kd_app,binding_affinity,True,5e-13,,,primary,nature_s41586-023-05945-5
+lit_0076,o-180,ortholog,Lanmodulin,Hansschlegelia quercus,,Calcium,60.0,µM,Kd_app,binding_affinity,True,5.9999999999999995e-05,,,primary,nature_s41586-023-05945-5
+lit_0075,o-180,ortholog,Lanmodulin,Hansschlegelia quercus,,Dysprosium,0.3,µM,Kd_app,binding_affinity,True,3e-07,,,primary,nature_s41586-023-05945-5
+lit_0077,o-180,ortholog,Lanmodulin,Hansschlegelia quercus,,Dysprosium,60.0,µM,Kdimer,dimerization_affinity,False,5.9999999999999995e-05,,,primary,nature_s41586-023-05945-5
+lit_0078,o-180,ortholog,Lanmodulin,Hansschlegelia quercus,,Dysprosium,117.0,µM,Kdimer,dimerization_affinity,False,0.000117,,,primary,nature_s41586-023-05945-5
+lit_0073,o-180,ortholog,Lanmodulin,Hansschlegelia quercus,,Lanthanum,68.0,pM,Kd_app,binding_affinity,True,6.8e-11,5.0,,primary,nature_s41586-023-05945-5
+lit_0074,o-180,ortholog,Lanmodulin,Hansschlegelia quercus,,Neodymium,91.0,pM,Kd_app,binding_affinity,True,9.1e-11,5.0,,primary,nature_s41586-023-05945-5
+lit_0087,Hans-LanM(R100K),point_mutant,Lanmodulin,Hansschlegelia quercus,,Lanthanum,13.7,unitless,Kd_app,binding_affinity,False,,,SFNd/Dy ratio as reported,cited_from_earlier_work,nature_s41589-026-02176-3
+lit_0085,o-127,ortholog,Lanmodulin,Methylosinus sp. sav-2,,Neodymium,3.5,unitless,fold difference,process_metric,False,,,relative affinity between NdIII and LaIII,primary,nature_s41589-026-02176-3
+lit_0081,o-36,ortholog,Lanmodulin,Methylobacterium sp.13MFTsu3.1M2,,Lanthanum,94.7,mol%,purity,process_metric,False,,,binary 50:50 solution of LaIII and SmIII,primary,nature_s41589-026-02176-3
+lit_0084,o-36,ortholog,Lanmodulin,Methylobacterium sp.13MFTsu3.1M2,,Neodymium,8.7,unitless,fold difference,process_metric,False,,,relative affinity between NdIII and LaIII,primary,nature_s41589-026-02176-3
+lit_0080,o-36,ortholog,Lanmodulin,Methylobacterium sp.13MFTsu3.1M2,,Praseodymium,83.2,%,yield,process_metric,False,,1.5,single step-drop from pH 2.4 to 1.5,primary,nature_s41589-026-02176-3
+lit_0082,o-621,ortholog,Lanmodulin,Methylobacterium extorquens,,Lanthanum,0.0,mol%,separation,process_metric,False,,,could not achieve separation of LaIII and SmIII,primary,nature_s41589-026-02176-3
+lit_0086,o-621,ortholog,Lanmodulin,Methylobacterium extorquens,,Lanthanum,1.7,unitless,fold difference,process_metric,False,,,relative affinity between NdIII and LaIII,primary,nature_s41589-026-02176-3
+lit_0083,o-621,ortholog,Lanmodulin,Methylobacterium extorquens,,Neodymium,4.7,unitless,fold difference,process_metric,False,,,relative affinity between NdIII and HoIII,primary,nature_s41589-026-02176-3
+lit_0088,o-621,ortholog,Lanmodulin,Methylobacterium extorquens,,Calcium,710.0,μM,Kd_app,binding_affinity,True,0.00071,6.5,,primary,nihms-1790336

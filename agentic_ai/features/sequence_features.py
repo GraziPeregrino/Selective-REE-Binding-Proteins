@@ -11,7 +11,7 @@ by Block 2.5's assembly step.
 """
 from __future__ import annotations
 
-from typing import Dict, List, Optional
+from typing import Dict, List
 
 from Bio.SeqUtils.ProtParam import ProteinAnalysis
 

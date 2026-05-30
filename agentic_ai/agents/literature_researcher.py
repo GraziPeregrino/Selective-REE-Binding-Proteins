@@ -94,6 +94,7 @@ _TASK_EXPECTED_OUTPUT = (
     "ambiguity or context is worth recording."
 )
 
+
 def build_literature_agent() -> Agent:
     """
     Constructs the Literature Researcher agent with project-standard
@@ -109,6 +110,7 @@ def build_literature_agent() -> Agent:
         verbose=False,
         allow_delegation=False,
     )
+
 
 def build_extraction_task(
     paper_text: str = None,
@@ -146,6 +148,7 @@ def build_extraction_task(
         agent=agent,
         output_pydantic=PaperExtraction,
     )
+
 
 def build_extraction_crew(
     paper_text: str = None,

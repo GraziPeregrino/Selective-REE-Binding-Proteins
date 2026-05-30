@@ -6,10 +6,11 @@ pandas>=2.2.0
 pyarrow>=15.0.0
 python-dotenv>=1.0.1
 scikit-learn>=1.4.0
+biopython==1.87
+openpyxl>=3.1.0
 
 # Dev
 pytest>=8.3.0
 pytest-cov>=5.0.0
 pylint>=3.2.0
 flake8>=7.1.0
-biopython==1.87

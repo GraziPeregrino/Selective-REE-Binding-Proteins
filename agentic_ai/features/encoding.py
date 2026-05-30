@@ -152,6 +152,7 @@ def transform_features(
     )
     return encoded_df
 
+
 def align_columns_to_schema(
     df: pd.DataFrame = None,
     schema_columns: list = None,

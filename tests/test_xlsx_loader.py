@@ -3,10 +3,18 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import pandas as pd
 import pytest
 
-from agentic_ai.loaders.xlsx_loader import load_moesm3
-from agentic_ai.schemas import BindingMeasurement, CorpusRecords, ProteinVariant
+from agentic_ai.loaders.xlsx_loader import (
+    _validate_expected_columns,
+    load_moesm3,
+)
+from agentic_ai.schemas import (
+    BindingMeasurement,
+    CorpusRecords,
+    ProteinVariant,
+)
 
 # Path to the real MOESM3 file. Tests will skip if it's not on disk so the
 # suite still runs in environments where supplementary data hasn't been
@@ -18,7 +26,10 @@ _MOESM3_PATH = Path(
 # Skip marker applied to every test in this file when the data is missing.
 pytestmark = pytest.mark.skipif(
     not _MOESM3_PATH.exists(),
-    reason=f"MOESM3 not present at {_MOESM3_PATH}; download from Nature paper.",
+    reason=(
+        f"MOESM3 not present at {_MOESM3_PATH}; "
+        f"download from Nature paper."
+    ),
 )
 
 
@@ -69,7 +80,10 @@ def test_load_moesm3_includes_canonical_reference_orthologs(corpus):
 
     variants_by_id = {v.variant_id: v for v in corpus.variants}
 
-    for ref_id, (expected_organism_prefix, expected_cluster) in references.items():
+    for ref_id, (
+        expected_organism_prefix,
+        expected_cluster,
+    ) in references.items():
         assert ref_id in variants_by_id, f"Missing reference variant {ref_id}"
         variant = variants_by_id[ref_id]
         assert variant.source_organism.startswith(expected_organism_prefix), (
@@ -141,3 +155,26 @@ def test_load_moesm3_raises_clear_error_on_missing_file(tmp_path):
 
     with pytest.raises(FileNotFoundError, match="Download from"):
         load_moesm3(xlsx_path=missing_path)
+
+
+def test_validate_expected_columns_requires_all_ree_measurements():
+    """
+    Verifies that a missing element column fails fast instead of silently
+    producing fewer than 15 measurements per variant.
+    """
+    columns = {
+        "id_6": [],
+        "sequence_sp_removed": [],
+        "source_original": [],
+        "EFhands": [],
+        "agglomerative_cluster": [],
+    }
+    for prefix in [
+        "Y", "La", "Ce", "Pr", "Nd", "Sm", "Eu", "Gd",
+        "Tb", "Dy", "Ho", "Er", "Tm", "Yb", "Lu",
+    ]:
+        columns[f"{prefix}_norm_logd"] = []
+    columns.pop("La_norm_logd")
+
+    with pytest.raises(ValueError, match="La_norm_logd"):
+        _validate_expected_columns(pd.DataFrame(columns))

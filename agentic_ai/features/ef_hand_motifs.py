@@ -86,6 +86,8 @@ def _validate_sequence_characters(sequence: str) -> None:
             f"{sorted(invalid)}. Only the 20 standard amino acids "
             f"(ACDEFGHIKLMNPQRSTVWY) are accepted."
         )
+
+
 # ---------------------------------------------------------------------------
 # Block 2.2b: Per-motif and aggregate features
 # ---------------------------------------------------------------------------

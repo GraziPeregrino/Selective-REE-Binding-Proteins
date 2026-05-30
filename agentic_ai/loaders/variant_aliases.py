@@ -121,7 +121,7 @@ _CONSTRUCT_CLASSIFICATIONS = {
     # and chromatographic use, not in the protein scaffold itself.
     # -----------------------------------------------------------------
     "MIF":       ("ortholog",  "lanpepsy"),
-# -----------------------------------------------------------------
+    # -----------------------------------------------------------------
     # Isolated EF-hand peptides — synthetic constructs containing the
     # 12-residue LanM EF-hand loop sequence in isolation. Gutenthaler
     # 2022 (Inorganic Chemistry Frontiers) measured each EF's REE
@@ -135,7 +135,7 @@ _CONSTRUCT_CLASSIFICATIONS = {
     "EF2":  ("engineered_chelator",  "Lanmodulin"),
     "EF3":  ("engineered_chelator",  "Lanmodulin"),
     "EF4":  ("engineered_chelator",  "Lanmodulin"),
-# -----------------------------------------------------------------
+    # -----------------------------------------------------------------
     # Lanthanide Binding Tag — de novo designed peptide (Imperiali lab)
     # ~20 residues with a tryptophan antenna for Tb-luminescence.
     # Surface-displayed on E. coli/Caulobacter in some biorxiv papers.
@@ -301,6 +301,7 @@ def _capitalize_organism_prefix(text: str) -> str:
 
     return text
 
+
 def resolve_to_canonical_id(raw: str = None) -> Optional[str]:
     """
     Normalizes a raw variant identifier and then resolves it to its
@@ -319,6 +320,7 @@ def resolve_to_canonical_id(raw: str = None) -> Optional[str]:
         return None
 
     return _CANONICAL_ALIASES.get(normalized, normalized)
+
 
 def classify_construct(
     canonical_name: str = None,
@@ -340,6 +342,7 @@ def classify_construct(
         return None
 
     return _CONSTRUCT_CLASSIFICATIONS.get(canonical_name)
+
 
 def should_drop(canonical_name: str = None) -> bool:
     """

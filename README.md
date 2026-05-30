@@ -16,10 +16,10 @@ Build a sequence-to-selectivity predictor that can:
 ## Tech Stack
 
 - **Data pipeline:** pandas, Pydantic, CrewAI, OpenAI API
-- **Bioinformatics:** Biopython (sequence feature engineering — planned for Week 2)
+- **Bioinformatics:** Biopython sequence feature engineering
 - **ML:** scikit-learn, XGBoost (planned for Week 3)
 - **App / MLOps:** Streamlit, Docker (planned for Weeks 4–5)
-- **Dev:** pytest (210 tests passing), flake8, pylint
+- **Dev:** pytest, flake8, pylint
 
 ## Data Sources
 
@@ -42,9 +42,11 @@ maximum per-replicate. This is the project's primary ML training target
 processed by a CrewAI agent into a structured corpus of 89 binding
 measurements across 27 unique protein variants. Papers were pre-processed
 with Gemini 2.5 Pro to extract relevant passages prior to LLM extraction.
-The literature dataset reports **actual binding constants** (Kd, Kd_app,
-EC50, etc.) in mass-action units, which makes 32 of the 89 records directly
-comparable to molar Kd values. See `data/processed/extractions/`.
+The literature dataset is a heterogeneous validation corpus containing
+binding constants, EC50 values, relaxivity measurements, and process metrics.
+Its `measurement_family` column separates scientifically compatible subsets.
+After deterministic unit normalization, 60 of the 88 records have molar values.
+See `data/processed/extractions/`.
 
 ### Crucial semantic distinction
 
@@ -53,7 +55,7 @@ The two datasets measure different quantities:
 | Source | Measures | Units | Use |
 |---|---|---|---|
 | MOESM3 | Normalized log distribution coefficient | unitless (0–1) | Primary training target |
-| Literature | Thermodynamic dissociation constants | M, nM, etc. | Orthogonal validation |
+| Literature | Heterogeneous published measurements | M, nM, unitless, etc. | Filtered orthogonal validation |
 
 These cannot be merged into a single target column without corrupting the
 science. Each lives in its own CSV with its own column schema.
@@ -77,10 +79,12 @@ cp .env.example .env          # add your OpenAI API key
 1. Download `41589_2026_2176_MOESM3_ESM.xlsx` from Diep et al. 2026
    (Nature Chemical Biology) → place in `data/raw/supplementary/`
 2. Verify environment: `python -c "from agentic_ai.utils.env_check import load_api_key; print('API key loaded:', load_api_key()[:8] + '...')"`
-3. Run the test suite: `pytest -v` (expect 210 passing)
+3. Run the test suite: `pytest -v`
 4. (Optional, ~$0.02 OpenAI cost) Re-run the literature extraction:
    `python -m agentic_ai.agents.corpus_runner --save`
 5. Re-assemble the CSV datasets: `python -m agentic_ai.loaders.dataset_assembly`
+6. Build the ML-ready baseline matrix:
+   `python -m agentic_ai.features.build_matrix`
 
 ## Dataset Summary
 
@@ -92,13 +96,21 @@ After Block 5, the project produces two source-specific datasets:
 - Target column: `value` (normalized_logD, 0–1 unitless)
 - Sequences inline for direct ML tokenization
 
-### `literature_binding_data.csv` — Validation cohort
-- 89 rows, 13 columns
+### `literature_binding_data.csv` — Validation corpus
+- 88 rows, 17 columns
 - 27 unique variants across 13 REEs from 15 papers
-- Mixed `value_type`: Kd (45), Kd_app (12), EC50 (10), fold_change (4), logD (4), other
-- 32 records have parseable `value_in_molar` for direct Kd comparison
-- Construct types: ortholog (47), engineered_chelator (28), point_mutant (10), fusion_sensor (4)
+- Mixed `value_type`: Kd (44), Kd_app (12), Binding (5), logD (4), other
+- 60 records have parseable `value_in_molar`
+- 56 records are marked as direct molar affinity-validation candidates
+- `measurement_family` must be used to select compatible validation targets
+- Construct types: ortholog (46), engineered_chelator (28), point_mutant (10), fusion_sensor (4)
 - Parent scaffolds: Lanmodulin, Lanmodulin+GFP, Calmodulin, lanpepsy, de_novo, non_LanM_protein
+
+### `ml_ready_features.parquet` — Baseline training matrix
+- 9,240 rows, 128 model features, 6 metadata columns
+- Train/test assignment grouped by variant and stratified by selectivity cluster
+- Companion artifacts: `ml_ready_features_schema.json` and
+  `ml_ready_features_encoder.pkl`
 
 ## Key findings from Week 1
 
@@ -139,7 +151,12 @@ These were promoted from the drop list to `engineered_chelator` /
         - [x] 4.4 — Three-tier variant classifier (alias map + construct types + drop rules)
         - [x] 4.5 — Tests for extraction_io, corpus_runner, env_check
     - [x] Block 5 — Dataset assembly: two source-specific long-form CSVs
-- [ ] **Week 2** — Sequence feature engineering (Biopython)
+- [x] **Week 2** — Baseline feature engineering
+    - [x] Block 2.1 — Basic sequence features
+    - [x] Block 2.2 — EF-hand motif features + categorical encoding
+    - [x] Block 2.3 — REE physicochemical lookup
+    - [x] Block 2.4 — Deferred speculative interactions for baseline
+    - [x] Block 2.5 — ML-ready parquet matrix + split + encoder schema
 - [ ] **Week 3** — ML training (XGBoost, hyperparameter tuning)
 - [ ] **Week 4** — Streamlit application
 - [ ] **Week 5** — Docker + cloud deployment
