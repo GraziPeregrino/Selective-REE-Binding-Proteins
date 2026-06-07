@@ -75,7 +75,10 @@ def _load_example():
     st.session_state.sequence_input = _EXAMPLE_SEQUENCE
     st.session_state.result = None  # clear prior results on example load
 
-
+def _erase_input():
+    """Clears the sequence input and any prior results."""
+    st.session_state.sequence_input = ""
+    st.session_state.result = None
 # ---------------------------------------------------------------------------
 # Header
 # ---------------------------------------------------------------------------
@@ -94,27 +97,32 @@ st.subheader("Sequence input")
 
 sequence_input = st.text_area(
     label="Protein sequence (single-letter amino acid codes)",
-    value=st.session_state.sequence_input,
     height=160,
     placeholder=(
         "Paste a protein sequence here, e.g.:\n"
         "MAPTTTTKVDIAAFDPDKDGTIDLKEALAAGSAAFDKLDPDKDGT..."
     ),
-    key="sequence_text_area",
+    key="sequence_input",
     help=(
         "Single-letter amino acid codes. FASTA headers are tolerated "
-        "(one record only). Supported length: 80–400 residues."
+        "(one record only). Supported length: 80-400 residues."
     ),
 )
 
-col1, col2, _ = st.columns([1, 1, 3])
+col1, col2, col3, _ = st.columns([1, 1, 1, 2])
 with col1:
-    example_clicked = st.button(
+    st.button(
         "Load example",
         on_click=_load_example,
         help="Loads Mex-LanM (o-621), a real LanM ortholog from MOESM3.",
     )
 with col2:
+    st.button(
+        "Erase",
+        on_click=_erase_input,
+        help="Clears the sequence input and any prior results.",
+    )
+with col3:
     predict_clicked = st.button(
         "Predict",
         type="primary",
